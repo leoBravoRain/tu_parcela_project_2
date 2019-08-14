@@ -7,6 +7,10 @@ import axios from 'axios';
 
 import Image_Gallery from './loteos_image_gallery.component'
 
+import Piece_of_Ground_Map from "./piece_of_ground_map.component";
+
+import { BrowserRouter as Link, Route } from "react-router-dom";
+
 // Component 
 class Loteos_Map extends Component {
 
@@ -35,7 +39,7 @@ class Loteos_Map extends Component {
 	componentDidMount() {
 
 		// get request for get data
-        axios.get('http://192.168.1.9:4000/pieces_of_ground/')
+        axios.get('http://192.168.1.9:4000/pieces_of_ground/loteos')
 
         	// if ok
             .then(response => {
@@ -132,7 +136,9 @@ class Loteos_Map extends Component {
 							        	<Marker key = {idx} position = {loteo.location}>
 
 							        	  <Popup>
-							        	    Popup for any custom information.
+
+							        	  	ajsioasj
+
 							        	  </Popup>
 
 							        	</Marker>

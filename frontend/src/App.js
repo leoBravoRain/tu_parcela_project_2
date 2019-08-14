@@ -8,48 +8,10 @@ import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Loteos_Map from "./components/loteos_map";
-// import EditTodo from "./components/edit-todo.component";
-// import TodosList from "./components/todos-list.component";
+import Piece_of_Ground_Map from "./components/piece_of_ground_map.component";
 
-const AnyReactComponent = ({ text }) => <div>{text.name}</div>;
-	
+// Component 
 class App extends Component {
-
-	static defaultProps = {
-	    center: {
-	      lat: 59.95,
-	      lng: 30.33
-	    },
-	    zoom: 11
-	};
-
-	constructor(props) {
-
-		super(props);
-
-		// initial states
-		this.state = {
-
-			num_loteos: 5,
-			num_pieces_ground: 39,
-			loteos: [
-
-				[
-					-39.838000, -73.236481
-				],
-
-				[
-
-					-39.820021, -73.232460
-
-				]
-
-			],
-
-		}
-
-	}
-
 
 	// render method
 	render() {
@@ -76,7 +38,17 @@ class App extends Component {
 
 									<Link to="/" className="nav-link">
 
-										Todos
+										Loteos Map
+
+									</Link>
+
+								</li>
+
+								<li className="navbar-item">
+
+									<Link to="/piece_of_ground/5d53132e0f066e309357f626" className="nav-link">
+
+										Pieces of ground map
 
 									</Link>
 
@@ -92,6 +64,8 @@ class App extends Component {
 
 		    <Route path = "/" exact component = {Loteos_Map} />
 
+		    <Route path = "/piece_of_ground/:id/" exact component = {Piece_of_Ground_Map} />
+
 			</Router>
 
 		);
@@ -100,4 +74,5 @@ class App extends Component {
 
 }
 
+// exporting app
 export default App;

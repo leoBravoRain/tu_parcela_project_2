@@ -31,7 +31,7 @@ class Image_Gallery extends React.Component {
 
 				{this.state.loteos.map( (loteo, idx) =>
 
-					<div>
+					<div key = {idx}>
 
 						<p>
 
