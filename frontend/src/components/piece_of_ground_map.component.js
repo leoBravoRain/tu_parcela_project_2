@@ -32,8 +32,8 @@ class Piece_of_Ground_Map extends Component {
 	// component life cycle 
 	componentDidMount() {
 
-		// get request for get data
-        axios.get('http://192.168.1.9:4000/pieces_of_ground/pieces_of_ground')
+		// get request for get data	
+        axios.get('http://192.168.1.9:4000/pieces_of_ground/pieces_of_ground/' + this.props.match.params.id)
 
         	// if ok
             .then(response => {
