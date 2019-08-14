@@ -5,6 +5,8 @@ import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 // make request to server
 import axios from 'axios';
 
+import Image_Gallery from './loteos_image_gallery.component'
+
 // Component 
 class Loteos_Map extends Component {
 
@@ -17,7 +19,7 @@ class Loteos_Map extends Component {
 		// initial states
 		this.state = {
 
-			num_loteos: 5,
+			num_loteos: null,
 			num_pieces_ground: 39,
 			// flag of get data from server
 			get_loteos: false,
@@ -56,7 +58,10 @@ class Loteos_Map extends Component {
                 	get_loteos: true, 
 
                 	// update loteos
-                	loteos: loteos 
+                	loteos: loteos,
+
+                	num_loteos: loteos.length,
+
                 });
 
             })
@@ -89,7 +94,7 @@ class Loteos_Map extends Component {
 
 			    	<div>
 
-			    		{this.state.num_loteos} loteos - {this.state.num_pieces_ground} parcelas disponibles - Todas con facilidades de pago
+			    		{this.state.get_loteos ? this.state.num_loteos : 0} loteos - {this.state.num_pieces_ground} parcelas disponibles - Todas con facilidades de pago
 
 			    	</div>
 
@@ -144,6 +149,29 @@ class Loteos_Map extends Component {
 				    	}
 
 					</div>
+
+			  	</div>
+
+			  	<div>
+
+			  		{this.state.get_loteos 
+
+			  			?
+
+			  				<Image_Gallery loteos = {this.state.loteos} />
+
+		  				:
+
+		  					<p> Loading </p>
+			  		}
+
+			  	</div>
+
+			  	<div>
+
+			  		Preguntas y Respuestas
+
+			  		Aprende mas sobre bienes y raíces
 
 			  	</div>
 
