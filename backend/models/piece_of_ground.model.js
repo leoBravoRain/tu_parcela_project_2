@@ -12,6 +12,16 @@ let Piece_of_Ground = new Schema({
 		type: String
 	},
 
+	size: {
+
+		type: String
+	},
+
+	price: {
+
+		type: Number,
+	},
+	
 	latitude: {
 
 		type: Number,
@@ -21,6 +31,19 @@ let Piece_of_Ground = new Schema({
 
 		type: Number,
 
+	},
+
+	available: {
+
+		type: Boolean,
+
+	},
+
+	// Loteo foreign key
+	loteo: {
+	
+		type: Schema.Types.ObjectId, ref: 'Loteos'
+			
 	}
 
 })

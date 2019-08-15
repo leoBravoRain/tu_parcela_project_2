@@ -4,9 +4,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-// import Piece_of_Ground model
-let Piece_of_Ground = require('./piece_of_ground.model');
-
 // crate express instance
 const app = express();
 
@@ -39,53 +36,11 @@ connection.once('open', function() {
 });
 
 
-// Routing control for get requests
-routes.route('/').get(function(req, res) {
+// Add Loteos routes from own file
+require('./routes/Loteos.routes')(routes);
 
-	// Pick up the pieces of ground
-	Piece_of_Ground.find(function(err, pieces_of_ground) {
-
-		// if it gets error
-		if (err) {
-
-			// display error in console
-			console.log(err);
-
-		} else {
-
-			// return pieces of ground in json format
-			res.json(pieces_of_ground);
-
-		};
-
-	});
-
-});
-
-// Routing control for add new piece of ground
-routes.route('/add').post(function(req, res) {
-
-	// new instace of Piece of Ground. it get data from req body
-	let piece_of_ground = new Piece_of_Ground(req.body);
-
-	// save instace in DB
-	piece_of_ground.save()
-
-		// if correctly saved
-		.then( piece_of_ground => {
-
-			res.status(200).json({'piece_of_ground': 'Piece of ground added successfully'});
-
-		})
-
-		// if error
-		.catch(err => {
-
-			res.status(400).send('Adding new piece of ground failed');
-
-		});
-
-});
+// Add Pieces of Ground routes from own file
+require('./routes/Piece_of_Ground.routes')(routes);
 
 // app is listening
 app.listen(PORT, function() {
