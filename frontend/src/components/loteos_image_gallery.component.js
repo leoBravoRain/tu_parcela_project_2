@@ -13,7 +13,7 @@ class Image_Gallery extends React.Component {
 		this.state = {
 
 			// flag of get data from server
-			get_loteos: false,
+			// get_loteos: false,
 			// markers (each place is a list of 2 elements)
 			// marker: [latitude, longitude]
 			loteos: this.props.loteos,

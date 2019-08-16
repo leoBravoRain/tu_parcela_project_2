@@ -44,7 +44,25 @@ let Piece_of_Ground = new Schema({
 	
 		type: Schema.Types.ObjectId, ref: 'Loteos'
 			
-	}
+	},
+
+	width: {
+
+		type: Number,
+
+	},
+
+	large: {
+
+		type: Number,
+
+	},
+
+	topography: {
+
+		type: String,
+
+	},
 
 })
 

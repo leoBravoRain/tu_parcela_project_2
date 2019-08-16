@@ -81,7 +81,7 @@ module.exports = function(routes){
 			// if error
 			.catch(err => {
 
-				res.status(400).send('Adding new piece of ground failed');
+				res.status(400).send('Adding new piece of ground failed\nError:  ' + err);
 
 			});
 

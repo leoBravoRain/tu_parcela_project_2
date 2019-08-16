@@ -6,6 +6,10 @@ import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 // make request to server
 import axios from 'axios';
 
+// import own component
+import Piece_of_Ground_Details from "./piece_of_ground_details.component";
+
+
 class Piece_of_Ground_Map extends Component {
 
 	// constructor
@@ -17,13 +21,13 @@ class Piece_of_Ground_Map extends Component {
 		// initial states
 		this.state = {
 
-			// num_piece_of_ground: null,
+			num_piece_of_ground: null,
 			// num_pieces_ground: 39,
 			// flag of get data from server
 			get_pieces_of_ground: false,
 			// markers (each place is a list of 2 elements)
 			// marker: [latitude, longitude]
-			piece_of_ground: null,
+			pieces_of_ground: null,
 
 		}
 
@@ -39,10 +43,10 @@ class Piece_of_Ground_Map extends Component {
             .then(response => {
 
             	// get data from API
-            	var piece_of_ground = response.data;
+            	var pieces_of_ground = response.data;
 
             	// add location item for map location impleemntation
-            	piece_of_ground.map( function(currentValue, index, arr) {
+            	pieces_of_ground.map( function(currentValue, index, arr) {
 
             		// add location item in required map format
             		currentValue['location'] = [currentValue.latitude, currentValue.longitude];
@@ -56,9 +60,9 @@ class Piece_of_Ground_Map extends Component {
                 	get_pieces_of_ground: true, 
 
                 	// update piece_of_ground
-                	piece_of_ground: piece_of_ground,
+                	pieces_of_ground: pieces_of_ground,
 
-                	// num_piece_of_ground: piece_of_ground.length,
+                	num_piece_of_ground: pieces_of_ground.length,
 
                 });
 
@@ -81,13 +85,24 @@ class Piece_of_Ground_Map extends Component {
 
 			<div className="container">
 
+				<div className = 'container'>
+
+					<h2>
+
+						Mapa de parcelas cada loteo
+
+					</h2>
+
+					{this.state.get_pieces_of_ground ? this.state.num_piece_of_ground : 0} parcelas disponibles
+
+				</div>
+
 				<div style={{ height: '100vh', width: '100%' }}>
 
 					{this.state.get_pieces_of_ground 
 
 						? 
 
-					
 							<LeafletMap
 						        center={[-39.838000, -73.236481]}
 						        zoom={13}
@@ -104,9 +119,7 @@ class Piece_of_Ground_Map extends Component {
 						          url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
 						        />
 
-						     
-
-						        {this.state.piece_of_ground.map( (piece_of_ground, idx) => 
+						        {this.state.pieces_of_ground.map( (piece_of_ground, idx) => 
 
 						        	<Marker key = {idx} position = {piece_of_ground.location}>
 
@@ -128,6 +141,80 @@ class Piece_of_Ground_Map extends Component {
 				    		<div> Loading </div>
 
 			    	}
+
+				</div>
+
+				<div className = 'container'>
+
+					<h2>
+
+						Cuadro dinamico lateral de parcelas
+
+					</h2>
+
+					{/* This should be a component by itself */}
+					{this.state.get_pieces_of_ground 
+
+						?
+
+							this.state.pieces_of_ground.map( (piece_of_ground, idx) => 
+
+								<div key = {idx}>
+
+									<p>
+
+										{piece_of_ground.name}
+
+									</p>
+
+									<p>
+
+										{piece_of_ground.size} m2
+
+									</p>
+
+									<p>
+
+										Valor {piece_of_ground.size}
+
+									</p>
+
+								</div>
+
+							)
+
+						:
+
+							<p> Loading </p>
+
+					}
+
+				</div>
+
+
+				<div className = 'container'>
+
+					<h2>
+
+						Detalles de cada parcela
+
+					</h2>
+
+					{this.state.get_pieces_of_ground 
+
+						?
+
+							<Piece_of_Ground_Details pieces_of_ground = {this.state.pieces_of_ground}/>
+
+						:
+
+							<div>
+
+								Loading
+
+							</div>
+
+					}
 
 				</div>
 
