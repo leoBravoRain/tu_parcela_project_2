@@ -8,7 +8,26 @@ import axios from 'axios';
 
 // import own component
 import Piece_of_Ground_Details from "./piece_of_ground_details.component";
+import Loteo_Details from "./loteo_details.component";
 
+
+// fake loteo
+// this must to be done using a get request to server
+const loteo = {
+
+    "name": "Loteo Testing 2",
+    "latitude": -39.4,
+    "longitude": -73.238901,
+    "location_name": "Frutillar",
+    "highlight": "Vista al lago",
+    "hectare": "5",
+    "rounded_price": 3,
+    "description": "Hermoso loteo ubicado en la cima de un hermoso cerro con vista al Lago Frutillar, ideal para construir casa de veraneo",
+    "access": "Tiene accesor por carretera 5 sur",
+    "weather": "LLuvioso durante el año, pero en verano hay mucho sol, con temperaturas promedio de 25 [°C]",
+    "ground": "Suelo plano, con muca vegetación simple, ideal para construir y agregar jardín",
+
+};
 
 class Piece_of_Ground_Map extends Component {
 
@@ -20,6 +39,9 @@ class Piece_of_Ground_Map extends Component {
 
 		// initial states
 		this.state = {
+
+			// loteo
+			loteo: loteo,
 
 			num_piece_of_ground: null,
 			// num_pieces_ground: 39,
@@ -89,7 +111,7 @@ class Piece_of_Ground_Map extends Component {
 
 					<h2>
 
-						Mapa de parcelas cada loteo
+						Mapa de parcelas de {this.state.loteo.name}
 
 					</h2>
 
@@ -206,6 +228,31 @@ class Piece_of_Ground_Map extends Component {
 
 							<Piece_of_Ground_Details pieces_of_ground = {this.state.pieces_of_ground}/>
 
+						:
+
+							<div>
+
+								Loading
+
+							</div>
+
+					}
+
+				</div>
+
+				<div className = 'container'>
+
+					<h2>
+
+						Detalles del {this.state.loteo.name}
+
+					</h2>
+
+					{this.state.get_pieces_of_ground 
+
+						?
+
+							<Loteo_Details loteo = {this.state.loteo} />
 						:
 
 							<div>

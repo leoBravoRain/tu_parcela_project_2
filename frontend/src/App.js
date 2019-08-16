@@ -46,7 +46,7 @@ class App extends Component {
 
 								<li className="navbar-item">
 
-									<Link to="/piece_of_ground/5d545b3d6cdb952d998c5ce2" className="nav-link">
+									<Link to="/piece_of_ground/5d573433778d982eb6957df0" className="nav-link">
 
 										Pieces of ground map
 

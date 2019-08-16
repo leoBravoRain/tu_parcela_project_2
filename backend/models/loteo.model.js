@@ -13,6 +13,26 @@ let Loteos = new Schema({
 		type: String
 	},
 
+	description: {
+
+		type: String
+	},
+
+	access: {
+
+		type: String
+	},
+
+	weather: {
+
+		type: String
+	},
+
+	ground: {
+
+		type: String
+	},
+
 	highlight: {
 
 		type: String
