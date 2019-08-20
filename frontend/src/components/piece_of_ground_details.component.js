@@ -29,9 +29,9 @@ class Piece_of_Ground_Details extends React.Component {
 
 			<div className = 'container'>
 
-				<div class = 'table table-responsive'>
+				<div className = 'table table-responsive'>
 
-					<table class = 'table'>
+					<table className = 'table'>
 
 						<thead>
 
@@ -75,7 +75,7 @@ class Piece_of_Ground_Details extends React.Component {
 
 							{this.state.pieces_of_ground.map( (piece_of_ground, idx) =>
 
-								<tr>
+								<tr key = {idx}>
 
 									<td> {piece_of_ground.name} </td>
 

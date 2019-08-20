@@ -92,7 +92,7 @@ class Loteos_Map extends Component {
 
 			    	<h2>
 
-			    		Nuestros proyectos de parcelas
+			    		Nuestros proyectos
 
 			    	</h2>
 
@@ -112,7 +112,7 @@ class Loteos_Map extends Component {
 
 			  		</h2>
 
-					<div style={{ height: '100vh', width: '100%' }}>
+					<div style={{ height: '50vh', width: '100%' }}>
 
 						{this.state.get_loteos 
 

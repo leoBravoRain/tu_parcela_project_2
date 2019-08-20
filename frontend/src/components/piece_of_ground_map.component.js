@@ -119,7 +119,7 @@ class Piece_of_Ground_Map extends Component {
 
 				</div>
 
-				<div style={{ height: '100vh', width: '100%' }}>
+				<div style={{ height: '50vh', width: '100%' }}>
 
 					{this.state.get_pieces_of_ground 
 
