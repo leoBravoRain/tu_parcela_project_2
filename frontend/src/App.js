@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Loteos_Map from "./components/loteos_map";
 import Piece_of_Ground_Map from "./components/piece_of_ground_map.component";
+import Contact from './components/contact.component';
 
 // Component 
 class App extends Component {
@@ -54,6 +55,16 @@ class App extends Component {
 
 								</li>
 
+								<li className="navbar-item">
+
+									<Link to="/contact/" className="nav-link">
+
+										¿Quienes somos?
+
+									</Link>
+
+								</li>
+
 							</ul>
 
 						</div>
@@ -65,6 +76,8 @@ class App extends Component {
 		    <Route path = "/" exact component = {Loteos_Map} />
 
 		    <Route path = "/piece_of_ground/:id/" exact component = {Piece_of_Ground_Map} />
+
+		    <Route path = '/contact/' exact component = {Contact} />
 
 			</Router>
 

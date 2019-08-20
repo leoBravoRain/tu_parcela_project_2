@@ -106,6 +106,12 @@ class Loteos_Map extends Component {
 
 			  	<div className="container">
 
+			  		<h2>
+
+			  			Mapa de loteos
+
+			  		</h2>
+
 					<div style={{ height: '100vh', width: '100%' }}>
 
 						{this.state.get_loteos 
@@ -160,6 +166,12 @@ class Loteos_Map extends Component {
 
 			  	<div>
 
+			  		<h2>
+
+			  			Detalle de loteos
+			  			
+			  		</h2>
+
 			  		{this.state.get_loteos 
 
 			  			?
@@ -175,9 +187,23 @@ class Loteos_Map extends Component {
 
 			  	<div>
 
-			  		Preguntas y Respuestas
+			  		<b>
 
-			  		Aprende mas sobre bienes y raíces
+				  		Preguntas y Respuestas
+
+				  		Aprende mas sobre bienes y raíces
+
+				  	</b>
+
+			  	</div>
+
+			  	<div>
+
+			  		<b>
+
+			  			Datos de contacto
+
+			  		</b>
 
 			  	</div>
 
