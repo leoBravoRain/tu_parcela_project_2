@@ -7,10 +7,17 @@ import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import Loteos_Map from "./components/loteos_map";
+import Loteos_Map from "./screens/loteos_map/loteos_map.screen";
 import Piece_of_Ground_Map from "./components/piece_of_ground_map.component";
 import Contact from './components/contact.component';
 import Questions_Answers from './components/questions_answers.component';
+
+// material ui
+import theme from './libraries/material-ui/theme';
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 
 // Component 
 class App extends Component {
@@ -20,79 +27,139 @@ class App extends Component {
 
 		return (
 
-			<Router>
+			<MuiThemeProvider theme={theme}>
 
-			    <div className="container">
+				<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
 
-					<nav className="navbar navbar-expand-lg navbar-light bg-light">
+				<Router>
 
-						<Link to="/" className="navbar-brand"> 
+					<AppBar position="static">
+
+					<Toolbar>
+
+						<Typography gutterBottom variant="h4" component="h2">
 
 							Tu parcela en 5 simples pasos
 
+						</Typography>
+
+						<Link to="/" className="nav-link">
+
+							<Typography gutterBottom variant="h6" component="h6">	
+
+								Mapa de loteos
+
+							</Typography>
+
 						</Link>
 
-						<div className="collpase navbar-collapse">
+						<Link to="/piece_of_ground/5d573433778d982eb6957df0" className="nav-link">
 
-							<ul className="navbar-nav mr-auto">
+							<Typography gutterBottom variant="h6" component="h6">	
 
-								<li className="navbar-item">
+								Mapa de parcelas
 
-									<Link to="/" className="nav-link">
+							</Typography>
 
-										Mapa de loteos
+						</Link>
 
-									</Link>
+						<Link to="/contact/" className="nav-link">
 
-								</li>
+							<Typography gutterBottom variant="h6" component="h6">	
 
-								<li className="navbar-item">
+								¿Quienes somos?
 
-									<Link to="/piece_of_ground/5d573433778d982eb6957df0" className="nav-link">
+							</Typography>
 
-										Mapa de parcelas
+						</Link>
 
-									</Link>
+						<Link to="/questions_answers/" className="nav-link">
 
-								</li>
+							<Typography gutterBottom variant="h6" component="h6">	
 
-								<li className="navbar-item">
+								¿Qué son los bienes raíces?
 
-									<Link to="/contact/" className="nav-link">
+							</Typography>
 
-										¿Quienes somos?
+						</Link>
 
-									</Link>
+					</Toolbar>
 
-								</li>
+						{/* <div className="container">
 
-								<li className="navbar-item">
+							<nav className="navbar navbar-expand-lg navbar-light bg-light">
 
-									<Link to="/questions_answers/" className="nav-link">
+								<Link to="/" className="navbar-brand"> 
 
-										¿Que son los bienes raíces?
+									Tu parcela en 5 simples pasos
 
-									</Link>
+								</Link>
 
-								</li>
+								<div className="collpase navbar-collapse">
 
-							</ul>
+									<ul className="navbar-nav mr-auto">
 
-						</div>
+										<li className="navbar-item">
 
-					</nav>
+											<Link to="/" className="nav-link">
 
-			    </div>
+												Mapa de loteos
 
-		    <Route path = "/" exact component = {Loteos_Map} />
+											</Link>
 
-		    <Route path = "/piece_of_ground/:id/" exact component = {Piece_of_Ground_Map} />
+										</li>
 
-		    <Route path = '/contact/' exact component = {Contact} />
+										<li className="navbar-item">
 
-		    <Route path = '/questions_answers/' exact component = {Questions_Answers} />
+											<Link to="/piece_of_ground/5d573433778d982eb6957df0" className="nav-link">
 
-			</Router>
+												Mapa de parcelas
+
+											</Link>
+
+										</li>
+
+										<li className="navbar-item">
+
+											<Link to="/contact/" className="nav-link">
+
+												¿Quienes somos?
+
+											</Link>
+
+										</li>
+
+										<li className="navbar-item">
+
+											<Link to="/questions_answers/" className="nav-link">
+
+												¿Que son los bienes raíces?
+
+											</Link>
+
+										</li>
+
+									</ul>
+
+								</div>
+
+							</nav>
+
+						</div> */}
+
+					</AppBar>
+
+					<Route path = "/" exact component = {Loteos_Map} />
+
+					<Route path = "/piece_of_ground/:id/" exact component = {Piece_of_Ground_Map} />
+
+					<Route path = '/contact/' exact component = {Contact} />
+
+					<Route path = '/questions_answers/' exact component = {Questions_Answers} />
+
+				</Router>
+
+			</MuiThemeProvider>
 
 		);
 

@@ -42,6 +42,9 @@ require('./routes/Loteos.routes')(routes);
 // Add Pieces of Ground routes from own file
 require('./routes/Piece_of_Ground.routes')(routes);
 
+// Add Questions Anwser routes from own file
+require('./routes/Question_Answer.routes')(routes);
+
 // app is listening
 app.listen(PORT, function() {
 
