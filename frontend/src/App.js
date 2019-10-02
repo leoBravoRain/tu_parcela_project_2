@@ -9,8 +9,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Loteos_Map from "./screens/loteos_map/loteos_map.screen";
 import Piece_of_Ground_Map from "./screens/pieces_of_ground/pieces_of_ground_map.screen";
-import Contact from './components/contact.component';
-import Questions_Answers from './components/questions_answers.component';
+import Who_We_Are from './screens/who_we_are/who_we_are.screen';
+import Questions_Answers from './screens/questions_answers/questions_answers.screen';
 
 // material ui
 import theme from './libraries/material-ui/theme';
@@ -63,7 +63,7 @@ class App extends Component {
 
 						</Link>
 
-						<Link to="/contact/" className="nav-link">
+						<Link to="/who_we_are/" className="nav-link">
 
 							<Typography gutterBottom variant="h6" component="h6">	
 
@@ -153,7 +153,7 @@ class App extends Component {
 
 					<Route path = "/piece_of_ground/:id/" exact component = {Piece_of_Ground_Map} />
 
-					<Route path = '/contact/' exact component = {Contact} />
+					<Route path = '/who_we_are/' exact component = {Who_We_Are} />
 
 					<Route path = '/questions_answers/' exact component = {Questions_Answers} />
 

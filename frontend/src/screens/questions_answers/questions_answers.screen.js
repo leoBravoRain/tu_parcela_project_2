@@ -2,6 +2,10 @@ import React, { Component } from "react";
 // make request to server
 import axios from 'axios';
 
+// material ui
+import Paper from '@material-ui/core/Paper';
+import Container from '@material-ui/core/Container';
+
 const q_a = [
 
 	{
@@ -70,7 +74,12 @@ class Questions_Answers extends  React.Component {
 
 		return(
 
-			<div>
+			<Paper
+                style = {{
+                    margin: 20,
+                    padding: 20,
+                }}
+            >
 
 				<h2>
 
@@ -110,7 +119,7 @@ class Questions_Answers extends  React.Component {
 
 			    	}
 
-			</div>
+			</Paper>
 		);
 
 	}
