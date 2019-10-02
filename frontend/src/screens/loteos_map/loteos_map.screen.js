@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 // make request to server
 import axios from 'axios';
+import {fs} from "../../libraries/firebase/firebase";
 
 import Image_Gallery from './components/loteos_image_gallery.component';
 import Loteos_Map_Component from "./components/loteos_map.component";
@@ -38,21 +39,40 @@ class Loteos_Map extends Component {
 	componentDidMount() {
 
 		// get request for get data
-        axios.get('http://192.168.1.9:4000/pieces_of_ground/loteos')
+		// axios.get('http://192.168.1.9:4000/pieces_of_ground/loteos')
+		fs.collection('loteos').get()
+		
+		.then( snapshotquery => {
 
-        	// if ok
-            .then(response => {
+        	// // if ok
+            // .then(response => {
+				console.log(snapshotquery);
 
-            	// get data from API
-            	var loteos = response.data;
+            	// // get data from API
+            	var loteos = [];
 
-            	// add location item for map location impleemntation
-            	loteos.map( function(currentValue, index, arr) {
+				 // iterate over each item
+				 snapshotquery.forEach(doc => {
 
-            		// add location item in required map format
-            		currentValue['location'] = [currentValue.latitude, currentValue.longitude];
+					// console.log(doc.data());
+					let loteo = doc.data();
+					// loteo["name"] = 
+					// post['doc_id'] = doc.id;
+					// post['image'] = "https://www.oreilly.com/library/view/deep-learning/9781491924570/assets/dpln_0201.png";
+					// add item to array
+					// posts.push(doc.data());
+					loteo["location"] = [loteo.location.latitude, loteo.location.longitude];
+					loteos.push(loteo);
 
-            	});
+				});
+
+            	// // add location item for map location impleemntation
+            	// loteos.map( function(currentValue, index, arr) {
+
+            	// 	// add location item in required map format
+            	// 	currentValue['location'] = [currentValue.latitude, currentValue.longitude];
+
+            	// });
 
             	// update state
                 this.setState({ 
@@ -67,15 +87,15 @@ class Loteos_Map extends Component {
 
                 });
 
-            })
+		})
 
-            // if error
-            .catch(function (error){
+		// if error
+		.catch(function (error){
 
-            	// dislpay error in console
-                console.log(error);
+			// dislpay error in console
+			console.log(error);
 
-            });
+		});
 
     }
 
