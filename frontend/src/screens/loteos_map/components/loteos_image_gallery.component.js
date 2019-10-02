@@ -1,88 +1,88 @@
 import React, { Component } from "react";
 
+// material ui
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
+
+// carousel library
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 
 class Image_Gallery extends React.Component {
 	
-	// // constructor
-	// constructor(props) {
-
-	// 	// constructur of parent
-	// 	super(props);
-
-	// 	// initial states
-	// 	this.state = {
-
-	// 		// flag of get data from server
-	// 		// get_loteos: false,
-	// 		// markers (each place is a list of 2 elements)
-	// 		// marker: [latitude, longitude]
-	// 		loteos: this.props.loteos,
-
-	// 	}
-
-	// }
-
 	// render method
 	render() {
 
 		return (
 
-			<div className = 'container'>
+			<Container>
 
 				{this.props.get_loteos 
 
 				?
 
-					<div className = 'container'> 
+					<Container
+						// p = {3}
+					> 
 
-						<h2>
+						<Typography align = "center" variant="h4" component="h2" gutterBottom>
 
-							Detalle de loteos
+							Detalles de nuestros loteos
 
-						</h2>
+						</Typography>
 
-						{this.props.loteos.map( (loteo, idx) =>
+						<Carousel
+							// showIndicators = {false}
+						>
 
-							<div key = {idx}>
+							{this.props.loteos.map( (loteo, idx) =>
 
-								<p>
+								<Container key = {idx}>
 
-									{loteo.name}
+									<Typography align = "center" variant="body2" gutterBottom>
 
-								</p>
+										{loteo.name}
 
-								<p>
+									</Typography>
 
-									{loteo.highlight}
+									<Typography align = "center" variant="body2" gutterBottom>
 
-								</p>
+										{loteo.highlight}
 
-								<p>
+									</Typography>
 
-									{loteo.location_name} - {loteo.hectare} ha
+									<Typography align = "center" variant="body2" gutterBottom>
 
-								</p>
+										{loteo.location_name} - {loteo.hectare} ha
 
-								<img src = 'https://cdn.britannica.com/s:500x350/90/123890-004-422299B4.jpg'/>
+									</Typography>
 
-								<p>
+									<img 
+										src = 'https://media-cdn.tripadvisor.com/media/photo-s/0a/23/87/75/postal-de-valdivia.jpg'
+										// width = "50px"
+										// height = "50px"
+									/>
 
-									Desde {loteo.rounded_price} millones
+									<Typography align = "center" variant="body2" gutterBottom>
 
-								</p>
+										Desde {loteo.rounded_price} millones
 
-							</div>
+									</Typography>
 
-						)}
+								</Container>
 
-					</div>
+							)}
+
+						</Carousel>
+
+					</Container>
 
 				:
 
 					<p> Loading </p>
 				}
 
-			</div>
+			</Container>
 
 		)
 

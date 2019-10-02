@@ -7,9 +7,8 @@ import axios from 'axios';
 import Image_Gallery from './components/loteos_image_gallery.component';
 import Loteos_Map_Component from "./components/loteos_map.component";
 
-// import Piece_of_Ground_Map from "./piece_of_ground_map.component";
-
-// import { BrowserRouter as Link, Route } from "react-router-dom";
+// material ui
+import Container from '@material-ui/core/Container';
 
 // Component 
 class Loteos_Map extends Component {
@@ -86,7 +85,7 @@ class Loteos_Map extends Component {
 		// return component
 		return (
 
-			<div className = 'container'>
+			<Container>
 
                 <Loteos_Map_Component 
                     get_loteos = {this.state.get_loteos} 
@@ -95,12 +94,14 @@ class Loteos_Map extends Component {
                     loteos = {this.state.loteos}
                 />
 
-                <Image_Gallery 
-                    loteos = {this.state.loteos}
-                    get_loteos = {this.state.get_loteos}
-                />
+				<Image_Gallery 
+                     loteos = {this.state.loteos}
+					 get_loteos = {this.state.get_loteos}
+					 
+				/>
 
-			</div>
+
+			</Container>
 
 		);
 
