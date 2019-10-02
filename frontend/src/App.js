@@ -8,7 +8,7 @@ import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Loteos_Map from "./screens/loteos_map/loteos_map.screen";
-import Piece_of_Ground_Map from "./components/piece_of_ground_map.component";
+import Piece_of_Ground_Map from "./screens/pieces_of_ground/pieces_of_ground_map.screen";
 import Contact from './components/contact.component';
 import Questions_Answers from './components/questions_answers.component';
 

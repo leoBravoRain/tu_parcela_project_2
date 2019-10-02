@@ -3,24 +3,24 @@ import React, { Component } from "react";
 // class
 class Piece_of_Ground_Details extends React.Component {
 	
-	// constructor
-	constructor(props) {
+	// // constructor
+	// constructor(props) {
 
-		// constructur of parent
-		super(props);
+	// 	// constructur of parent
+	// 	super(props);
 
-		// initial states
-		this.state = {
+	// 	// initial states
+	// 	this.state = {
 
-			// flag of get data from server
-			// get_pieces_of_ground: true,
-			// markers (each place is a list of 2 elements)
-			// marker: [latitude, longitude]
-			pieces_of_ground: this.props.pieces_of_ground,
+	// 		// flag of get data from server
+	// 		// get_pieces_of_ground: true,
+	// 		// markers (each place is a list of 2 elements)
+	// 		// marker: [latitude, longitude]
+	// 		pieces_of_ground: this.props.pieces_of_ground,
 
-		}
+	// 	}
 
-	}
+	// }
 
 	// render method
 	render() {
@@ -28,6 +28,12 @@ class Piece_of_Ground_Details extends React.Component {
 		return (
 
 			<div className = 'container'>
+
+				<h2>
+
+				Detalles de cada parcela
+
+				</h2>
 
 				<div className = 'table table-responsive'>
 
@@ -73,7 +79,11 @@ class Piece_of_Ground_Details extends React.Component {
 
 						<tbody>
 
-							{this.state.pieces_of_ground.map( (piece_of_ground, idx) =>
+						{this.props.get_pieces_of_ground 
+
+						?
+
+							this.props.pieces_of_ground.map( (piece_of_ground, idx) =>
 
 								<tr key = {idx}>
 
@@ -88,7 +98,11 @@ class Piece_of_Ground_Details extends React.Component {
 									<td> {piece_of_ground.topography} </td>
 
 								</tr>
-							)}
+							)
+
+							:
+								<p> Loading </p>
+						}
 
 						</tbody>
 

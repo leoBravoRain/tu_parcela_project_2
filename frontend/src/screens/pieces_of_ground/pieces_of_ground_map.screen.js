@@ -7,9 +7,9 @@ import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 import axios from 'axios';
 
 // import own component
-import Piece_of_Ground_Details from "./piece_of_ground_details.component";
-import Loteo_Details from "./loteo_details.component";
-
+import Piece_of_Ground_Details from "./components/piece_of_ground_details.component";
+import Loteo_Details from "./components/loteo_details.component";
+import Pieces_of_Ground_Map_Component from "./components/pieces_of_ground_map.component";
 
 // fake loteo
 // this must to be done using a get request to server
@@ -107,163 +107,24 @@ class Piece_of_Ground_Map extends Component {
 
 			<div className="container">
 
-				<div className = 'container'>
+				<Pieces_of_Ground_Map_Component 
+					loteo = {this.state.loteo}
+					get_pieces_of_ground = {this.state.get_pieces_of_ground}
+					num_piece_of_ground = {this.state.num_piece_of_ground}
+					pieces_of_ground = {this.state.pieces_of_ground}
+				/>
+
+				<Piece_of_Ground_Details 
+					get_pieces_of_ground = {this.state.get_pieces_of_ground}
+					pieces_of_ground = {this.state.pieces_of_ground}
+				/>
+
+				<Loteo_Details 
+					loteo = {this.state.loteo} 
+					get_pieces_of_ground = {this.state.get_pieces_of_ground}
+				/>
 
-					<h2>
 
-						Mapa de parcelas de {this.state.loteo.name}
-
-					</h2>
-
-					{this.state.get_pieces_of_ground ? this.state.num_piece_of_ground : 0} parcelas disponibles
-
-				</div>
-
-				<div style={{ height: '50vh', width: '100%' }}>
-
-					{this.state.get_pieces_of_ground 
-
-						? 
-
-							<LeafletMap
-						        center={[-39.838000, -73.236481]}
-						        zoom={13}
-						        maxZoom={100}
-						        attributionControl={true}
-						        zoomControl={true}
-						        doubleClickZoom={true}
-						        scrollWheelZoom={true}
-						        dragging={true}
-						        animate={true}
-						        easeLinearity={0.35}
-						      >
-						        <TileLayer
-						          url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-						        />
-
-						        {this.state.pieces_of_ground.map( (piece_of_ground, idx) => 
-
-						        	<Marker key = {idx} position = {piece_of_ground.location}>
-
-						        	  <Popup>
-
-						        	  	ajsioasj
-
-						        	  </Popup>
-
-						        	</Marker>
-
-						        )}
-						      
-
-						    </LeafletMap>
-
-				    	:
-
-				    		<div> Loading </div>
-
-			    	}
-
-				</div>
-
-				<div className = 'container'>
-
-					<h2>
-
-						Cuadro dinamico lateral de parcelas
-
-					</h2>
-
-					{/* This should be a component by itself */}
-					{this.state.get_pieces_of_ground 
-
-						?
-
-							this.state.pieces_of_ground.map( (piece_of_ground, idx) => 
-
-								<div key = {idx}>
-
-									<p>
-
-										{piece_of_ground.name}
-
-									</p>
-
-									<p>
-
-										{piece_of_ground.size} m2
-
-									</p>
-
-									<p>
-
-										Valor {piece_of_ground.size}
-
-									</p>
-
-								</div>
-
-							)
-
-						:
-
-							<p> Loading </p>
-
-					}
-
-				</div>
-
-
-				<div className = 'container'>
-
-					<h2>
-
-						Detalles de cada parcela
-
-					</h2>
-
-					{this.state.get_pieces_of_ground 
-
-						?
-
-							<Piece_of_Ground_Details pieces_of_ground = {this.state.pieces_of_ground}/>
-
-						:
-
-							<div>
-
-								Loading
-
-							</div>
-
-					}
-
-				</div>
-
-				<div className = 'container'>
-
-					<h2>
-
-						Detalles del {this.state.loteo.name}
-
-					</h2>
-
-					{this.state.get_pieces_of_ground 
-
-						?
-
-							<Loteo_Details loteo = {this.state.loteo} />
-						:
-
-							<div>
-
-								Loading
-
-							</div>
-
-					}
-
-				</div>
 
 		  	</div>
 
