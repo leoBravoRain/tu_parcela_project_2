@@ -2,9 +2,13 @@ import React, { Component } from "react";
 // for map
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 
+import Dynamic_Pieces_of_Ground_Component from "./dynamic_pieces_of_ground.component";
+
 // material ui
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 class Pieces_of_Ground_Map_Component extends React.Component {
 	
@@ -13,115 +17,98 @@ class Pieces_of_Ground_Map_Component extends React.Component {
 
 		return (
 
-			<div>
+			<Paper 
+				style = {{
+					margin: 20,
+					padding: 20
+				}}
+			>
 
-				<div className = 'container'>
+				<Container>
 
-					<h2>
+					<Typography align = "center" variant="h4" component="h2" gutterBottom>
 
 						Mapa de parcelas de {this.props.loteo.name}
 
-					</h2>
+					</Typography>
 
-					{this.props.get_pieces_of_ground ? this.props.num_piece_of_ground : 0} parcelas disponibles
+					<Typography align = "center" variant="body2" gutterBottom>
 
-				</div>
+						{this.props.get_pieces_of_ground ? this.props.num_piece_of_ground : 0} parcelas disponibles
 
-				<div style={{ height: '50vh', width: '100%' }}>
+					</Typography>
 
-					{this.props.get_pieces_of_ground 
+				</Container>
 
-						? 
+				<Grid container spacing={2}>
 
-							<LeafletMap
-						        center={[-39.838000, -73.236481]}
-						        zoom={13}
-						        maxZoom={100}
-						        attributionControl={true}
-						        zoomControl={true}
-						        doubleClickZoom={true}
-						        scrollWheelZoom={true}
-						        dragging={true}
-						        animate={true}
-						        easeLinearity={0.35}
-						      >
-						        <TileLayer
-						          url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-						        />
+					<Grid item xs = {5}>
 
-						        {this.props.pieces_of_ground.map( (piece_of_ground, idx) => 
+						<Dynamic_Pieces_of_Ground_Component 
+							get_pieces_of_ground = {this.props.get_pieces_of_ground}
+							pieces_of_ground = {this.props.pieces_of_ground}
+						/>
 
-						        	<Marker key = {idx} position = {piece_of_ground.location}>
+					</Grid>
 
-										<Popup>
+					<Grid item xs = {6}>
 
-											ajsioasj
+						{this.props.get_pieces_of_ground 
 
-										</Popup>
+							? 
+								<Container>
 
-						        	</Marker>
+									<img 
+										src = "http://www.citymetric.com/sites/default/files/article_body_2016/08/gmaps_6.png"
+										width = "450"
+										height = "auto"
+									/>
+									
+								</Container>
+								// <LeafletMap
+								// 	center={[-39.838000, -73.236481]}
+								// 	zoom={13}
+								// 	maxZoom={100}
+								// 	attributionControl={true}
+								// 	zoomControl={true}
+								// 	doubleClickZoom={true}
+								// 	scrollWheelZoom={true}
+								// 	dragging={true}
+								// 	animate={true}
+								// 	easeLinearity={0.35}
+								// >
+								// 	<TileLayer
+								// 	url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+								// 	/>
 
-						        )}
-						      
+								// 	{this.props.pieces_of_ground.map( (piece_of_ground, idx) => 
 
-						    </LeafletMap>
+								// 		<Marker key = {idx} position = {piece_of_ground.location}>
 
-				    	:
+								// 			<Popup>
 
-				    		<div> Loading </div>
+								// 				ajsioasj
 
-			    	}
+								// 			</Popup>
 
-				</div>
+								// 		</Marker>
 
-				<div className = 'container'>
+								// 	)}
+								
 
-					<h2>
+								// </LeafletMap>
 
-						Cuadro dinamico lateral de parcelas
+							:
 
-					</h2>
+								<Container> Loading </Container>
 
-					{/* This should be a component by itself */}
-					{this.props.get_pieces_of_ground 
+						}
 
-						?
+					</Grid>
 
-							this.props.pieces_of_ground.map( (piece_of_ground, idx) => 
+				</Grid>
 
-								<div key = {idx}>
-
-									<p>
-
-										{piece_of_ground.name}
-
-									</p>
-
-									<p>
-
-										{piece_of_ground.size} m2
-
-									</p>
-
-									<p>
-
-										Valor {piece_of_ground.size}
-
-									</p>
-
-								</div>
-
-							)
-
-						:
-
-							<p> Loading </p>
-
-					}
-
-				</div>
-
-			</div>
+			</Paper>
             
 		)
 

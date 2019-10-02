@@ -1,109 +1,160 @@
 import React, { Component } from "react";
 
+// carousel library
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
+
+// material ui
+import Container from '@material-ui/core/Container';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 class Loteo_Details extends React.Component {
 	
-	// // constructor
-	// constructor(props) {
-
-	// 	// constructur of parent
-	// 	super(props);
-
-	// 	console.log(this.props.loteo);
-
-	// 	// initial propss
-	// 	this.props = {
-
-	// 		// flag of get data from server
-	// 		// get_loteos: false,
-	// 		// markers (each place is a list of 2 elements)
-	// 		// marker: [latitude, longitude]
-	// 		loteo: this.props.loteo,
-
-	// 	}
-
-	// }
-
 	// render method
 	render() {
 
 		return (
 			
-			<div className = 'container'>
+			<Paper
+				style = {{
+					margin: 20,
+					padding: 20
+				}}
+			>
 
 				{this.props.get_pieces_of_ground 
 
 				?
 
-					<div>
+					<Container>
+
 						<h2>
 
-						Detalles del {this.props.loteo.name}
+							Detalles del {this.props.loteo.name}
 
 						</h2>
 
-						<div className = 'container'>
+						<Container className = 'container'>
 
-							<img src = 'https://cdn.britannica.com/s:500x350/90/123890-004-422299B4.jpg'/>
+							<Carousel
+								// showIndicators = {false}
+							>
 
-							<div>
+								{[1,2,3].map( (loteo, idx) =>
 
-								<h5> Descripción </h5>
 
-								{this.props.loteo.description}
+									<img 
+										src = 'https://media-cdn.tripadvisor.com/media/photo-s/0a/23/87/75/postal-de-valdivia.jpg'
+										// width = "50px"
+										// height = "50px"
+									/>
 
-							</div>
+								)}
 
-						</div>
+							</Carousel>
 
-						<div className = 'container'>
 
-							<div>
+						</Container>
 
-								<h5> Accesos </h5>
+						<Grid container spacing={1}>
+							
+							<Grid item xs={3}>
 
-								{this.props.loteo.access}
+								<Card
+									style = {{
+										margin: 5,
+										padding: 20
+										// color: "white",
+										// backgroundColor: "red"
+										// backgroundImage: "url('https://bit.ly/2nCGIqc')",
+									}}
+								>
 
-							</div>
+									<h5> Accesos </h5>
 
-						</div>
+									{this.props.loteo.description}
 
-						<div className = 'container'>
+								</Card>
 
-							<div>
+							</Grid>
 
-								<h5> Clima </h5>
 
-								{this.props.loteo.weather}
+							<Grid item xs={3}>
 
-							</div>
+								<Card
+									style = {{
+										margin: 5,
+										padding: 20
+										// color: "white",
+										// backgroundColor: "red"
+										// backgroundImage: "url('https://bit.ly/2nCGIqc')",
+									}}
+								>
 
-						</div>
+									<h5> Accesos </h5>
 
-						<div className = 'container'>
+									{this.props.loteo.access}
 
-							<div>
+								</Card>
 
-								<h5> Suelos </h5>
+							</Grid>
 
-								{this.props.loteo.ground}
+							<Grid item xs={3}>
 
-							</div>
+								<Card
+									style = {{
+										margin: 5,
+										padding: 20
+										// color: "white",
+										// backgroundColor: "red"
+										// backgroundImage: "url('https://bit.ly/2nCGIqc')",
+									}}
+								>
+									<h5> Clima </h5>
 
-						</div>
+									{this.props.loteo.weather}
 
-					</div>
+								</Card>
+
+							</Grid>
+
+							<Grid item xs={3}>
+
+								<Card
+									style = {{
+										margin: 5,
+										padding: 20
+										// color: "white",
+										// backgroundColor: "red"
+										// backgroundImage: "url('https://bit.ly/2nCGIqc')",
+									}}
+								>
+
+									<h5> Suelos </h5>
+
+									{this.props.loteo.ground}
+
+								</Card>
+
+							</Grid>
+
+						</Grid>
+						
+					</Container>
 				:
 
-					<div>
+					<Container>
 
 						Loading
 
-					</div>
+					</Container>
 
 				}
 
-			</div>
+			</Paper>
 
 
 

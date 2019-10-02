@@ -11,6 +11,9 @@ import Piece_of_Ground_Details from "./components/piece_of_ground_details.compon
 import Loteo_Details from "./components/loteo_details.component";
 import Pieces_of_Ground_Map_Component from "./components/pieces_of_ground_map.component";
 
+// material ui
+import Container from '@material-ui/core/Container';
+
 // fake loteo
 // this must to be done using a get request to server
 const loteo = {
@@ -105,7 +108,7 @@ class Piece_of_Ground_Map extends Component {
 
 		return (
 
-			<div className="container">
+			<Container>
 
 				<Pieces_of_Ground_Map_Component 
 					loteo = {this.state.loteo}
@@ -124,9 +127,7 @@ class Piece_of_Ground_Map extends Component {
 					get_pieces_of_ground = {this.state.get_pieces_of_ground}
 				/>
 
-
-
-		  	</div>
+		  	</Container>
 
 		);
 

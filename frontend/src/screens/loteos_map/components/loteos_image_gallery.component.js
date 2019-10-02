@@ -3,6 +3,7 @@ import React, { Component } from "react";
 // material ui
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 
 // carousel library
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -15,7 +16,12 @@ class Image_Gallery extends React.Component {
 
 		return (
 
-			<Container>
+			<Paper
+				style = {{
+					margin: 20,
+					padding: 20
+				}}
+			>
 
 				{this.props.get_loteos 
 
@@ -39,7 +45,7 @@ class Image_Gallery extends React.Component {
 
 								<Container key = {idx}>
 
-									<Typography align = "center" variant="body2" gutterBottom>
+									{/* <Typography align = "center" variant="body2" gutterBottom>
 
 										{loteo.name}
 
@@ -55,19 +61,19 @@ class Image_Gallery extends React.Component {
 
 										{loteo.location_name} - {loteo.hectare} ha
 
-									</Typography>
+									</Typography> */}
 
 									<img 
 										src = 'https://media-cdn.tripadvisor.com/media/photo-s/0a/23/87/75/postal-de-valdivia.jpg'
-										// width = "50px"
-										// height = "50px"
+										width = "500px"
+										height = "auto"
 									/>
 
-									<Typography align = "center" variant="body2" gutterBottom>
+									{/* <Typography align = "center" variant="body2" gutterBottom>
 
 										Desde {loteo.rounded_price} millones
 
-									</Typography>
+									</Typography> */}
 
 								</Container>
 
@@ -82,7 +88,7 @@ class Image_Gallery extends React.Component {
 					<p> Loading </p>
 				}
 
-			</Container>
+			</Paper>
 
 		)
 

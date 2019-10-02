@@ -5,6 +5,7 @@ import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 // material ui
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 
 class Loteos_Map_Component extends React.Component {
 	
@@ -13,16 +14,16 @@ class Loteos_Map_Component extends React.Component {
 
 		return (
 
-            <Container 
+            <Paper 
                 // width={1}
-                // style = {{
-                    // margin: 0,
-                    // padding: 0,
+                style = {{
+                    margin: 20,
+                    padding: 20,
                     // backgroundImage: 'url("https://images.unsplash.com/photo-1464295440335-ee082a75ccca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80")',
                     // backgroundRepeat: "no-repeat",
                     // backgroundSize: "auto",
                     // backgroundColor: "red"
-                // }}
+                }}
 
             >
 
@@ -42,7 +43,12 @@ class Loteos_Map_Component extends React.Component {
 
                 </Container>
 
-                <Container>
+                <Container
+                    // style = {{
+                    //     alignContent: "center",
+                    //     justifyContent: "center"
+                    // }}
+                >
 
                     {/* <div style={{ height: '5vh', width: '5%' }}> */}
 
@@ -50,40 +56,52 @@ class Loteos_Map_Component extends React.Component {
 
                             ? 
 
-                                <LeafletMap
-                                    center={[-39.838000, -73.236481]}
-                                    zoom={13}
-                                    maxZoom={100}
-                                    attributionControl={true}
-                                    zoomControl={true}
-                                    doubleClickZoom={true}
-                                    scrollWheelZoom={true}
-                                    dragging={true}
-                                    animate={true}
-                                    easeLinearity={0.35}
-                                >
-                                    <TileLayer
-                                    url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-                                    />
+                            <img 
+                                // class="center"
+                                src = "http://www.citymetric.com/sites/default/files/article_body_2016/08/gmaps_6.png"
+                                width = "450"
+                                height = "auto"
+                                style = {{
+                                    display: "block",
+                                    marginLeft: "auto",
+                                    marginRight: "auto",
+                                    width: "50%",
+                                }}
+                            />
+                                // <LeafletMap
+                                //     center={[-39.838000, -73.236481]}
+                                //     zoom={13}
+                                //     maxZoom={100}
+                                //     attributionControl={true}
+                                //     zoomControl={true}
+                                //     doubleClickZoom={true}
+                                //     scrollWheelZoom={true}
+                                //     dragging={true}
+                                //     animate={true}
+                                //     easeLinearity={0.35}
+                                // >
+                                //     <TileLayer
+                                //     url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+                                //     />
 
                                 
 
-                                    {this.props.loteos.map( (loteo, idx) => 
+                                //     {this.props.loteos.map( (loteo, idx) => 
 
-                                        <Marker key = {idx} position = {loteo.location}>
+                                //         <Marker key = {idx} position = {loteo.location}>
 
-                                            <Popup>
+                                //             <Popup>
 
-                                                ajsioasj
+                                //                 ajsioasj
 
-                                            </Popup>
+                                //             </Popup>
 
-                                        </Marker>
+                                //         </Marker>
 
-                                    )}
+                                //     )}
                                 
 
-                                </LeafletMap>
+                                // </LeafletMap>
 
                             :
 
@@ -95,7 +113,7 @@ class Loteos_Map_Component extends React.Component {
 
                 </Container>
 
-            </Container>
+            </Paper>
 
 		)
 

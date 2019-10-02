@@ -1,5 +1,15 @@
 import React, { Component } from "react";
 
+// material ui
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+
 // class
 class Piece_of_Ground_Details extends React.Component {
 	
@@ -27,7 +37,13 @@ class Piece_of_Ground_Details extends React.Component {
 
 		return (
 
-			<div className = 'container'>
+			<Paper
+				style = {{
+					margin: 20,
+					padding: 20
+				}}
+
+			>
 
 				<h2>
 
@@ -35,49 +51,49 @@ class Piece_of_Ground_Details extends React.Component {
 
 				</h2>
 
-				<div className = 'table table-responsive'>
+				<Container>
 
-					<table className = 'table'>
+					<Table>
 
-						<thead>
+						<TableHead>
 
-							<tr>
+							<TableRow>
 
-								<th> 
+								<TableCell> 
 
 									Parcela
 
-								</th>
+								</TableCell>
 
-								<th>
+								<TableCell>
 
 									Superficie
 
-								</th>
+								</TableCell>
 
-								<th> 
+								<TableCell> 
 
 									Ancho
 
-								</th>
+								</TableCell>
 
-								<th> 
+								<TableCell> 
 
 									Largo
 
-								</th>
+								</TableCell>
 
-								<th> 
+								<TableCell> 
 
 									Topografía
 
-								</th>
+								</TableCell>
 
-							</tr>
+							</TableRow>
 
-						</thead>
+						</TableHead>
 
-						<tbody>
+						<TableBody>
 
 						{this.props.get_pieces_of_ground 
 
@@ -85,32 +101,32 @@ class Piece_of_Ground_Details extends React.Component {
 
 							this.props.pieces_of_ground.map( (piece_of_ground, idx) =>
 
-								<tr key = {idx}>
+								<TableRow key = {idx}>
 
-									<td> {piece_of_ground.name} </td>
+									<TableCell> {piece_of_ground.name} </TableCell>
 
-									<td> {piece_of_ground.size} </td>
+									<TableCell> {piece_of_ground.size} </TableCell>
 
-									<td> {piece_of_ground.width} </td>
+									<TableCell> {piece_of_ground.width} </TableCell>
 
-									<td> {piece_of_ground.large} </td>
+									<TableCell> {piece_of_ground.large} </TableCell>
 
-									<td> {piece_of_ground.topography} </td>
+									<TableCell> {piece_of_ground.topography} </TableCell>
 
-								</tr>
+								</TableRow>
 							)
 
 							:
-								<p> Loading </p>
+								<Container> Loading </Container>
 						}
 
-						</tbody>
+						</TableBody>
 
-					</table>
+					</Table>
 
-				</div>
+				</Container>
 
-			</div>
+			</Paper>
 
 		)
 
