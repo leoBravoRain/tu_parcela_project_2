@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // make request to server
-import axios from 'axios';
+// import axios from 'axios';
+import {fs} from "../../libraries/firebase/firebase";
 
 // material ui
 import Paper from '@material-ui/core/Paper';
@@ -38,13 +39,22 @@ class Questions_Answers extends  React.Component {
 	componentDidMount(){
 
 		// get request for get data
-        axios.get('http://192.168.1.9:4000/pieces_of_ground/questions_answers')
-
+        // axios.get('http://192.168.1.9:4000/pieces_of_ground/questions_answers')
+		fs.collection('questions_answers').get()
         	// if ok
-            .then(response => {
+            // .then(response => {
+			.then( snapshotquery => {
 
             	// get data from API
-            	var questions_answers = response.data;
+				const questions_answers = [];
+
+				// iterate over each item
+				snapshotquery.forEach(doc => {
+
+					// add quesion_answer to list
+					questions_answers.push(doc.data());
+
+				});
 
             	// update state
                 this.setState({ 
