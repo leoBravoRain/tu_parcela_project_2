@@ -5,6 +5,7 @@ import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 
 // make request to server
 import axios from 'axios';
+import {fs} from "../../libraries/firebase/firebase";
 
 // import own component
 import Piece_of_Ground_Details from "./components/piece_of_ground_details.component";
@@ -62,22 +63,29 @@ class Piece_of_Ground_Map extends Component {
 	componentDidMount() {
 
 		// get request for get data	
-        axios.get('http://192.168.1.9:4000/pieces_of_ground/pieces_of_ground/' + this.props.match.params.id)
+		// axios.get('http://192.168.1.9:4000/pieces_of_ground/pieces_of_ground/' + this.props.match.params.id)
+		fs.collection('loteos').doc("UVYp2YvBV6xSXhFdI2za").collection("pieces_of_ground").get()
 
         	// if ok
-            .then(response => {
+            // .then(response => {
+			.then( snapshotquery => {
 
             	// get data from API
-            	var pieces_of_ground = response.data;
+				// var pieces_of_ground = response.data;
+				let pieces_of_ground = [];
 
-            	// add location item for map location impleemntation
-            	pieces_of_ground.map( function(currentValue, index, arr) {
+				// iterate over each item
+				snapshotquery.forEach(doc => {
 
-            		// add location item in required map format
-            		currentValue['location'] = [currentValue.latitude, currentValue.longitude];
+					// console.log(doc.data());
+					let piece_of_ground = doc.data();
+					// store location
+					piece_of_ground["location"] = [piece_of_ground.location.latitude, piece_of_ground.location.longitude];
+					// add loteo to list
+					pieces_of_ground.push(piece_of_ground);
 
-            	});
-
+				});
+				
             	// update state
                 this.setState({ 
 

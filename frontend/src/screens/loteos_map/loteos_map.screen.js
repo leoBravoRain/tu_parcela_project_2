@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // make request to server
-import axios from 'axios';
 import {fs} from "../../libraries/firebase/firebase";
 
 import Image_Gallery from './components/loteos_image_gallery.component';
@@ -41,12 +40,8 @@ class Loteos_Map extends Component {
 		// get request for get data
 		// axios.get('http://192.168.1.9:4000/pieces_of_ground/loteos')
 		fs.collection('loteos').get()
-		
-		.then( snapshotquery => {
 
-        	// // if ok
-            // .then(response => {
-				console.log(snapshotquery);
+		.then( snapshotquery => {
 
             	// // get data from API
             	var loteos = [];
@@ -56,33 +51,20 @@ class Loteos_Map extends Component {
 
 					// console.log(doc.data());
 					let loteo = doc.data();
-					// loteo["name"] = 
-					// post['doc_id'] = doc.id;
-					// post['image'] = "https://www.oreilly.com/library/view/deep-learning/9781491924570/assets/dpln_0201.png";
-					// add item to array
-					// posts.push(doc.data());
+					// store location
 					loteo["location"] = [loteo.location.latitude, loteo.location.longitude];
+					// add loteo to list
 					loteos.push(loteo);
 
 				});
-
-            	// // add location item for map location impleemntation
-            	// loteos.map( function(currentValue, index, arr) {
-
-            	// 	// add location item in required map format
-            	// 	currentValue['location'] = [currentValue.latitude, currentValue.longitude];
-
-            	// });
 
             	// update state
                 this.setState({ 
 
                 	// flag of getting data from API
                 	get_loteos: true, 
-
                 	// update loteos
                 	loteos: loteos,
-
                 	num_loteos: loteos.length,
 
                 });
