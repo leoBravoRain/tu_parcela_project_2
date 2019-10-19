@@ -67,25 +67,37 @@ class Piece_of_Ground_Details extends React.Component {
 
 								<TableCell>
 
-									Superficie
+									Superficie [m<sup> 2</sup>]
 
 								</TableCell>
 
 								<TableCell> 
 
-									Ancho
+									Frente [m]
 
 								</TableCell>
 
 								<TableCell> 
 
-									Largo
+									Largo [m]
 
 								</TableCell>
 
 								<TableCell> 
 
-									Topografía
+									Características
+
+								</TableCell>
+
+								<TableCell> 
+
+									Precio [Pesos chilenos]
+
+								</TableCell>
+
+								<TableCell> 
+
+									Disponible
 
 								</TableCell>
 
@@ -105,13 +117,17 @@ class Piece_of_Ground_Details extends React.Component {
 
 									<TableCell> {piece_of_ground.name} </TableCell>
 
-									<TableCell> {piece_of_ground.size} </TableCell>
+									<TableCell> {piece_of_ground.area} </TableCell>
 
-									<TableCell> {piece_of_ground.width} </TableCell>
+									<TableCell> {piece_of_ground.front} </TableCell>
 
 									<TableCell> {piece_of_ground.large} </TableCell>
 
-									<TableCell> {piece_of_ground.topography} </TableCell>
+									<TableCell> {piece_of_ground.characteristics} </TableCell>
+
+									<TableCell> {piece_of_ground.price} </TableCell>
+
+									<TableCell> {piece_of_ground.available} </TableCell>
 
 								</TableRow>
 							)
