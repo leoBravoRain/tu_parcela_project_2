@@ -11,6 +11,7 @@ import {fs} from "../../libraries/firebase/firebase";
 import Piece_of_Ground_Details from "./components/piece_of_ground_details.component";
 import Loteo_Details from "./components/loteo_details.component";
 import Pieces_of_Ground_Map_Component from "./components/pieces_of_ground_map.component";
+import Loteo_Description from "./components/loteo_description.component";
 
 // material ui
 import Container from '@material-ui/core/Container';
@@ -128,6 +129,11 @@ class Piece_of_Ground_Map extends Component {
 				<Piece_of_Ground_Details 
 					get_pieces_of_ground = {this.state.get_pieces_of_ground}
 					pieces_of_ground = {this.state.pieces_of_ground}
+				/>
+
+				<Loteo_Description
+					get_pieces_of_ground = {this.state.get_pieces_of_ground}
+					loteo = {this.state.loteo} 
 				/>
 
 				<Loteo_Details 
