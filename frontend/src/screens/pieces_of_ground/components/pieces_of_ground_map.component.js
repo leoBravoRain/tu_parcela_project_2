@@ -26,11 +26,26 @@ class Pieces_of_Ground_Map_Component extends React.Component {
 
 				<Container>
 
-					<Typography align = "center" variant="h4" component="h2" gutterBottom>
+					{/* validate loteo */}
+					{
+						this.props.get_loteo
 
-						Mapa de parcelas de {this.props.loteo.name}
+							?
 
-					</Typography>
+								<Typography align = "center" variant="h4" component="h2" gutterBottom>
+								
+									Mapa de parcelas de {this.props.loteo.name}
+
+								</Typography>
+							:	
+
+								<Typography align = "center" variant="h4" component="h2" gutterBottom>
+
+									Loading
+
+								</Typography>
+								
+					}
 
 					<Typography align = "center" variant="body2" gutterBottom>
 

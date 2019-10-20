@@ -1,0 +1,19 @@
+Models:
+
+Loteos:
+
+1) location: String. Description of location
+2) weather
+3) access: string. Description of how to access to it
+4) tourist attractionn: string.
+5) define_1: by define
+6) define_2: by define
+
+Pieces of ground:
+
+1) area
+2) front
+3) large
+4) characteristics
+5) price
+6) available

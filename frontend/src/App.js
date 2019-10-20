@@ -53,7 +53,7 @@ class App extends Component {
 
 						</Link>
 
-						<Link to="/piece_of_ground/5d573433778d982eb6957df0" className="nav-link">
+						<Link to="/piece_of_ground/UVYp2YvBV6xSXhFdI2za/" className="nav-link">
 
 							<Typography gutterBottom variant="h6" component="h6">	
 

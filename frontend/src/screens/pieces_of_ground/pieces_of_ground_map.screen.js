@@ -4,7 +4,6 @@ import React, { Component } from "react";
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 
 // make request to server
-import axios from 'axios';
 import {fs} from "../../libraries/firebase/firebase";
 
 // import own component
@@ -16,23 +15,23 @@ import Loteo_Description from "./components/loteo_description.component";
 // material ui
 import Container from '@material-ui/core/Container';
 
-// fake loteo
-// this must to be done using a get request to server
-const loteo = {
+// // fake loteo
+// // this must to be done using a get request to server
+// const loteo = {
 
-    "name": "Loteo Testing 2",
-    "latitude": -39.4,
-    "longitude": -73.238901,
-    "location_name": "Frutillar",
-    "highlight": "Vista al lago",
-    "hectare": "5",
-    "rounded_price": 3,
-    "description": "Hermoso loteo ubicado en la cima de un hermoso cerro con vista al Lago Frutillar, ideal para construir casa de veraneo",
-    "access": "Tiene accesor por carretera 5 sur",
-    "weather": "LLuvioso durante el año, pero en verano hay mucho sol, con temperaturas promedio de 25 [°C]",
-    "ground": "Suelo plano, con muca vegetación simple, ideal para construir y agregar jardín",
+//     "name": "Loteo Testing 2",
+//     "latitude": -39.4,
+//     "longitude": -73.238901,
+//     "location_name": "Frutillar",
+//     "highlight": "Vista al lago",
+//     "hectare": "5",
+//     "rounded_price": 3,
+//     "description": "Hermoso loteo ubicado en la cima de un hermoso cerro con vista al Lago Frutillar, ideal para construir casa de veraneo",
+//     "access": "Tiene accesor por carretera 5 sur",
+//     "weather": "LLuvioso durante el año, pero en verano hay mucho sol, con temperaturas promedio de 25 [°C]",
+//     "ground": "Suelo plano, con muca vegetación simple, ideal para construir y agregar jardín",
 
-};
+// };
 
 class Piece_of_Ground_Map extends Component {
 
@@ -46,8 +45,8 @@ class Piece_of_Ground_Map extends Component {
 		this.state = {
 
 			// loteo
-			loteo: loteo,
-
+			loteo: null,
+			get_loteo: false,
 			num_piece_of_ground: null,
 			// num_pieces_ground: 39,
 			// flag of get data from server
@@ -64,8 +63,21 @@ class Piece_of_Ground_Map extends Component {
 	componentDidMount() {
 
 		// get request for get data	
+		// get loteo
+		fs.collection('loteos').doc(this.props.match.params.id).get()
+		.then (doc => {
+			// console.log(doc.exists);
+			if (doc.exists) {
+				// update state
+				this.setState({
+					loteo: doc.data(),
+					get_loteo: true,
+				});
+			}
+		});
+
 		// axios.get('http://192.168.1.9:4000/pieces_of_ground/pieces_of_ground/' + this.props.match.params.id)
-		fs.collection('loteos').doc("UVYp2YvBV6xSXhFdI2za").collection("pieces_of_ground").get()
+		fs.collection('loteos').doc(this.props.match.params.id).collection("pieces_of_ground").get()
 
         	// if ok
             // .then(response => {
@@ -120,6 +132,7 @@ class Piece_of_Ground_Map extends Component {
 			<Container>
 
 				<Pieces_of_Ground_Map_Component 
+					get_loteo = {this.state.get_loteo}
 					loteo = {this.state.loteo}
 					get_pieces_of_ground = {this.state.get_pieces_of_ground}
 					num_piece_of_ground = {this.state.num_piece_of_ground}
@@ -132,11 +145,13 @@ class Piece_of_Ground_Map extends Component {
 				/>
 
 				<Loteo_Description
+					get_loteo = {this.state.get_loteo}
 					get_pieces_of_ground = {this.state.get_pieces_of_ground}
 					loteo = {this.state.loteo} 
 				/>
 
 				<Loteo_Details 
+					get_loteo = {this.state.get_loteo}
 					loteo = {this.state.loteo} 
 					get_pieces_of_ground = {this.state.get_pieces_of_ground}
 				/>

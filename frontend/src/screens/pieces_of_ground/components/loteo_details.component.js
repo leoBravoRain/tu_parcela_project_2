@@ -25,7 +25,7 @@ class Loteo_Details extends React.Component {
 				}}
 			>
 
-				{this.props.get_pieces_of_ground 
+				{this.props.get_loteo 
 
 				?
 
@@ -59,9 +59,9 @@ class Loteo_Details extends React.Component {
 
 						</Container>
 
-						<Grid container spacing={1}>
+						<Grid container spacing={3}>
 							
-							<Grid item xs={3}>
+							<Grid item xs={4}>
 
 								<Card
 									style = {{
@@ -73,16 +73,16 @@ class Loteo_Details extends React.Component {
 									}}
 								>
 
-									<h5> Accesos </h5>
+									<h5> Ubicación </h5>
 
-									{this.props.loteo.description}
+									{this.props.loteo.location_description}
 
 								</Card>
 
 							</Grid>
 
 
-							<Grid item xs={3}>
+							<Grid item xs={4}>
 
 								<Card
 									style = {{
@@ -94,25 +94,6 @@ class Loteo_Details extends React.Component {
 									}}
 								>
 
-									<h5> Accesos </h5>
-
-									{this.props.loteo.access}
-
-								</Card>
-
-							</Grid>
-
-							<Grid item xs={3}>
-
-								<Card
-									style = {{
-										margin: 5,
-										padding: 20
-										// color: "white",
-										// backgroundColor: "red"
-										// backgroundImage: "url('https://bit.ly/2nCGIqc')",
-									}}
-								>
 									<h5> Clima </h5>
 
 									{this.props.loteo.weather}
@@ -121,7 +102,26 @@ class Loteo_Details extends React.Component {
 
 							</Grid>
 
-							<Grid item xs={3}>
+							<Grid item xs={4}>
+
+								<Card
+									style = {{
+										margin: 5,
+										padding: 20
+										// color: "white",
+										// backgroundColor: "red"
+										// backgroundImage: "url('https://bit.ly/2nCGIqc')",
+									}}
+								>
+									<h5> Acceso </h5>
+
+									{this.props.loteo.access}
+
+								</Card>
+
+							</Grid>
+
+							<Grid item xs={4}>
 
 								<Card
 									style = {{
@@ -133,9 +133,49 @@ class Loteo_Details extends React.Component {
 									}}
 								>
 
-									<h5> Suelos </h5>
+									<h5> Atractivo turístico </h5>
 
-									{this.props.loteo.ground}
+									{this.props.loteo.tourist_attraction}
+
+								</Card>
+
+							</Grid>
+
+							<Grid item xs={4}>
+
+								<Card
+									style = {{
+										margin: 5,
+										padding: 20
+										// color: "white",
+										// backgroundColor: "red"
+										// backgroundImage: "url('https://bit.ly/2nCGIqc')",
+									}}
+								>
+
+									<h5> Por definir 1 </h5>
+
+									{this.props.loteo.define_1}
+
+								</Card>
+
+							</Grid>
+							
+							<Grid item xs={4}>
+
+								<Card
+									style = {{
+										margin: 5,
+										padding: 20
+										// color: "white",
+										// backgroundColor: "red"
+										// backgroundImage: "url('https://bit.ly/2nCGIqc')",
+									}}
+								>
+
+									<h5> Por definir 2 </h5>
+
+									{this.props.loteo.define_2}
 
 								</Card>
 
