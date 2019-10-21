@@ -122,7 +122,12 @@ class Pieces_of_Ground_Map_Component extends React.Component {
 					</Grid>
 
 				</Grid>
-
+				
+				<Container>
+					<Typography align = "center" variant="h6" gutterBottom>
+						Todas con facilidades de pago
+					</Typography>
+				</Container>
 			</Paper>
             
 		)
