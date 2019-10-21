@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 // material ui
 import Container from '@material-ui/core/Container';
@@ -6,13 +6,30 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 
 // carousel library
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
+import ItemsCarousel from 'react-items-carousel';
 
 class Image_Gallery extends React.Component {
 	
+	// constructor
+	constructor(props) {
+
+		// constructur of parent
+		super(props);
+
+		// initial states
+		this.state = {
+
+			activeItemIndex: 0,
+
+		}
+
+	}
+
 	// render method
 	render() {
+
+		// const [activeItemIndex, setActiveItemIndex] = useState(0);
+		// const chevronWidth = 40;
 
 		return (
 
@@ -37,15 +54,22 @@ class Image_Gallery extends React.Component {
 
 						</Typography>
 
-						<Carousel
-							// showIndicators = {false}
+						<ItemsCarousel
+							requestToChangeActive={value => this.setState({ activeItemIndex: value })}
+							activeItemIndex={this.state.activeItemIndex}
+							numberOfCards={3}
+							gutter={20}
+							leftChevron={<button>{'<'}</button>}
+							rightChevron={<button>{'>'}</button>}
+							outsideChevron
+							chevronWidth={40}
 						>
 
 							{this.props.loteos.map( (loteo, idx) =>
 
 								<Container key = {idx}>
 
-									{/* <Typography align = "center" variant="body2" gutterBottom>
+									<Typography align = "center" variant="body2" gutterBottom>
 
 										{loteo.name}
 
@@ -61,25 +85,24 @@ class Image_Gallery extends React.Component {
 
 										{loteo.location_name} - {loteo.hectare} ha
 
-									</Typography> */}
+									</Typography>
 
 									<img 
 										src = 'https://media-cdn.tripadvisor.com/media/photo-s/0a/23/87/75/postal-de-valdivia.jpg'
-										width = "500px"
+										width = "300px"
 										height = "auto"
-									/>
+										/>
 
-									{/* <Typography align = "center" variant="body2" gutterBottom>
+									<Typography align = "center" variant="body2" gutterBottom>
 
 										Desde {loteo.rounded_price} millones
 
-									</Typography> */}
+									</Typography>
 
 								</Container>
 
-							)}
-
-						</Carousel>
+								)}
+						</ItemsCarousel>
 
 					</Container>
 
