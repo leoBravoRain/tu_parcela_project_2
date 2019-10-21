@@ -69,14 +69,15 @@ class Loteos_Map_Component extends React.Component {
 
                             <img 
                                 // class="center"
-                                src = "http://www.citymetric.com/sites/default/files/article_body_2016/08/gmaps_6.png"
-                                width = "450"
+                                // src = "http://www.citymetric.com/sites/default/files/article_body_2016/08/gmaps_6.png"
+                                src= {require("../../../static/images/valdivia.png")} 
+                                width = "800"
                                 height = "auto"
                                 style = {{
                                     display: "block",
                                     marginLeft: "auto",
                                     marginRight: "auto",
-                                    width: "50%",
+                                    // width: "50%",
                                 }}
                             />
                                 // <LeafletMap

@@ -74,8 +74,9 @@ class Pieces_of_Ground_Map_Component extends React.Component {
 								<Container>
 
 									<img 
-										src = "http://www.citymetric.com/sites/default/files/article_body_2016/08/gmaps_6.png"
-										width = "450"
+										// src = "http://www.citymetric.com/sites/default/files/article_body_2016/08/gmaps_6.png"
+										src={require("../../../static/images/valdivia.png")} 
+										width = "700"
 										height = "auto"
 									/>
 									
