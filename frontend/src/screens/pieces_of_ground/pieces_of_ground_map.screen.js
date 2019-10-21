@@ -161,7 +161,7 @@ class Piece_of_Ground_Map extends Component {
 				/>
 
 				{/* Call to action button (form of contact) */}
-				<Link to="/contact_us/">
+				<Link to="/ask_from_users/">
 					<Button align = "center" variant="contained" color="primary">
 						Enviar consulta ahora ya
 					</Button>
