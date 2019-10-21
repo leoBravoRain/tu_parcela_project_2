@@ -3,6 +3,9 @@ import React, { Component } from "react";
 // map
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 
+// router
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 // make request to server
 import {fs} from "../../libraries/firebase/firebase";
 
@@ -14,6 +17,7 @@ import Loteo_Description from "./components/loteo_description.component";
 
 // material ui
 import Container from '@material-ui/core/Container';
+import { Button } from "@material-ui/core";
 
 // // fake loteo
 // // this must to be done using a get request to server
@@ -155,6 +159,13 @@ class Piece_of_Ground_Map extends Component {
 					loteo = {this.state.loteo} 
 					get_pieces_of_ground = {this.state.get_pieces_of_ground}
 				/>
+
+				{/* Call to action button (form of contact) */}
+				<Link to="/contact_us/">
+					<Button align = "center" variant="contained" color="primary">
+						Enviar consulta ahora ya
+					</Button>
+				</Link>
 
 		  	</Container>
 
