@@ -20,6 +20,7 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import {Link as Link_} from '@material-ui/core/Link';
 
 // Component 
 class App extends Component {
@@ -56,13 +57,13 @@ class App extends Component {
 
 							<Typography gutterBottom variant="h6" component="h6">	
 
-								Mapa de loteos
+								Inicio
 
 							</Typography>
 
 						</Link>
 
-						<Link to="/piece_of_ground/UVYp2YvBV6xSXhFdI2za/" className="nav-link">
+						{/* <Link to="/piece_of_ground/UVYp2YvBV6xSXhFdI2za/" className="nav-link">
 
 							<Typography gutterBottom variant="h6" component="h6">	
 
@@ -70,7 +71,7 @@ class App extends Component {
 
 							</Typography>
 
-						</Link>
+						</Link> */}
 
 						<Link to="/who_we_are/" className="nav-link">
 
@@ -84,13 +85,24 @@ class App extends Component {
 
 						<Link to="/questions_answers/" className="nav-link">
 
-							<Typography gutterBottom variant="h6" component="h6">	
+							<Typography gutterBottom variant="h6" component="h6">
 
-								¿Qué son los bienes raíces?
+								Preguntas frecuentes
 
 							</Typography>
 
 						</Link>
+
+						{/* external link */}
+						<a href= "http://tuparcelaen5simplespasos.cl/clubdeinversionistas/">
+
+							<Typography gutterBottom variant="a" component="h6">	
+
+								Club de Inversionistas
+
+							</Typography>
+
+						</a>
 
 						<Link to="/ask_from_users/" className="nav-link">
 

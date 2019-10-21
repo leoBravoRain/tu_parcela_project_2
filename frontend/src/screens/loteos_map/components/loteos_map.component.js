@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 class Loteos_Map_Component extends React.Component {
       
       
@@ -66,6 +68,7 @@ class Loteos_Map_Component extends React.Component {
                         {this.props.get_loteos 
 
                             ? 
+                        <Link to="/piece_of_ground/UVYp2YvBV6xSXhFdI2za/" className="nav-link">
 
                             <img 
                                 // class="center"
@@ -80,6 +83,7 @@ class Loteos_Map_Component extends React.Component {
                                     // width: "50%",
                                 }}
                             />
+                        </Link>
                                 // <LeafletMap
                                 //     center={[-39.838000, -73.236481]}
                                 //     zoom={13}
