@@ -89,7 +89,7 @@ class Loteos_Map extends Component {
 
 			<Container>
 
-                <Loteos_Map_Component 
+				<Loteos_Map_Component 
                     get_loteos = {this.state.get_loteos} 
                     num_loteos = {this.state.num_loteos}
                     num_pieces_ground = {this.state.num_pieces_ground}

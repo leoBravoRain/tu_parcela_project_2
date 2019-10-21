@@ -6,23 +6,34 @@ import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core/styles';
 
 class Loteos_Map_Component extends React.Component {
-	
-	// render method
-	render() {
-
-		return (
-
+      
+      
+      // render method
+      render() {
+          
+        return (
+            
             <Paper 
+                // className = {useStyles}
+                // classes={{
+                //     root: classes.root, // class name, e.g. `classes-nesting-root-x`
+                //     label: classes.label, // class name, e.g. `classes-nesting-label-x`
+                // }}
+                // style = {styles.paperContainer}
                 // width={1}
                 style = {{
-                    margin: 20,
-                    padding: 20,
-                    // backgroundImage: 'url("https://images.unsplash.com/photo-1464295440335-ee082a75ccca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80")',
-                    // backgroundRepeat: "no-repeat",
-                    // backgroundSize: "auto",
-                    // backgroundColor: "red"
+                //     // width: "100%",
+                //     // margin: 20,
+                //     // padding: 20,
+                //     // paddingLeft: "0px !important",
+                    backgroundImage: 'url("https://images.unsplash.com/photo-1464295440335-ee082a75ccca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80")',
+                //     // backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                //     // backgroundColor: "red"
+                    padding: 50,
                 }}
 
             >
@@ -122,3 +133,4 @@ class Loteos_Map_Component extends React.Component {
 }
 
 export default Loteos_Map_Component;
+
