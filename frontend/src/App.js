@@ -33,13 +33,20 @@ class App extends Component {
 
 				<Router>
 
-					<AppBar position="static">
+					<AppBar 
+						position="static"
+					>
 
 					<Toolbar>
 
-						<Typography gutterBottom variant="h4" component="h2">
+						<Typography gutterBottom>
 
-							Tu parcela en 5 simples pasos
+							<img 
+								src={require("./static/images/logo.jpg")} 
+								width = "120"
+								height = "auto"
+								alt="logo" 
+							/>
 
 						</Typography>
 
@@ -84,68 +91,6 @@ class App extends Component {
 						</Link>
 
 					</Toolbar>
-
-						{/* <div className="container">
-
-							<nav className="navbar navbar-expand-lg navbar-light bg-light">
-
-								<Link to="/" className="navbar-brand"> 
-
-									Tu parcela en 5 simples pasos
-
-								</Link>
-
-								<div className="collpase navbar-collapse">
-
-									<ul className="navbar-nav mr-auto">
-
-										<li className="navbar-item">
-
-											<Link to="/" className="nav-link">
-
-												Mapa de loteos
-
-											</Link>
-
-										</li>
-
-										<li className="navbar-item">
-
-											<Link to="/piece_of_ground/5d573433778d982eb6957df0" className="nav-link">
-
-												Mapa de parcelas
-
-											</Link>
-
-										</li>
-
-										<li className="navbar-item">
-
-											<Link to="/contact/" className="nav-link">
-
-												¿Quienes somos?
-
-											</Link>
-
-										</li>
-
-										<li className="navbar-item">
-
-											<Link to="/questions_answers/" className="nav-link">
-
-												¿Que son los bienes raíces?
-
-											</Link>
-
-										</li>
-
-									</ul>
-
-								</div>
-
-							</nav>
-
-						</div> */}
 
 					</AppBar>
 
