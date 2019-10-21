@@ -11,6 +11,7 @@ import Loteos_Map from "./screens/loteos_map/loteos_map.screen";
 import Piece_of_Ground_Map from "./screens/pieces_of_ground/pieces_of_ground_map.screen";
 import Who_We_Are from './screens/who_we_are/who_we_are.screen';
 import Questions_Answers from './screens/questions_answers/questions_answers.screen';
+import Contact_Us from './screens/contact_us/contact_us.screen';
 
 // material ui
 import theme from './libraries/material-ui/theme';
@@ -90,6 +91,16 @@ class App extends Component {
 
 						</Link>
 
+						<Link to="/contact_us/" className="nav-link">
+
+							<Typography gutterBottom variant="h6" component="h6">	
+
+								Consultas
+
+							</Typography>
+
+						</Link>
+
 					</Toolbar>
 
 					</AppBar>
@@ -101,6 +112,8 @@ class App extends Component {
 					<Route path = '/who_we_are/' exact component = {Who_We_Are} />
 
 					<Route path = '/questions_answers/' exact component = {Questions_Answers} />
+
+					<Route path = '/contact_us/' exact component = {Contact_Us} />
 
 				</Router>
 
