@@ -18,7 +18,7 @@ import Loteo_Description from "./components/loteo_description.component";
 // material ui
 import Container from '@material-ui/core/Container';
 import { Button } from "@material-ui/core";
-
+import CircularProgress from '@material-ui/core/CircularProgress';
 // // fake loteo
 // // this must to be done using a get request to server
 // const loteo = {
@@ -80,7 +80,7 @@ class Piece_of_Ground_Map extends Component {
 			}
 		});
 
-		// axios.get('http://192.168.1.9:4000/pieces_of_ground/pieces_of_ground/' + this.props.match.params.id)
+		// get pieces of ground of loteo
 		fs.collection('loteos').doc(this.props.match.params.id).collection("pieces_of_ground").get()
 
         	// if ok
@@ -135,37 +135,48 @@ class Piece_of_Ground_Map extends Component {
 
 			<Container>
 
-				<Pieces_of_Ground_Map_Component 
-					get_loteo = {this.state.get_loteo}
-					loteo = {this.state.loteo}
-					get_pieces_of_ground = {this.state.get_pieces_of_ground}
-					num_piece_of_ground = {this.state.num_piece_of_ground}
-					pieces_of_ground = {this.state.pieces_of_ground}
-				/>
+				{/* if loteos and pieces of ground are loaded */}
+				{this.state.get_loteo && this.state.get_pieces_of_ground
+				
+				?
+					<Container>
 
-				<Piece_of_Ground_Details 
-					get_pieces_of_ground = {this.state.get_pieces_of_ground}
-					pieces_of_ground = {this.state.pieces_of_ground}
-				/>
+						<Pieces_of_Ground_Map_Component 
+							get_loteo = {this.state.get_loteo}
+							loteo = {this.state.loteo}
+							get_pieces_of_ground = {this.state.get_pieces_of_ground}
+							num_piece_of_ground = {this.state.num_piece_of_ground}
+							pieces_of_ground = {this.state.pieces_of_ground}
+						/>
 
-				<Loteo_Description
-					get_loteo = {this.state.get_loteo}
-					get_pieces_of_ground = {this.state.get_pieces_of_ground}
-					loteo = {this.state.loteo} 
-				/>
+						<Piece_of_Ground_Details 
+							get_pieces_of_ground = {this.state.get_pieces_of_ground}
+							pieces_of_ground = {this.state.pieces_of_ground}
+						/>
 
-				<Loteo_Details 
-					get_loteo = {this.state.get_loteo}
-					loteo = {this.state.loteo} 
-					get_pieces_of_ground = {this.state.get_pieces_of_ground}
-				/>
+						<Loteo_Description
+							get_loteo = {this.state.get_loteo}
+							get_pieces_of_ground = {this.state.get_pieces_of_ground}
+							loteo = {this.state.loteo} 
+						/>
 
-				{/* Call to action button (form of contact) */}
-				<Link to="/ask_from_users/">
-					<Button align = "center" variant="contained" color="primary">
-						Enviar consulta ahora ya
-					</Button>
-				</Link>
+						<Loteo_Details 
+							get_loteo = {this.state.get_loteo}
+							loteo = {this.state.loteo} 
+							get_pieces_of_ground = {this.state.get_pieces_of_ground}
+						/>
+
+						{/* Call to action button (form of contact) */}
+						<Link to="/ask_from_users/">
+							<Button align = "center" variant="contained" color="primary">
+								Enviar consulta ahora ya
+							</Button>
+						</Link>
+
+					</Container>
+				:
+					<CircularProgress />
+				}
 
 		  	</Container>
 

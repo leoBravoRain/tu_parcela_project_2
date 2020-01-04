@@ -91,7 +91,7 @@ class Image_Gallery extends React.Component {
 										src = {loteo.image}
 										width = "300px"
 										height = "auto"
-										/>
+									/>
 
 									<Typography align = "center" variant="body2" gutterBottom>
 
