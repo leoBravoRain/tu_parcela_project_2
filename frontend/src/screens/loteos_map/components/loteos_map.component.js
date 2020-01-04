@@ -60,7 +60,7 @@ class Loteos_Map_Component extends React.Component {
 
                     <Typography align="center" variant="h4" component="h2" gutterBottom>
 
-                        Nuestros proyectos
+                        Nuestros proyectos de parcelas
 
                     </Typography>
 

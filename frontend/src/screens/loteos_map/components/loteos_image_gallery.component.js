@@ -50,7 +50,13 @@ class Image_Gallery extends React.Component {
 
 						<Typography align = "center" variant="h4" component="h2" gutterBottom>
 
-							Detalles de nuestros loteos
+							Nuestros loteos
+
+						</Typography>
+
+						<Typography align="center" variant="h5" component="h2" gutterBottom>
+
+							Región de los Ríos
 
 						</Typography>
 
@@ -69,7 +75,7 @@ class Image_Gallery extends React.Component {
 
 								<Container key = {idx}>
 
-									<Typography align = "center" variant="body2" gutterBottom>
+									<Typography align = "center" variant="h6" gutterBottom>
 
 										{loteo.name}
 
@@ -77,18 +83,12 @@ class Image_Gallery extends React.Component {
 
 									<Typography align = "center" variant="body2" gutterBottom>
 
-										{loteo.highlight}
-
-									</Typography>
-
-									<Typography align = "center" variant="body2" gutterBottom>
-
-										{loteo.location_name} - {loteo.hectare} ha
+										{loteo.description}
 
 									</Typography>
 
 									<img 
-										src = {loteo.image}
+										src = {loteo.images[0]}
 										width = "300px"
 										height = "auto"
 									/>

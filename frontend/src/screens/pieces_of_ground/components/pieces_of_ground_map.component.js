@@ -108,7 +108,7 @@ class Pieces_of_Ground_Map_Component extends React.Component {
 
 									<Typography align = "center" variant="h4" component="h2" gutterBottom>
 									
-										Mapa de parcelas de {this.props.loteo.name}
+										Proyecto {this.props.loteo.name}
 
 									</Typography>
 									

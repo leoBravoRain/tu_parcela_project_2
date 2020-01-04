@@ -154,11 +154,11 @@ class Piece_of_Ground_Map extends Component {
 							pieces_of_ground = {this.state.pieces_of_ground}
 						/>
 
-						<Loteo_Description
+						{/* <Loteo_Description
 							get_loteo = {this.state.get_loteo}
 							get_pieces_of_ground = {this.state.get_pieces_of_ground}
 							loteo = {this.state.loteo} 
-						/>
+						/> */}
 
 						<Loteo_Details 
 							get_loteo = {this.state.get_loteo}

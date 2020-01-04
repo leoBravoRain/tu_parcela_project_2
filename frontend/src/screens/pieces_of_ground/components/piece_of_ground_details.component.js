@@ -140,6 +140,12 @@ class Piece_of_Ground_Details extends React.Component {
 
 					</Table>
 
+					<Typography align="center" variant="body2" component="p" gutterBottom>
+
+						Esto será un texto sobre el loteo
+
+					</Typography>
+
 				</Container>
 
 			</Paper>

@@ -10,6 +10,7 @@ import Loteos_Map_Component from "./components/loteos_map.component";
 // material ui
 import Container from '@material-ui/core/Container';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Typography from '@material-ui/core/Typography';
 
 // Component 
 class Loteos_Map extends Component {
@@ -152,6 +153,13 @@ class Loteos_Map extends Component {
 							loteos = {this.state.loteos}
 							get_loteos = {this.state.get_loteos}
 						/>
+
+						<Typography align="center" variant="h5" component="h2" gutterBottom>
+
+							VER NUESTROS PROYECTOS TERMINADOS
+	
+						</Typography>
+
 					</Container>
 
 					:
