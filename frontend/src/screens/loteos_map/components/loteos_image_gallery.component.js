@@ -88,7 +88,7 @@ class Image_Gallery extends React.Component {
 									</Typography>
 
 									<img 
-										src = 'https://media-cdn.tripadvisor.com/media/photo-s/0a/23/87/75/postal-de-valdivia.jpg'
+										src = {loteo.image}
 										width = "300px"
 										height = "auto"
 										/>

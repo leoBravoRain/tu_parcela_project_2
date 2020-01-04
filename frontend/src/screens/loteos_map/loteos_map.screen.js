@@ -9,6 +9,7 @@ import Loteos_Map_Component from "./components/loteos_map.component";
 
 // material ui
 import Container from '@material-ui/core/Container';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 // Component 
 class Loteos_Map extends Component {
@@ -23,12 +24,14 @@ class Loteos_Map extends Component {
 		this.state = {
 
 			num_loteos: null,
-			num_pieces_ground: 39,
+			num_pieces_ground: null,
 			// flag of get data from server
 			get_loteos: false,
 			// markers (each place is a list of 2 elements)
 			// marker: [latitude, longitude]
 			loteos: null,
+			// // dict of pieces of ground by loteo
+			// pieces_of_ground_by_loteo: null,
 
 		}
 
@@ -37,8 +40,7 @@ class Loteos_Map extends Component {
 	// component life cycle 
 	componentDidMount() {
 
-		// get request for get data
-		// axios.get('http://192.168.1.9:4000/pieces_of_ground/loteos')
+		// get request for get loteos
 		fs.collection('loteos').get()
 
 		.then( snapshotquery => {
@@ -46,17 +48,61 @@ class Loteos_Map extends Component {
             	// // get data from API
             	var loteos = [];
 
-				 // iterate over each item
-				 snapshotquery.forEach(doc => {
+				// // dict of store pieces of ground
+				// var pieces_of_ground_by_loteo = {};
+				
+				// number of pieces of ground
+				var num_pieces_ground = 0;
+
+				// iterate over each item
+				snapshotquery.forEach(doc => {
 
 					// console.log(doc.data());
 					let loteo = doc.data();
 					// store location
 					loteo["location"] = [loteo.location.latitude, loteo.location.longitude];
+					loteo["id"] = doc.id;
 					// add loteo to list
 					loteos.push(loteo);
 
+					// update num of pieces of ground
+					num_pieces_ground += loteo.num_pieces_of_ground;
+
+					// // get all pieces of ground of loteo
+					// fs.collection('loteos').doc(loteo.id).collection("pieces_of_ground").get()
+					// 	.then(snapshotquery => {
+						
+						// 		// // get data from API
+						// 		var pieces_of_ground = [];
+						
+						// 		// iterate over each item
+						// 		snapshotquery.forEach(doc => {
+							
+							// 			// create piece of ground
+							// 			var piece_of_ground = doc.data();
+							
+							// 			// store location
+							// 			piece_of_ground["location"] = [piece_of_ground.location.latitude, piece_of_ground.location.longitude];
+							
+							// 			// add loteo to list
+							// 			pieces_of_ground.push(piece_of_ground);
+							// 		})
+							
+							// 		// add piece of ground to list of pieces of ground
+							// 		pieces_of_ground_by_loteo[loteo.id] = pieces_of_ground;
+							
+							// 		console.log(pieces_of_ground_by_loteo);
+							
+							// 		// update state
+							// 		this.setState({ 
+								// 			pieces_of_ground_by_loteo: pieces_of_ground_by_loteo
+								// 		});
+								
+								// 	});
+								
 				});
+							
+				console.log(num_pieces_ground);
 
             	// update state
                 this.setState({ 
@@ -65,12 +111,11 @@ class Loteos_Map extends Component {
                 	get_loteos: true, 
                 	// update loteos
                 	loteos: loteos,
-                	num_loteos: loteos.length,
+					num_loteos: loteos.length,
+					num_pieces_ground: num_pieces_ground,
 
                 });
-
 		})
-
 		// if error
 		.catch(function (error){
 
@@ -89,18 +134,30 @@ class Loteos_Map extends Component {
 
 			<Container>
 
-				<Loteos_Map_Component 
-                    get_loteos = {this.state.get_loteos} 
-                    num_loteos = {this.state.num_loteos}
-                    num_pieces_ground = {this.state.num_pieces_ground}
-                    loteos = {this.state.loteos}
-                />
+				{
+					this.state.get_loteos
 
-				<Image_Gallery 
-                     loteos = {this.state.loteos}
-					 get_loteos = {this.state.get_loteos}
-					 
-				/>
+					?
+
+					<Container>
+
+						<Loteos_Map_Component 
+							get_loteos = {this.state.get_loteos} 
+							num_loteos = {this.state.num_loteos}
+							num_pieces_ground = {this.state.num_pieces_ground}
+							loteos = {this.state.loteos}
+						/>
+
+						<Image_Gallery 
+							loteos = {this.state.loteos}
+							get_loteos = {this.state.get_loteos}
+						/>
+					</Container>
+
+					:
+
+						<CircularProgress />
+				}
 
 
 			</Container>

@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.js": "/static/js/main.a10e4cfd.chunk.js",
-    "main.js.map": "/static/js/main.a10e4cfd.chunk.js.map",
+    "main.js": "/static/js/main.187a8e16.chunk.js",
+    "main.js.map": "/static/js/main.187a8e16.chunk.js.map",
     "runtime~main.js": "/static/js/runtime~main.821e3928.js",
     "runtime~main.js.map": "/static/js/runtime~main.821e3928.js.map",
     "static/css/2.a65581f3.chunk.css": "/static/css/2.a65581f3.chunk.css",
-    "static/js/2.307f9ef9.chunk.js": "/static/js/2.307f9ef9.chunk.js",
-    "static/js/2.307f9ef9.chunk.js.map": "/static/js/2.307f9ef9.chunk.js.map",
+    "static/js/2.93cc5804.chunk.js": "/static/js/2.93cc5804.chunk.js",
+    "static/js/2.93cc5804.chunk.js.map": "/static/js/2.93cc5804.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.abb3ede12b2f37e5c20238725bd20229.js": "/precache-manifest.abb3ede12b2f37e5c20238725bd20229.js",
+    "precache-manifest.d3801d7de7d2105ea83577f9fb662599.js": "/precache-manifest.d3801d7de7d2105ea83577f9fb662599.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/2.a65581f3.chunk.css.map": "/static/css/2.a65581f3.chunk.css.map"
+    "static/css/2.a65581f3.chunk.css.map": "/static/css/2.a65581f3.chunk.css.map",
+    "static/media/logo.jpg": "/static/media/logo.4c0119c8.jpg",
+    "static/media/valdivia.png": "/static/media/valdivia.58821147.png"
   }
 }
