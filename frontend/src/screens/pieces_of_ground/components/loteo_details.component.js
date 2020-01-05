@@ -6,9 +6,12 @@ import { Carousel } from 'react-responsive-carousel';
 
 // material ui
 import Container from '@material-ui/core/Container';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
+import Typography from '@material-ui/core/Typography';
+import theme from "../../../libraries/material-ui/theme";
+import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
 // import CardContent from '@material-ui/core/CardContent';
 // import Typography from '@material-ui/core/Typography';
 
@@ -19,7 +22,7 @@ class Loteo_Details extends React.Component {
 
 		return (
 			
-			<Paper
+			<Container
 				style = {{
 					margin: 20,
 					padding: 20
@@ -32,21 +35,39 @@ class Loteo_Details extends React.Component {
 
 					<Container>
 
-						<h2>
+						<Typography align="center" variant="h3" component="h2" gutterBottom style={{ fontWeight: "bold", margin: theme.margin.big }}>
 
-							Detalles del {this.props.loteo.name}
+							Información del {this.props.loteo.name}
 
-						</h2>
+						</Typography>
 
-						<p>
+						<Typography align="center" variant="body2" component="p" gutterBottom 
+							style={{
+								margin: theme.margin.big,
+								color: "gray",
+							}}
+						>
 
 							{this.props.loteo.description}
 
-						</p>
+						</Typography>
 
-						<Container className = 'container'>
+						<Container
+							style = {{
+								maxWidth: "50%",
+								// margin: theme.margin.normal,
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center",
+
+							}}
+						>
 
 							<Carousel
+								autoPlay = {true}
+								infiniteLoop = {true}
+								// centerMode = {true}
+								// width = "500px"
 								// showIndicators = {false}
 							>
 
@@ -66,23 +87,42 @@ class Loteo_Details extends React.Component {
 
 						</Container>
 
-						<Grid container spacing={3}>
+						<Grid container spacing={2}>
 							
 							<Grid item xs={4}>
 
 								<Card
 									style = {{
 										margin: 5,
-										padding: 20
+										// padding: 20,
+										textAlign: "center",
 										// color: "white",
 										// backgroundColor: "red"
 										// backgroundImage: "url('https://bit.ly/2nCGIqc')",
 									}}
 								>
 
-									<h5> Ubicación </h5>
+									<CardHeader
+										title= "Ubicación"
+										style = {{
+											fontWeight: "bold",
+										}}
+										// subheader={loteo.description}
+									/>
+									
+									<CardContent>
 
-									{this.props.loteo.location_description}
+										<Typography variant="body2" gutterBottom
+											style = {{
+												color: "gray",
+											}}
+										>
+
+											{this.props.loteo.location_description}
+
+										</Typography>
+
+									</CardContent>
 
 								</Card>
 
@@ -90,20 +130,117 @@ class Loteo_Details extends React.Component {
 
 
 							<Grid item xs={4}>
-
+								
 								<Card
-									style = {{
+									style={{
 										margin: 5,
-										padding: 20
+										// padding: 20,
+										textAlign: "center",
 										// color: "white",
 										// backgroundColor: "red"
 										// backgroundImage: "url('https://bit.ly/2nCGIqc')",
 									}}
 								>
 
-									<h5> Clima </h5>
+									<CardHeader
+										title="Clima"
+										style={{
+											fontWeight: "bold",
+										}}
+									// subheader={loteo.description}
+									/>
 
-									{this.props.loteo.weather}
+									<CardContent>
+
+										<Typography variant="body2" gutterBottom
+											style={{
+												color: "gray",
+											}}
+										>
+
+											{this.props.loteo.weather}
+
+										</Typography>
+
+									</CardContent>
+
+								</Card>
+
+							</Grid>
+
+							<Grid item xs={4}>
+								
+								<Card
+									style={{
+										margin: 5,
+										// padding: 20,
+										textAlign: "center",
+										// color: "white",
+										// backgroundColor: "red"
+										// backgroundImage: "url('https://bit.ly/2nCGIqc')",
+									}}
+								>
+
+									<CardHeader
+										title="Acceso"
+										style={{
+											fontWeight: "bold",
+										}}
+									// subheader={loteo.description}
+									/>
+
+									<CardContent>
+
+										<Typography variant="body2" gutterBottom
+											style={{
+												color: "gray",
+											}}
+										>
+
+											{this.props.loteo.access}
+
+										</Typography>
+
+									</CardContent>
+
+								</Card>
+
+							</Grid>
+
+							<Grid item xs={4}>
+									
+								<Card
+									style={{
+										margin: 5,
+										// padding: 20,
+										textAlign: "center",
+										// color: "white",
+										// backgroundColor: "red"
+										// backgroundImage: "url('https://bit.ly/2nCGIqc')",
+									}}
+								>
+
+									<CardHeader
+										title="Atractivo turístico"
+										style={{
+											fontWeight: "bold",
+										}}
+									// subheader={loteo.description}
+									/>
+
+									<CardContent>
+
+										<Typography variant="body2" gutterBottom
+											style={{
+												color: "gray",
+											}}
+										>
+
+											{this.props.loteo.tourist_attraction}
+
+										</Typography>
+
+									</CardContent>
 
 								</Card>
 
@@ -112,57 +249,37 @@ class Loteo_Details extends React.Component {
 							<Grid item xs={4}>
 
 								<Card
-									style = {{
+									style={{
 										margin: 5,
-										padding: 20
-										// color: "white",
-										// backgroundColor: "red"
-										// backgroundImage: "url('https://bit.ly/2nCGIqc')",
-									}}
-								>
-									<h5> Acceso </h5>
-
-									{this.props.loteo.access}
-
-								</Card>
-
-							</Grid>
-
-							<Grid item xs={4}>
-
-								<Card
-									style = {{
-										margin: 5,
-										padding: 20
+										// padding: 20,
+										textAlign: "center",
 										// color: "white",
 										// backgroundColor: "red"
 										// backgroundImage: "url('https://bit.ly/2nCGIqc')",
 									}}
 								>
 
-									<h5> Atractivo turístico </h5>
+									<CardHeader
+										title="Por definir 1"
+										style={{
+											fontWeight: "bold",
+										}}
+									// subheader={loteo.description}
+									/>
 
-									{this.props.loteo.tourist_attraction}
+									<CardContent>
 
-								</Card>
+										<Typography variant="body2" gutterBottom
+											style={{
+												color: "gray",
+											}}
+										>
 
-							</Grid>
+											{this.props.loteo.define_1}
 
-							<Grid item xs={4}>
+										</Typography>
 
-								<Card
-									style = {{
-										margin: 5,
-										padding: 20
-										// color: "white",
-										// backgroundColor: "red"
-										// backgroundImage: "url('https://bit.ly/2nCGIqc')",
-									}}
-								>
-
-									<h5> Por definir 1 </h5>
-
-									{this.props.loteo.define_1}
+									</CardContent>
 
 								</Card>
 
@@ -171,18 +288,37 @@ class Loteo_Details extends React.Component {
 							<Grid item xs={4}>
 
 								<Card
-									style = {{
+									style={{
 										margin: 5,
-										padding: 20
+										// padding: 20,
+										textAlign: "center",
 										// color: "white",
 										// backgroundColor: "red"
 										// backgroundImage: "url('https://bit.ly/2nCGIqc')",
 									}}
 								>
 
-									<h5> Por definir 2 </h5>
+									<CardHeader
+										title="Por definir 2"
+										style={{
+											fontWeight: "bold",
+										}}
+									// subheader={loteo.description}
+									/>
 
-									{this.props.loteo.define_2}
+									<CardContent>
+
+										<Typography variant="body2" gutterBottom
+											style={{
+												color: "gray",
+											}}
+										>
+
+											{this.props.loteo.define_2}
+
+										</Typography>
+
+									</CardContent>
 
 								</Card>
 
@@ -201,7 +337,7 @@ class Loteo_Details extends React.Component {
 
 				}
 
-			</Paper>
+			</Container>
 
 
 

@@ -13,12 +13,14 @@ import {fs} from "../../libraries/firebase/firebase";
 import Piece_of_Ground_Details from "./components/piece_of_ground_details.component";
 import Loteo_Details from "./components/loteo_details.component";
 import Pieces_of_Ground_Map_Component from "./components/pieces_of_ground_map.component";
-import Loteo_Description from "./components/loteo_description.component";
+// import Loteo_Description from "./components/loteo_description.component";
 
 // material ui
 import Container from '@material-ui/core/Container';
 import { Button } from "@material-ui/core";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import theme from "../../libraries/material-ui/theme";
+
 // // fake loteo
 // // this must to be done using a get request to server
 // const loteo = {
@@ -190,12 +192,23 @@ class Piece_of_Ground_Map extends Component {
 						/>
 
 						{/* Call to action button (form of contact) */}
-						<Link to="/ask_from_users/">
-							<Button align = "center" variant="contained" color="primary">
-								Enviar consulta ahora ya
-							</Button>
-						</Link>
+						<Container
+							style = {{
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center",
+								// backgroundColor: "red",
+								margin: theme.margin.big,
+							}}
+						>
 
+							<Link to="/ask_from_users/">
+								<Button align = "center" variant="contained" color="secondary">
+									Enviar consulta ahora ya
+								</Button>
+							</Link>
+
+						</Container>
 					</Container>
 				:
 					<CircularProgress />

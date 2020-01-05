@@ -9,7 +9,6 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { CircularProgress } from "@material-ui/core";
-import ThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import theme from "../../../libraries/material-ui/theme";
 
 class Pieces_of_Ground_Map_Component extends React.Component {
@@ -99,7 +98,7 @@ class Pieces_of_Ground_Map_Component extends React.Component {
 					padding: 40,
 					paddingBottom: 100,
 					width: "100%",
-					backgroundColor: "yellow",
+					// backgroundColor: "yellow",
 				}}
 
 			>
