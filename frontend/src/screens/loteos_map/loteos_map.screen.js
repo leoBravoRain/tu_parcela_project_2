@@ -179,10 +179,13 @@ class Loteos_Map extends Component {
 						/>
 
 						<Typography align="center" variant="h5" component="h2" gutterBottom
+							color = "secondary"
 							style = {{
 								margin: theme.margin.big,
 								marginBottom: 100,
 								fontWeight: "bold",
+								textDecoration: "underline",
+								// color: theme.palette.primary,
 							}}
 						>
 

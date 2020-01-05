@@ -39,7 +39,7 @@ class Loteos_Map_Component extends React.Component {
                     padding: 40,
                     paddingBottom: 100,
                     width: "100%",
-                    backgroundColor: "yellow",
+                    // backgroundColor: "yellow",
                 }}
 
             >

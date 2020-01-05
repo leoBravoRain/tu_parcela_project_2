@@ -55,13 +55,13 @@ class Image_Gallery extends React.Component {
 						// p = {3}
 					> 
 
-						<Typography align="center" variant="h3" component="h3" gutterBottom style={{ fontWeight: "bold", margin: theme.margin.big}}>
+						<Typography align="center" variant="h3" component="h3" gutterBottom style={{ fontWeight: "bold", margin: theme.margin.normal, marginTop: 50,}}>
 
 							Nuestros loteos
 
 						</Typography>
 
-						<Typography align="center" variant="h5" component="h4" gutterBottom style = {{margin: theme.margin.big, color: "gray", fontWeight: "bold"}}>
+						<Typography align="center" variant="h5" component="h4" gutterBottom style = {{margin: theme.margin.normal, color: "gray", fontWeight: "bold", marginBottom: 100,}}>
 
 							Región de los Ríos
 

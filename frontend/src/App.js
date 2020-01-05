@@ -37,6 +37,7 @@ class App extends Component {
 				<Router>
 
 					<AppBar 
+						color = "secondary"
 						position="static"
 					>
 
@@ -53,7 +54,7 @@ class App extends Component {
 
 						</Typography>
 
-						<Link to="/" className="nav-link">
+						<Link to="/" className="nav-link" style={styles.nav_item_text}>
 
 							<Typography gutterBottom variant="h6" component="h6">	
 
@@ -73,7 +74,7 @@ class App extends Component {
 
 						</Link> */}
 
-						<Link to="/who_we_are/" className="nav-link">
+						<Link to="/who_we_are/" className="nav-link" style={styles.nav_item_text}>
 
 							<Typography gutterBottom variant="h6" component="h6">	
 
@@ -83,7 +84,7 @@ class App extends Component {
 
 						</Link>
 
-						<Link to="/questions_answers/" className="nav-link">
+						<Link to="/questions_answers/" className="nav-link" style={styles.nav_item_text}>
 
 							<Typography gutterBottom variant="h6" component="h6">
 
@@ -94,7 +95,7 @@ class App extends Component {
 						</Link>
 
 						{/* external link */}
-						<a href= "http://tuparcelaen5simplespasos.cl/clubdeinversionistas/">
+						<a href="http://tuparcelaen5simplespasos.cl/clubdeinversionistas/" style={styles.nav_item_text}>
 
 							<Typography gutterBottom variant="a" component="h6">	
 
@@ -104,7 +105,7 @@ class App extends Component {
 
 						</a>
 
-						<Link to="/ask_from_users/" className="nav-link">
+						<Link to="/ask_from_users/" className="nav-link" style={styles.nav_item_text}>
 
 							<Typography gutterBottom variant="h6" component="h6">	
 
@@ -114,7 +115,7 @@ class App extends Component {
 
 						</Link>
 
-						<Link to="/contact_us/" className="nav-link">
+						<Link to="/contact_us/" className="nav-link" style={styles.nav_item_text}>
 
 							<Typography gutterBottom variant="h6" component="h6">
 
@@ -150,5 +151,10 @@ class App extends Component {
 
 }
 
+const styles = {
+	nav_item_text: {
+		color: "white",
+	}
+}
 // exporting app
 export default App;

@@ -117,7 +117,7 @@ class Pieces_of_Ground_Map_Component extends React.Component {
 
 									</Typography>
 									
-									<Typography align = "center" variant="body2" gutterBottom style = {{fontWeight: "bold", color:"black", margin: theme.margin.normal}}>
+									<Typography align = "center" variant="body2" gutterBottom style = {{fontWeight: "bold", color:"black", margin: theme.margin.normal, fontSize: 20}}>
 
 										<span
 											style={{
