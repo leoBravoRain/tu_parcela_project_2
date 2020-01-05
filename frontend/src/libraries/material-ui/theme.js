@@ -21,6 +21,10 @@ export default createMuiTheme({
 	margin: {
 		normal: 20,
 		big: 50,
+	},
+	padding: {
+		normal: 20,
+		big: 50,
 	}
 
 });

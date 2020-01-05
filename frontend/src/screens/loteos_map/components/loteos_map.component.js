@@ -122,9 +122,10 @@ class Loteos_Map_Component extends React.Component {
                                 easeLinearity={0.35}
                                 style = {{
                                     // backgroundColor: "red",
-                                    borderWidith: 100,
+                                    borderWidth: 10,
                                     borderStyle: "solid",
                                     borderColor: "white",
+                                    // maxHeight: "100%",
 
                                 }}
                             >
