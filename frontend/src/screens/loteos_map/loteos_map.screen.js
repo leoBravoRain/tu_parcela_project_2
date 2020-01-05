@@ -133,14 +133,37 @@ class Loteos_Map extends Component {
 		// return component
 		return (
 
-			<Container>
+			<Container
+				// disableGutters={true}
+				maxWidth={false}
+				// fixed = {false}
+				style={{
+					// backgroundColor: "red",
+					flexGrow: 1,
+					// width: "100%",
+				}}
+			>
 
 				{
 					this.state.get_loteos
 
 					?
 
-					<Container>
+					<Container
+						disableGutters={true}
+						maxWidth={false}
+						// fixed
+						// width={1}
+						style = {{
+							// backgroundColor: "blue",
+							// height: 100,
+							// width: "100%",
+							// margin: 0,
+							// padding: 0,
+							// marginLeft: -100,
+							// marginRight: -100,
+						}}
+					>
 
 						<Loteos_Map_Component 
 							get_loteos = {this.state.get_loteos} 

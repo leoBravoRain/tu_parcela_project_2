@@ -3,7 +3,14 @@ import React from "react";
 // material ui
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
+import theme from "../../../libraries/material-ui/theme";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardHeader from '@material-ui/core/CardHeader';
+// import Icon from '@material-ui/core/Icon';
+// import Button from '@material-ui/core/Button';
+import CardActionArea from '@material-ui/core/CardActionArea';
 
 // carousel library
 import ItemsCarousel from 'react-items-carousel';
@@ -33,7 +40,7 @@ class Image_Gallery extends React.Component {
 
 		return (
 
-			<Paper
+			<Container
 				style = {{
 					margin: 20,
 					padding: 20
@@ -48,61 +55,97 @@ class Image_Gallery extends React.Component {
 						// p = {3}
 					> 
 
-						<Typography align = "center" variant="h4" component="h2" gutterBottom>
+						<Typography align="center" variant="h3" component="h3" gutterBottom style={{ fontWeight: "bold", margin: theme.margin.big}}>
 
 							Nuestros loteos
 
 						</Typography>
 
-						<Typography align="center" variant="h5" component="h2" gutterBottom>
+						<Typography align="center" variant="h5" component="h4" gutterBottom style = {{margin: theme.margin.big, color: "gray", fontWeight: "bold"}}>
 
 							Región de los Ríos
 
 						</Typography>
 
-						<ItemsCarousel
-							requestToChangeActive={value => this.setState({ activeItemIndex: value })}
-							activeItemIndex={this.state.activeItemIndex}
-							numberOfCards={3}
-							gutter={20}
-							leftChevron={<button>{'<'}</button>}
-							rightChevron={<button>{'>'}</button>}
-							outsideChevron
-							chevronWidth={40}
+						<Container
+							style = {{
+								margin: theme.margin.big,
+							}}
 						>
 
-							{this.props.loteos.map( (loteo, idx) =>
+							<ItemsCarousel
+								requestToChangeActive={value => this.setState({ activeItemIndex: value })}
+								activeItemIndex={this.state.activeItemIndex}
+								numberOfCards={3}
+								gutter={20}
+								disableSwipe={false}
+								leftChevron={
+									"<"
+								}
+								rightChevron={
+									">"
+								}
+								outsideChevron
+								chevronWidth={50}
+								showSlither={false}
+								// showSlither = {true}
+								// infiniteLoop = {true}
+							>
 
-								<Container key = {idx}>
+								{this.props.loteos.map( (loteo, idx) =>
 
-									<Typography align = "center" variant="h6" gutterBottom>
+									<Card key={idx}
+										style={{
+											margin: 10,
+											textAlign: "center",
+										}}
+									>
+										<CardActionArea onClick={() => window.location.replace("/piece_of_ground/" + loteo.id)}>
 
-										{loteo.name}
+											<CardHeader
+												title={loteo.name}
+												subheader={loteo.description}
+											/>
 
-									</Typography>
+											<CardMedia
+												style={{
+													// top: 0,
+													// left: 0,
+													// width: 150,
+													// height: "50%",
+													// left: 0,
+													// width: 151,
+													paddingTop: '56.25%', // 16:9,
+													// paddingLeft: "0",
+													// marginLeft: '30'
+												}}
+												image={loteo.images[0]}
+											/>
 
-									<Typography align = "center" variant="body2" gutterBottom>
+											<CardContent>
 
-										{loteo.description}
+												<Typography align = "center" variant="body2" gutterBottom
+													style = {{
+														fontWeight: "bold",
+														// color: "gray",
+														// fontSize: 15,
+													}}
+												>
 
-									</Typography>
+													Desde {loteo.rounded_price} millones
 
-									<img 
-										src = {loteo.images[0]}
-										width = "300px"
-										height = "auto"
-									/>
+												</Typography>
 
-									<Typography align = "center" variant="body2" gutterBottom>
+											</CardContent>
 
-										Desde {loteo.rounded_price} millones
+										</CardActionArea>
 
-									</Typography>
+									</Card>
 
-								</Container>
-
-								)}
-						</ItemsCarousel>
+									)}
+							</ItemsCarousel>
+						
+						</Container>
 
 					</Container>
 
@@ -111,7 +154,7 @@ class Image_Gallery extends React.Component {
 					<p> Loading </p>
 				}
 
-			</Paper>
+			</Container>
 
 		)
 

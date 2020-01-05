@@ -1,7 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import indigo from 'material-ui/colors/indigo';
 import lightBlue from 'material-ui/colors/lightBlue';
-import red from 'material-ui/colors/red';
+// import red from 'material-ui/colors/red';
 
 export default createMuiTheme({
 	overrides: {
@@ -11,12 +11,18 @@ export default createMuiTheme({
 	        padding: "10px"
 	      }
 	    }
-	  },
+	},
 
 	palette: {
 	    primary: lightBlue,
 	    secondary: indigo // Indigo is probably a good match with pink
+	},
+
+	margin: {
+		normal: 20,
+		big: 50,
 	}
+
 });
 
 // import {cyan500, deepPurple500} from 'material-ui/colors';

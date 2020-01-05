@@ -7,6 +7,7 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
+import theme from "../../../libraries/material-ui/theme";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -29,54 +30,78 @@ class Loteos_Map_Component extends React.Component {
 
         return (
 
-            <Paper
-                // className = {useStyles}
-                // classes={{
-                //     root: classes.root, // class name, e.g. `classes-nesting-root-x`
-                //     label: classes.label, // class name, e.g. `classes-nesting-label-x`
-                // }}
-                // style = {styles.paperContainer}
-                // width={1}
+            <Container
+                disableGutters = {true}
+                maxWidth = {false}
                 style={{
-                    //     // width: "100%",
-                    //     // margin: 20,
-                    //     // padding: 20,
-                    //     // paddingLeft: "0px !important",
-                    backgroundImage: 'url("https://images.unsplash.com/photo-1464295440335-ee082a75ccca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80")',
-                    // backgroundImage: 'url("../../../static/images/valdivia.png")',
-                    // backgroundImage: 'url("../../../static/images/campos.jpg")',
-                    // backgroundImage: "url('../../../static/images/campos.jpg')",
-                    // backgroundImage: 'url(require("../../../static/images/campos.jpg"))',
-                    // backgroundImage: 'url(../../../static/images/campos.jpg)',
-                    //     // backgroundRepeat: "no-repeat",
+                    backgroundImage: 'url("https://firebasestorage.googleapis.com/v0/b/your-piece-of-ground-test.appspot.com/o/7921758ea7dfb78c2a4e4e754768c354.jpg?alt=media&token=65c95d59-ecec-48e0-ba20-72d2f9486f5a")',
                     backgroundSize: "cover",
-                    // backgroundColor: "red",
-                    padding: 50,
+                    padding: 40,
+                    paddingBottom: 100,
+                    width: "100%",
+                    backgroundColor: "yellow",
                 }}
 
             >
 
                 <Container>
 
-                    <Typography align="center" variant="h4" component="h2" gutterBottom>
+                    <Typography align="center" variant="h3" component="h2" gutterBottom style = {{fontWeight: "bold"}}>
 
                         Nuestros proyectos de parcelas
 
                     </Typography>
 
-                    <Typography align="center" variant="body2" gutterBottom>
+                    <Typography align="center" variant="body2" component = "p" gutterBottom style = {{margin: theme.margin.normal}}>
 
-                        {this.props.get_loteos ? this.props.num_loteos : 0} loteos - {this.props.num_pieces_ground} parcelas disponibles - Todas con facilidades de pago
+                        <span 
+                            style = {{
+                                color: "blue", 
+                                fontSize: 30, 
+                                fontWeight: "bold",
+                                }}
+                        >
+                                {this.props.get_loteos ? this.props.num_loteos + " " : "0 "} 
+                        </span> 
+                            
+                         loteos - 
+                         
+                        <span
+                            style={{
+                                color: "red", 
+                                fontSize: 30, 
+                                fontWeight: "bold",
+                            }}
+                        >
+
+                            {this.props.num_pieces_ground + " "} 
+                        
+                        </span> 
+
+                        parcelas disponibles - 
+
+                        <span
+                            style={{
+                                color: "yellow",
+                                fontSize: 30,
+                                fontWeight: "bold",
+                            }}
+                        >
+                         
+                            Todas con facilidades de pago
+
+                        </span>
 
                     </Typography>
 
                 </Container>
 
                 <Container
-                // style = {{
-                //     alignContent: "center",
-                //     justifyContent: "center"
-                // }}
+                    style = {{
+                        display: "flex",
+                        alignContent: "center",
+                        justifyContent: "center",
+                    }}
                 >
 
                     {/* <div style={{ height: '5vh', width: '5%' }}> */}
@@ -84,66 +109,59 @@ class Loteos_Map_Component extends React.Component {
                     {this.props.get_loteos
 
                         ?
-                        // <Link to="/piece_of_ground/UVYp2YvBV6xSXhFdI2za/" className="nav-link">
+                            <LeafletMap
+                                center={this.props.loteos[0].location}
+                                zoom={13}
+                                maxZoom={100}
+                                attributionControl={true}
+                                zoomControl={true}
+                                doubleClickZoom={true}
+                                scrollWheelZoom={true}
+                                dragging={true}
+                                animate={true}
+                                easeLinearity={0.35}
+                                style = {{
+                                    // backgroundColor: "red",
+                                    borderWidith: 100,
+                                    borderStyle: "solid",
+                                    borderColor: "white",
 
-                        //     <img 
-                        //         // class="center"
-                        //         // src = "http://www.citymetric.com/sites/default/files/article_body_2016/08/gmaps_6.png"
-                        //         src= {require("../../../static/images/valdivia.png")} 
-                        //         width = "800"
-                        //         height = "auto"
-                        //         style = {{
-                        //             display: "block",
-                        //             marginLeft: "auto",
-                        //             marginRight: "auto",
-                        //             // width: "50%",
-                        //         }}
-                        //     />
-                        // </Link>
-                        <LeafletMap
-                            center={[-39.838000, -73.236481]}
-                            zoom={13}
-                            maxZoom={100}
-                            attributionControl={true}
-                            zoomControl={true}
-                            doubleClickZoom={true}
-                            scrollWheelZoom={true}
-                            dragging={true}
-                            animate={true}
-                            easeLinearity={0.35}
-                        >
-                            <TileLayer
-                                url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-                            />
+                                }}
+                            >
+                                <TileLayer
+                                    url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+                                />
 
-                            {this.props.loteos.map((loteo, idx) =>
+                                {this.props.loteos.map((loteo, idx) =>
 
-                                <Marker key={idx} position={loteo.location} onClick={() => this.redirect_to_loteo_map(loteo)}>
+                                    <Marker key={idx} position={loteo.location} onClick={() => this.redirect_to_loteo_map(loteo)}>
 
-                                    <Popup>
+                                        <Popup>
 
-                                        {loteo.name}
+                                            {loteo.name}
 
-                                    </Popup>
+                                        </Popup>
 
-                                        </Marker>
+                                    </Marker>
 
-                                    )}
-                
+                                )}
+                    
 
-                                </LeafletMap>
+                            </LeafletMap>
 
-                :
+                        :
 
-                                <div> Loading </div>
+                            <div> 
+                                Loading 
+                            </div>
 
-                }
+                     }
 
                     {/* </div> */}
 
                 </Container>
 
-            </Paper >
+            </Container >
 
 		)
 
