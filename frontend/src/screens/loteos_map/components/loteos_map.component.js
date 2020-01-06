@@ -3,13 +3,10 @@ import React, { Component } from "react";
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 
 // material ui
-import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
 import theme from "../../../libraries/material-ui/theme";
-
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Box from '@material-ui/core/Box';
+import { CircularProgress } from "@material-ui/core";
 
 class Loteos_Map_Component extends React.Component {
 
@@ -30,21 +27,44 @@ class Loteos_Map_Component extends React.Component {
 
         return (
 
-            <Container
-                disableGutters = {true}
-                maxWidth = {false}
+            <Box
+                m={0}
+                // spacing={10} 
+                // xs={12}
+                // spacing = {0}
+                // disableGutters = {true}
+                // maxWidth = {false}
                 style={{
                     backgroundImage: 'url("https://firebasestorage.googleapis.com/v0/b/your-piece-of-ground-test.appspot.com/o/7921758ea7dfb78c2a4e4e754768c354.jpg?alt=media&token=65c95d59-ecec-48e0-ba20-72d2f9486f5a")',
+                    // margin: 0,
                     backgroundSize: "cover",
                     padding: 40,
-                    paddingBottom: 100,
-                    width: "100%",
-                    // backgroundColor: "yellow",
+                    paddingBottom: 200,
+                    // width: window.innerWidth,
+                    // width: "100%",
+                    // backgroundColor: "red",
+                    // margin: 0,
+                    // borderSpacing: 0,
+                    // marginLeft: 0,
+                    // padding: 0,
+                    // margin: 0+"!important",
+                    // padding: "0!important",
+                    // marginLeft: "-50px",
+                    // marginRight: "-50px",
+                    // flexGrow: 0,
+                    // maxWidth: `100%`,
+                    // flexBasis: `100%`,
+                    // left: 0,
+                    // position: 'absolute', left: 0, margin: 0
+                    // width: "auto",
+                    // marginTop: -1,
+                    // marginLeft: -1,
+                    // marginRight: -1,
                 }}
 
             >
 
-                <Container>
+                <Box>
 
                     <Typography align="center" variant="h3" component="h2" gutterBottom style = {{fontWeight: "bold"}}>
 
@@ -94,9 +114,9 @@ class Loteos_Map_Component extends React.Component {
 
                     </Typography>
 
-                </Container>
+                </Box>
 
-                <Container
+                <Box
                     style = {{
                         display: "flex",
                         alignContent: "center",
@@ -152,17 +172,20 @@ class Loteos_Map_Component extends React.Component {
 
                         :
 
-                            <div> 
-                                Loading 
-                            </div>
 
+                            <CircularProgress 
+                                    style = {{
+                                        alignSelf: "center",
+                                    }}
+                            />
+                                
                      }
 
                     {/* </div> */}
 
-                </Container>
+                </Box>
 
-            </Container >
+            </Box>
 
 		)
 

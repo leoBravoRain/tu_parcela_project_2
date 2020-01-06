@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 // material ui
-import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -37,7 +37,7 @@ class Piece_of_Ground_Details extends React.Component {
 
 		return (
 
-			<Container
+			<Box
 				style = {{
 					// margin: 20,
 					padding: theme.padding.big,
@@ -59,7 +59,7 @@ class Piece_of_Ground_Details extends React.Component {
 	
 				</Typography>
 
-				<Container
+				<Box
 					style = {{
 						margin: theme.margin.big,
 						// color: "white",
@@ -152,7 +152,7 @@ class Piece_of_Ground_Details extends React.Component {
 							)
 
 							:
-								<Container> Loading </Container>
+								<Box> Loading </Box>
 						}
 
 						</TableBody>
@@ -172,9 +172,9 @@ class Piece_of_Ground_Details extends React.Component {
 
 					</Typography>
 
-				</Container>
+				</Box>
 
-			</Container>
+			</Box>
 
 		)
 

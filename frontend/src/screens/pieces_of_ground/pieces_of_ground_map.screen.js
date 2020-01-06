@@ -16,7 +16,7 @@ import Pieces_of_Ground_Map_Component from "./components/pieces_of_ground_map.co
 // import Loteo_Description from "./components/loteo_description.component";
 
 // material ui
-import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 import { Button } from "@material-ui/core";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import theme from "../../libraries/material-ui/theme";
@@ -135,24 +135,13 @@ class Piece_of_Ground_Map extends Component {
 
 		return (
 
-			<Container
-				// disableGutters={true}
-				maxWidth={false}
-				// fixed = {false}
-				style={{
-					// backgroundColor: "red",
-					flexGrow: 1,
-					// width: "100%",
-				}}
-			>
-
-				{/* if loteos and pieces of ground are loaded */}
-				{this.state.get_loteo && this.state.get_pieces_of_ground
+			this.state.get_loteo && this.state.get_pieces_of_ground
 				
 				?
-					<Container
-						disableGutters={true}
-						maxWidth={false}
+					<Box
+						m = {0}
+						// disableGutters={true}
+						// maxWidth={false}
 						// fixed
 						// width={1}
 						style={{
@@ -192,7 +181,7 @@ class Piece_of_Ground_Map extends Component {
 						/>
 
 						{/* Call to action button (form of contact) */}
-						<Container
+						<Box
 							style = {{
 								display: "flex",
 								justifyContent: "center",
@@ -208,13 +197,11 @@ class Piece_of_Ground_Map extends Component {
 								</Button>
 							</Link>
 
-						</Container>
-					</Container>
+						</Box>
+					</Box>
 				:
 					<CircularProgress />
-				}
 
-		  	</Container>
 
 		);
 

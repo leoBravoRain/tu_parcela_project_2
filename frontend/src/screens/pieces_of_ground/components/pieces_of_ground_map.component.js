@@ -5,7 +5,7 @@ import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 import Dynamic_Pieces_of_Ground_Component from "./dynamic_pieces_of_ground.component";
 
 // material ui
-import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { CircularProgress } from "@material-ui/core";
@@ -89,169 +89,159 @@ class Pieces_of_Ground_Map_Component extends React.Component {
 
 		return (
 
-			<Container
-				disableGutters={true}
-				maxWidth={false}
-				style={{
-					backgroundImage: 'url("https://firebasestorage.googleapis.com/v0/b/your-piece-of-ground-test.appspot.com/o/7921758ea7dfb78c2a4e4e754768c354.jpg?alt=media&token=65c95d59-ecec-48e0-ba20-72d2f9486f5a")',
-					backgroundSize: "cover",
-					padding: 40,
-					paddingBottom: 100,
-					width: "100%",
-					// backgroundColor: "yellow",
-				}}
+			this.props.get_loteo && this.props.get_pieces_of_ground
 
-			>
+				?
 
-					{/* validate loteo */}
-					{
-						this.props.get_loteo && this.props.get_pieces_of_ground
+					<Box
+						style = {{
+							backgroundImage: 'url("https://firebasestorage.googleapis.com/v0/b/your-piece-of-ground-test.appspot.com/o/7921758ea7dfb78c2a4e4e754768c354.jpg?alt=media&token=65c95d59-ecec-48e0-ba20-72d2f9486f5a")',
+							// margin: 0,
+							backgroundSize: "cover",
+							padding: 40,
+							paddingBottom: 80,
+						}}
+					>
 
-							?
+						<Typography align="center" variant="h3" component="h2" gutterBottom style={{ fontWeight: "bold", margin: theme.margin.normal }}>
+						
+							Proyecto {this.props.loteo.name}
 
-								<Container>
+						</Typography>
+						
+						<Typography align = "center" variant="body2" gutterBottom style = {{fontWeight: "bold", color:"black", margin: theme.margin.normal, fontSize: 20}}>
 
-									<Typography align="center" variant="h3" component="h2" gutterBottom style={{ fontWeight: "bold", margin: theme.margin.normal }}>
+							<span
+								style={{
+									color: "red",
+									fontSize: 30,
+									fontWeight: "bold",
+								}}
+							>
+								{this.props.get_pieces_of_ground ? this.props.num_piece_of_ground + " ": 0 + " "} 
+							
+							</span>
+
+							parcelas disponibles
+
+						</Typography>
+
+						<Grid container spacing={0}
+							style = {{
+								margin: theme.margin.big,
+							}}
+						>
+
+							<Grid item xs={5} 
+								style = {{
+									// backgroundColor: "red",
+									display: "flex",
+									justifyContent: "center",
+									alignItems: "center",
+									// padding: 0,
+									// margin: 0,
+								}}
+							>
+
+								{this.state.get_pieces_of_ground_to_display
+								
+									?
+										<Dynamic_Pieces_of_Ground_Component
+											get_pieces_of_ground={this.state.get_pieces_of_ground_to_display}
+											pieces_of_ground={this.state.pieces_of_ground_to_display}
+										/>
+								
+									:
 									
-										Proyecto {this.props.loteo.name}
+										<CircularProgress/>
+								}
 
-									</Typography>
-									
-									<Typography align = "center" variant="body2" gutterBottom style = {{fontWeight: "bold", color:"black", margin: theme.margin.normal, fontSize: 20}}>
+							</Grid>
 
-										<span
-											style={{
-												color: "red",
-												fontSize: 30,
-												fontWeight: "bold",
-											}}
-										>
-											{this.props.get_pieces_of_ground ? this.props.num_piece_of_ground + " ": 0 + " "} 
-										
-										</span>
+							<Grid item xs={6} 
+								style = {{
+									// backgroundColor: "yellow"
+								}}
+							>
 
-										parcelas disponibles
+								<Box
+									style={{
+										display: "flex",
+										alignContent: "center",
+										justifyContent: "center",
+										// borderWidith: 10000,
+										// borderStyle: "solid",
+										// borderColor: "white",
+										// backgroundColor: "red",
+									}}
+								>
 
-									</Typography>
+									<LeafletMap
+										center={this.props.pieces_of_ground[0].location}
+										zoom={13}
+										maxZoom={100}
+										attributionControl={true}
+										zoomControl={true}
+										doubleClickZoom={true}
+										scrollWheelZoom={true}
+										dragging={true}
+										animate={true}
+										easeLinearity={0.35}
+										style={{
+											// backgroundColor: "red",
+											borderWidth: 10,
+											borderStyle: "solid",
+											borderColor: "white",
+											// width: "100%",
 
-									<Grid container spacing={0}
-										style = {{
-											margin: theme.margin.big,
 										}}
 									>
+										<TileLayer
+											url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+										/>
 
-										<Grid item xs={5} 
-											style = {{
-												// backgroundColor: "red",
-												display: "flex",
-												justifyContent: "center",
-												alignItems: "center",
-												// padding: 0,
-												// margin: 0,
-											}}
-										>
+										{this.props.pieces_of_ground.map((piece_of_ground, idx) =>
 
-											{this.state.get_pieces_of_ground_to_display
-											
-												?
-													<Dynamic_Pieces_of_Ground_Component
-														get_pieces_of_ground={this.state.get_pieces_of_ground_to_display}
-														pieces_of_ground={this.state.pieces_of_ground_to_display}
-													/>
-											
-												:
-												
-													<CircularProgress/>
-											}
+											<Marker key={idx} position={piece_of_ground.location} onClick={() => this.click_on_marker(idx)}>
 
-										</Grid>
+												<Popup>
 
-										<Grid item xs={6} 
-											style = {{
-												// backgroundColor: "yellow"
-											}}
-										>
+													{piece_of_ground.name}
 
-											<Container
-												style={{
-													display: "flex",
-													alignContent: "center",
-													justifyContent: "center",
-													// borderWidith: 10000,
-													// borderStyle: "solid",
-													// borderColor: "white",
-													// backgroundColor: "red",
-												}}
-											>
+												</Popup>
 
-												<LeafletMap
-													center={this.props.pieces_of_ground[0].location}
-													zoom={13}
-													maxZoom={100}
-													attributionControl={true}
-													zoomControl={true}
-													doubleClickZoom={true}
-													scrollWheelZoom={true}
-													dragging={true}
-													animate={true}
-													easeLinearity={0.35}
-													style={{
-														// backgroundColor: "red",
-														borderWidth: 10,
-														borderStyle: "solid",
-														borderColor: "white",
-														// width: "100%",
+											</Marker>
 
-													}}
-												>
-													<TileLayer
-														url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-													/>
+										)}
 
-													{this.props.pieces_of_ground.map((piece_of_ground, idx) =>
+									</LeafletMap>
 
-														<Marker key={idx} position={piece_of_ground.location} onClick={() => this.click_on_marker(idx)}>
+								</Box>
 
-															<Popup>
+							</Grid>
 
-																{piece_of_ground.name}
+						</Grid>
 
-															</Popup>
+						<Box>
 
-														</Marker>
+							<Typography align="center" variant="h4" gutterBottom
+								style = {{
+									color: "yellow",
+									fontWeight: "bold",
+									margin: theme.margin.big,
+								}}
+							>
 
-													)}
+								Todas con facilidades de pago
 
-												</LeafletMap>
+							</Typography>
 
-											</Container>
+						</Box>
 
-										</Grid>
+					</Box>
+				:	
 
-									</Grid>
-
-									<Container>
-
-										<Typography align="center" variant="h4" gutterBottom
-											style = {{
-												color: "yellow",
-												fontWeight: "bold",
-												margin: theme.margin.big,
-											}}
-										>
-
-											Todas con facilidades de pago
-
-										</Typography>
-
-									</Container>
-
-								</Container>
-							:	
-
-								<CircularProgress/>
-							}
-			</Container>
+					<CircularProgress/>
             
 		)
 

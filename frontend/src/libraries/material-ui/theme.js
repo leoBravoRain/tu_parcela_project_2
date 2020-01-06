@@ -9,8 +9,9 @@ export default createMuiTheme({
 	      root: {
 	        margin: "10px",
 			padding: "10px",
+			// backgroundColor: "red",
 	      }
-	    }
+		},
 	},
 
 	palette: {

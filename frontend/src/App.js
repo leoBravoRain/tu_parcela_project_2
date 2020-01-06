@@ -45,12 +45,16 @@ class App extends Component {
 
 						<Typography gutterBottom>
 
-							<img 
-								src={require("./static/images/logo.jpg")} 
-								width = "120"
-								height = "auto"
-								alt="logo" 
-							/>
+							<Link to="/" className="nav-link" style={styles.nav_item_text}>
+
+								<img 
+									src={require("./static/images/logo.jpg")} 
+									width = "120"
+									height = "auto"
+									alt="logo" 
+								/>
+
+							</Link>
 
 						</Typography>
 
@@ -63,16 +67,6 @@ class App extends Component {
 							</Typography>
 
 						</Link>
-
-						{/* <Link to="/piece_of_ground/UVYp2YvBV6xSXhFdI2za/" className="nav-link">
-
-							<Typography gutterBottom variant="h6" component="h6">	
-
-								Mapa de parcelas
-
-							</Typography>
-
-						</Link> */}
 
 						<Link to="/who_we_are/" className="nav-link" style={styles.nav_item_text}>
 

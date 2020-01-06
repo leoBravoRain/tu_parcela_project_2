@@ -8,10 +8,10 @@ import Image_Gallery from './components/loteos_image_gallery.component';
 import Loteos_Map_Component from "./components/loteos_map.component";
 
 // material ui
-import Container from '@material-ui/core/Container';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Typography from '@material-ui/core/Typography';
 import theme from "../../libraries/material-ui/theme";
+import Box from '@material-ui/core/Box';
 
 // Component 
 class Loteos_Map extends Component {
@@ -134,74 +134,67 @@ class Loteos_Map extends Component {
 		// return component
 		return (
 
-			<Container
+			this.state.get_loteos
+
+			?
+
+			<Box
+				m = {0}
 				// disableGutters={true}
-				maxWidth={false}
-				// fixed = {false}
-				style={{
-					// backgroundColor: "red",
-					flexGrow: 1,
+				// maxWidth={false}
+				// fixed
+				// width={1}
+				style = {{
+					// display: "flex",
+					// flexDirection: "column",
+					// backgroundColor: "blue",
+					// "first-child": {
+					// 	margin: 0
+					// }
+					// flex: 1,
+					// flexGrow: 1,
+					// height: 100,
 					// width: "100%",
+					// margin: 0,
+					// padding: 0,
+					// marginLeft: -100,
+					// marginRight: -100,
 				}}
 			>
 
-				{
-					this.state.get_loteos
+				<Loteos_Map_Component 
+					// spacing={0}
+					get_loteos = {this.state.get_loteos} 
+					num_loteos = {this.state.num_loteos}
+					num_pieces_ground = {this.state.num_pieces_ground}
+					loteos = {this.state.loteos}
+				/>
 
-					?
+				<Image_Gallery 
+					loteos = {this.state.loteos}
+					get_loteos = {this.state.get_loteos}
+				/>
 
-					<Container
-						disableGutters={true}
-						maxWidth={false}
-						// fixed
-						// width={1}
-						style = {{
-							// backgroundColor: "blue",
-							// height: 100,
-							// width: "100%",
-							// margin: 0,
-							// padding: 0,
-							// marginLeft: -100,
-							// marginRight: -100,
-						}}
-					>
+				<Typography align="center" variant="h5" component="h2" gutterBottom
+					color = "secondary"
+					style = {{
+						margin: theme.margin.big,
+						marginBottom: 100,
+						fontWeight: "bold",
+						textDecoration: "underline",
+						// color: theme.palette.primary,
+					}}
+				>
 
-						<Loteos_Map_Component 
-							get_loteos = {this.state.get_loteos} 
-							num_loteos = {this.state.num_loteos}
-							num_pieces_ground = {this.state.num_pieces_ground}
-							loteos = {this.state.loteos}
-						/>
+					VER NUESTROS PROYECTOS TERMINADOS
 
-						<Image_Gallery 
-							loteos = {this.state.loteos}
-							get_loteos = {this.state.get_loteos}
-						/>
+				</Typography>
 
-						<Typography align="center" variant="h5" component="h2" gutterBottom
-							color = "secondary"
-							style = {{
-								margin: theme.margin.big,
-								marginBottom: 100,
-								fontWeight: "bold",
-								textDecoration: "underline",
-								// color: theme.palette.primary,
-							}}
-						>
+			</Box>
 
-							VER NUESTROS PROYECTOS TERMINADOS
-	
-						</Typography>
+			:
 
-					</Container>
-
-					:
-
-						<CircularProgress />
-				}
-
-
-			</Container>
+				<CircularProgress />
 
 		);
 

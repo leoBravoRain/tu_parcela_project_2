@@ -5,6 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
 // material ui
+import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
@@ -22,7 +23,7 @@ class Loteo_Details extends React.Component {
 
 		return (
 			
-			<Container
+			<Box
 				style = {{
 					margin: 20,
 					padding: 20
@@ -33,7 +34,7 @@ class Loteo_Details extends React.Component {
 
 				?
 
-					<Container>
+					<Box>
 
 						<Typography align="center" variant="h3" component="h2" gutterBottom style={{ fontWeight: "bold", margin: theme.margin.big }}>
 
@@ -326,18 +327,18 @@ class Loteo_Details extends React.Component {
 
 						</Grid>
 
-					</Container>
+					</Box>
 				:
 
-					<Container>
+					<Box>
 
 						Loading
 
-					</Container>
+					</Box>
 
 				}
 
-			</Container>
+			</Box>
 
 
 
