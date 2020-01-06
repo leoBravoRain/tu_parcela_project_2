@@ -35,7 +35,7 @@ class Who_We_Are extends  React.Component {
 
                 />
 
-				<p> Si quieres contactarnos, no dudes en hacerlo a través de nuestro correo electrónico: <b> tuparcelaen5simplespasos@gmail.com </b> </p>
+				{/* <p> Si quieres contactarnos, no dudes en hacerlo a través de nuestro correo electrónico: <b> tuparcelaen5simplespasos@gmail.com </b> </p> */}
 				</Container>
 			</Paper>
 		);

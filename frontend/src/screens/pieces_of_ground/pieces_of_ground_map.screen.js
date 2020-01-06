@@ -192,9 +192,35 @@ class Piece_of_Ground_Map extends Component {
 						>
 
 							<Link to="/ask_from_users/">
-								<Button align = "center" variant="contained" color="secondary">
-									Enviar consulta ahora ya
+								<Button align = "center" variant="contained" color="primary"
+									style={{
+										margin: theme.margin.normal,
+										color: "white",
+										borderRadius: 50,
+										marginBottom: 100,
+										// textAlign: "center",
+										// alignSelf: "center",
+									}}
+								>
+									Enviar consulta
 								</Button>
+							</Link>
+
+							<Link to="/contact_us/">
+								<Button align="center" variant="contained" color="primary"
+									style={{
+										margin: theme.margin.normal,
+										color: "white",
+										borderRadius: 50,
+										marginBottom: 100,
+										// textAlign: "center",
+										// alignSelf: "center",
+									}}
+
+								>
+									Solicitar visita
+								</Button>
+
 							</Link>
 
 						</Box>

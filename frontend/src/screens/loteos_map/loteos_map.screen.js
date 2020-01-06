@@ -12,6 +12,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Typography from '@material-ui/core/Typography';
 import theme from "../../libraries/material-ui/theme";
 import Box from '@material-ui/core/Box';
+import { Button } from "@material-ui/core";
 
 // Component 
 class Loteos_Map extends Component {
@@ -175,20 +176,65 @@ class Loteos_Map extends Component {
 					get_loteos = {this.state.get_loteos}
 				/>
 
-				<Typography align="center" variant="h5" component="h2" gutterBottom
-					color = "secondary"
+				<Box
 					style = {{
-						margin: theme.margin.big,
-						marginBottom: 100,
-						fontWeight: "bold",
-						textDecoration: "underline",
-						// color: theme.palette.primary,
-					}}
+						display: "flex",
+						flexDirection: "row",
+						justifyContent: "center",
+						alignItems: "center",
+					}}				
 				>
 
-					VER NUESTROS PROYECTOS TERMINADOS
+					{/* <Typography align="center" variant="h5" component="h2" gutterBottom
+						color = "secondary"
+						style = {{
+							margin: theme.margin.big,
+							marginBottom: 100,
+							fontWeight: "bold",
+							textDecoration: "underline",
+							// color: theme.palette.primary,
+						}}
+						>
 
-				</Typography>
+						VER NUESTROS PROYECTOS TERMINADOS
+
+					</Typography> */}
+					<Button align="center" variant="contained" color="primary"
+						style={{
+							margin: theme.margin.normal,
+							color: "white",
+							borderRadius: 50,
+							marginBottom: 100,
+							// textAlign: "center",
+							// alignSelf: "center",
+						}}
+					>
+
+							Ver nuestros proyectos terminados
+						{/* </Typography> */}
+
+					</Button>
+
+					<Button align="center" variant="contained" color="primary"
+						style={{
+							margin: theme.margin.normal,
+							color: "white",
+							borderRadius: 50,
+							marginBottom: 100,
+							// textAlign: "center",
+							// alignSelf: "center",
+						}}
+					>
+
+						{/* <Typography gutterBottom variant="a" component="h6"> */}
+
+							Otros terrenos
+
+						{/* </Typography> */}
+
+					</Button>
+				</Box>
+
 
 			</Box>
 

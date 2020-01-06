@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 // material ui
 import Paper from '@material-ui/core/Paper';
-import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -18,17 +18,22 @@ class Ask_from_Users extends React.Component {
                 style={{
                     margin: 20,
                     padding: 20,
+                    // justifyContent: "center",
+                    // alignItems: "start",
+                    padding: 50,
+                    display: "flex",
+                    width: "100%"
                 }}
             >
                 <form noValidate autoComplete="off">
 
-                    <Container>
+                    <Box>
                         <Typography variant="h5" gutterBottom>
                             Enviar consulta
                         </Typography>
-                    </Container>
+                    </Box>
 
-                    <Container>
+                    <Box>
                         <TextField
                             id="standard-name"
                             label="Nombre"
@@ -36,9 +41,9 @@ class Ask_from_Users extends React.Component {
                             // onChange={handleChange('name')}
                             margin="normal"
                         />
-                    </Container>
+                    </Box>
 
-                    <Container>
+                    <Box>
                         <TextField
                             id="standard-name"
                             label="Correo electrónico"
@@ -46,27 +51,41 @@ class Ask_from_Users extends React.Component {
                             // onChange={handleChange('name')}
                             margin="normal"
                         />
-                    </Container>
+                    </Box>
 
-                    <Container>
+                    <Box>
                         <TextField
-                            id="standard-name"
+                            type = "area"
+                            // multiline = {true}
                             label="Consulta"
                             // value={values.name}
                             // onChange={handleChange('name')}
                             margin="normal"
+                            // label="Multiline"
+                            multiline
+                            rows="4"
+                            
                         />
-                    </Container>
+                    </Box>
 
-                    <Container>
-
-                        <Button variant="contained" onClick = {()=>alert("¡Consulta enviada!")}>
+                    <Box>
+                        
+                        <Button variant="contained" color = "primary" onClick = {()=>alert("¡Consulta enviada!")}
+                            style={{
+                                margin: 20,
+                                color: "white",
+                                borderRadius: 50,
+                                marginBottom: 100,
+                                // textAlign: "center",
+                                // alignSelf: "center",
+                            }}
+                        >
 
                             Enviar consulta
 
                         </Button>
 
-                    </Container>
+                    </Box>
                     
                 </form>
                 

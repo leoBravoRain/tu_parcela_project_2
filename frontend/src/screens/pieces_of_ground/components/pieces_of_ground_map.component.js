@@ -96,7 +96,8 @@ class Pieces_of_Ground_Map_Component extends React.Component {
 					<Box
 						style = {{
 							backgroundImage: 'url("https://firebasestorage.googleapis.com/v0/b/your-piece-of-ground-test.appspot.com/o/7921758ea7dfb78c2a4e4e754768c354.jpg?alt=media&token=65c95d59-ecec-48e0-ba20-72d2f9486f5a")',
-							// margin: 0,
+							backgroundPosition: "center top",
+							backgroundRepeat: "no-repeat",
 							backgroundSize: "cover",
 							padding: 40,
 							paddingBottom: 80,

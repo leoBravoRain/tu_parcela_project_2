@@ -20,7 +20,8 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import {Link as Link_} from '@material-ui/core/Link';
+// import {Link as Link_} from '@material-ui/core/Link';
+import { Button } from "@material-ui/core";
 
 // Component 
 class App extends Component {
@@ -88,16 +89,6 @@ class App extends Component {
 
 						</Link>
 
-						{/* external link */}
-						<a href="http://tuparcelaen5simplespasos.cl/clubdeinversionistas/" style={styles.nav_item_text}>
-
-							<Typography gutterBottom variant="a" component="h6">	
-
-								Club de Inversionistas
-
-							</Typography>
-
-						</a>
 
 						<Link to="/ask_from_users/" className="nav-link" style={styles.nav_item_text}>
 
@@ -109,15 +100,46 @@ class App extends Component {
 
 						</Link>
 
-						<Link to="/contact_us/" className="nav-link" style={styles.nav_item_text}>
+							<Link to="/contact_us/" className="nav-link" style={styles.nav_item_text, { "flex": 1, "color": "white" }}>
 
 							<Typography gutterBottom variant="h6" component="h6">
 
-								Solicita visita
+								Solicitar visita
 
 							</Typography>
 
 						</Link>
+
+						{/* <Link className="nav-link" style={styles.nav_item_text, { "flex": 1, "color": "white" }}>
+
+							<Typography gutterBottom variant="h6" component="h6">
+
+								Otros terrenos
+	
+							</Typography>
+
+						</Link> */}
+
+						{/* external link */}
+						{/* <a href="http://tuparcelaen5simplespasos.cl/clubdeinversionistas/" style={styles.nav_item_text}> */}
+
+							<Button align="center" variant="contained" color="primary" onClick={() => { window.location.replace("http://tuparcelaen5simplespasos.cl/clubdeinversionistas/")}}
+								style = {{
+									color: "white",
+									borderRadius: 50,
+									textAlign: "center",
+								}}
+							>
+
+								{/* <Typography gutterBottom variant="a" component="h6">	 */}
+
+									Club de Inversionistas
+
+								{/* </Typography> */}
+
+							</Button>
+
+						{/* </a> */}
 
 					</Toolbar>
 

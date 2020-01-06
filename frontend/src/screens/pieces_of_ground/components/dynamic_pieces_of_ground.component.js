@@ -48,7 +48,7 @@ class Dynamic_Pieces_of_Ground_Component extends React.Component {
                                     style={{
                                         // top: 0,
                                         // left: 0,
-                                        width: 150,
+                                        width: 250,
                                         // height: "50%",
                                         // left: 0,
                                         // width: 151,

@@ -5,7 +5,9 @@ import {fs} from "../../libraries/firebase/firebase";
 
 // material ui
 import Paper from '@material-ui/core/Paper';
-import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import { CircularProgress } from "@material-ui/core";
 
 const q_a = [
 
@@ -91,44 +93,72 @@ class Questions_Answers extends  React.Component {
                 }}
             >
 
-				<h2>
+				<Box
+					style = {{
+						display: "flex",
+						flexDirection: "column",
+						justifyContent: "center",
+						alignItems: "start",
+					}}
+				>
 
-					Preguntas frecuentes sobre bienes raíces
+					<Typography align="center" variant="h3" component="h2" gutterBottom 
+						style={{ 
+							// fontWeight: "bold" 
+							margin: 20,
+						}}
+						
+					>
 
-				</h2>
+						Preguntas frecuentes sobre bienes raíces
 
-					{this.state.get_questions_answers 
+					</Typography>
 
-						? 
+						{this.state.get_questions_answers 
 
-					        this.state.questions_answers.map( (q_a, idx) => 
+							? 
 
-					        	<div key = {idx}>
+								this.state.questions_answers.map( (q_a, idx) => 
 
-					        		<b>
+									<Box key = {idx}>
 
-					        			{q_a.question}
+										<Typography align="center" variant="body2" component="p" gutterBottom
+											style={{
+												fontWeight: "bold",
+												margin: 20,
+											}}
 
-					        		</b>
+										>
 
-					        		<p>
+											{q_a.question}
 
-					        			{q_a.answer}
+										</Typography>
 
-					        		</p>
+										<Typography align="center" variant="body2" component="p" gutterBottom
+											style={{
+												// fontWeight: "bold" 
+												margin: 20,
+											}}
+
+										>
+
+											{q_a.answer}
+
+										</Typography>
 
 
-					        	</div>
+									</Box>
 
-					        )
-						      
+								)
+								
 
-				    	:
+							:
 
-				    		<div> Loading </div>
+								<CircularProgress />
 
-			    	}
+						}
 
+				</Box>
 			</Paper>
 		);
 

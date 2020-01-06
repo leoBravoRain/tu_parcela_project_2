@@ -1,7 +1,7 @@
 import React from "react";
 
 // material ui
-import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import theme from "../../../libraries/material-ui/theme";
 import Card from '@material-ui/core/Card';
@@ -40,9 +40,10 @@ class Image_Gallery extends React.Component {
 
 		return (
 
-			<Container
+			<Box
 				style = {{
-					margin: 20,
+					margin: theme.margin.normal,
+					marginTop: 50,
 					padding: 20
 				}}
 			>
@@ -51,7 +52,7 @@ class Image_Gallery extends React.Component {
 
 				?
 
-					<Container
+					<Box
 						// p = {3}
 					> 
 
@@ -67,7 +68,7 @@ class Image_Gallery extends React.Component {
 
 						</Typography>
 
-						<Container
+						<Box
 							style = {{
 								margin: theme.margin.big,
 							}}
@@ -103,7 +104,7 @@ class Image_Gallery extends React.Component {
 										<CardActionArea onClick={() => window.location.replace("/piece_of_ground/" + loteo.id)}>
 
 											<CardHeader
-												title={loteo.name}
+												title={<b> { loteo.name} </b>}
 												subheader={loteo.description}
 											/>
 
@@ -128,7 +129,7 @@ class Image_Gallery extends React.Component {
 													style = {{
 														fontWeight: "bold",
 														// color: "gray",
-														// fontSize: 15,
+														fontSize: 20,
 													}}
 												>
 
@@ -145,16 +146,16 @@ class Image_Gallery extends React.Component {
 									)}
 							</ItemsCarousel>
 						
-						</Container>
+						</Box>
 
-					</Container>
+					</Box>
 
 				:
 
 					<p> Loading </p>
 				}
 
-			</Container>
+			</Box>
 
 		)
 
