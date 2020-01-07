@@ -104,7 +104,7 @@ class Image_Gallery extends React.Component {
 										<CardActionArea onClick={() => window.location.replace("/piece_of_ground/" + loteo.id)}>
 
 											<CardHeader
-												title={<b> { loteo.name} </b>}
+												title={<b style = {{color: "blue", fontSize: 40,}}> { loteo.name} </b>}
 												subheader={loteo.description}
 											/>
 

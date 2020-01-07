@@ -13,6 +13,10 @@ import Who_We_Are from './screens/who_we_are/who_we_are.screen';
 import Questions_Answers from './screens/questions_answers/questions_answers.screen';
 import Ask_from_Users from './screens/ask_from_users/ask_from_users.screen';
 import Contact_Us from './screens/contact_us/contact_us.screen';
+import Admin from "./screens/admin/admin.screen";
+import Edit_Loteo from "./screens/admin/edit_loteo.screen";
+import Admin_Pieces_of_Ground from "./screens/admin/list_pieces_of_ground.screen";
+import Edit_Piece_of_Ground from "./screens/admin/edit_piece_of_ground.screen";
 
 // material ui
 import theme from './libraries/material-ui/theme';
@@ -162,6 +166,15 @@ class App extends Component {
 
 					<Route path="/contact_us/" exact component={Contact_Us} />
 
+					{/* admin page */}
+					<Route path="/admin/" exact component={Admin} />
+
+					<Route path="/edit_loteo/:id_loteo" exact component={Edit_Loteo} />
+
+					<Route path="/list_pieces_of_ground/:id_loteo" exact component={Admin_Pieces_of_Ground} />
+
+					<Route path="/edit_piece_of_ground/:id_piece_of_ground" exact component={Edit_Piece_of_Ground} />
+					
 				</Router>
 
 			</MuiThemeProvider>

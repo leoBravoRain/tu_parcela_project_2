@@ -4,9 +4,10 @@ import React, { Component } from "react";
 import {fs} from "../../libraries/firebase/firebase";
 
 // material ui
+import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
+// import Box from '@material-ui/core/Box';
 import { CircularProgress } from "@material-ui/core";
 
 const q_a = [
@@ -89,7 +90,11 @@ class Questions_Answers extends  React.Component {
 			<Paper
                 style = {{
                     margin: 20,
-                    padding: 20,
+					padding: 20,
+					backgroundColor: "#87D8FF",
+					display: "flex",
+					flex: 1,
+
                 }}
             >
 
@@ -110,7 +115,7 @@ class Questions_Answers extends  React.Component {
 						
 					>
 
-						Preguntas frecuentes sobre bienes raíces
+						Preguntas frecuentes sobre parcelas y bienes raíces
 
 					</Typography>
 

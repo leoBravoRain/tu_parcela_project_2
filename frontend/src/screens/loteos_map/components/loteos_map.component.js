@@ -36,7 +36,7 @@ class Loteos_Map_Component extends React.Component {
                 // maxWidth = {false}
                 style={{
                     backgroundImage: 'url("https://firebasestorage.googleapis.com/v0/b/your-piece-of-ground-test.appspot.com/o/7921758ea7dfb78c2a4e4e754768c354.jpg?alt=media&token=65c95d59-ecec-48e0-ba20-72d2f9486f5a")',
-                    backgroundPosition: "center top",
+                    backgroundPosition: "bottom",
                     backgroundRepeat: "no-repeat",
                     // margin: 0,
                     backgroundSize: "cover",
@@ -83,10 +83,10 @@ class Loteos_Map_Component extends React.Component {
                                 fontWeight: "bold",
                                 }}
                         >
-                                {this.props.get_loteos ? this.props.num_loteos + " " : "0 "} 
+                                {this.props.get_loteos ? "    " + this.props.num_loteos + "   " : "0 "} 
                         </span> 
                             
-                         loteos - 
+                         loteos 
                          
                         <span
                             style={{
@@ -96,11 +96,11 @@ class Loteos_Map_Component extends React.Component {
                             }}
                         >
 
-                            {this.props.num_pieces_ground + " "} 
+                            { "  " + this.props.num_pieces_ground + "   "} 
                         
                         </span> 
 
-                        parcelas disponibles - 
+                        parcelas disponibles
 
                         <span
                             style={{

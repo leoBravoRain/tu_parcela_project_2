@@ -13,6 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import theme from "../../libraries/material-ui/theme";
 import Box from '@material-ui/core/Box';
 import { Button } from "@material-ui/core";
+import FacebookIcon from '@material-ui/icons/Facebook';
+import InstagramIcon from '@material-ui/icons/Instagram';
 
 // Component 
 class Loteos_Map extends Component {
@@ -234,6 +236,33 @@ class Loteos_Map extends Component {
 
 					</Button>
 				</Box>
+				<Box
+					style={{
+						display: "flex",
+						flexDirection: "row",
+						justifyContent: "center",
+						alignItems: "center",
+						margin: 0,
+						// width: "50%",
+						// maxWidth: "50%",
+						// alignSelf: "center",
+						// backgroundColor: "red",
+						// flex: 1,
+					}}	
+				>
+					<Button onClick={() => { window.location.replace("https://www.facebook.com/tuparcelaen5simplespasos/")}}>
+						<FacebookIcon/>
+					</Button>
+					<Button onClick={() => { window.location.replace("https://www.instagram.com/tu_parcela_en_5_simples_pasos/") }}>
+						<InstagramIcon />
+					</Button>
+					
+				</Box>
+				<Typography align="center" variant="h6" component="h6" gutterBottom style={{ fontWeight: "bold", margin: theme.margin.normal, marginTop: 50, }}>
+
+					¡Mantente actualizado!
+
+				</Typography>
 
 
 			</Box>
@@ -256,6 +285,7 @@ const styles = {
 		marginBottom: 100,
 		flex: 1,
 		maxWidth: "30%",
+		backgroundColor: "green",
 	}
 }
 

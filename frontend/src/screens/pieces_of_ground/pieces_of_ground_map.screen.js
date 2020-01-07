@@ -161,9 +161,15 @@ class Piece_of_Ground_Map extends Component {
 							get_pieces_of_ground = {this.state.get_pieces_of_ground}
 							num_piece_of_ground = {this.state.num_piece_of_ground}
 							pieces_of_ground = {this.state.pieces_of_ground}
+							// style = {{
+							// 	backgroundColor: "green",
+							// }}
 						/>
 
 						<Piece_of_Ground_Details 
+							// style={{
+							// 	backgroundColor: "green",
+							// }}
 							get_pieces_of_ground = {this.state.get_pieces_of_ground}
 							pieces_of_ground = {this.state.pieces_of_ground}
 						/>
@@ -175,6 +181,9 @@ class Piece_of_Ground_Map extends Component {
 						/> */}
 
 						<Loteo_Details 
+							// style={{
+							// 	backgroundColor: "green",
+							// }}
 							get_loteo = {this.state.get_loteo}
 							loteo = {this.state.loteo} 
 							get_pieces_of_ground = {this.state.get_pieces_of_ground}
@@ -192,7 +201,7 @@ class Piece_of_Ground_Map extends Component {
 								// alignSelf: "center",
 								// backgroundColor: "red",
 								// flex: 1,
-								margin: theme.margin.normal,
+								// margin: theme.margin.normal,
 							}}
 						>
 
@@ -227,6 +236,9 @@ class Piece_of_Ground_Map extends Component {
 							</Link>
 
 						</Box>
+						<Box>
+							nuevo cambio
+						</Box>
 					</Box>
 				:
 					<CircularProgress />
@@ -243,6 +255,7 @@ const styles = {
 		margin: theme.margin.normal,
 		color: "white",
 		borderRadius: 50,
+		// borderWidth: 100,
 		marginBottom: 100,
 		flex: 1,
 		maxWidth: "90%",
