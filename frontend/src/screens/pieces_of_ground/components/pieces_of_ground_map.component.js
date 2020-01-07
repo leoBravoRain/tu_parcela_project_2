@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // for map
-import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Map as LeafletMap, TileLayer, Marker, Popup, Tooltip } from 'react-leaflet';
 
 import Dynamic_Pieces_of_Ground_Component from "./dynamic_pieces_of_ground.component";
 
@@ -204,6 +204,13 @@ class Pieces_of_Ground_Map_Component extends React.Component {
 										{this.props.pieces_of_ground.map((piece_of_ground, idx) =>
 
 											<Marker key={idx} position={piece_of_ground.location} onClick={() => this.click_on_marker(idx)}>
+
+												<Tooltip
+													// style = {{backgroundColor: "red"}} 
+													permanent={true}
+												>
+													{idx+1}
+												</Tooltip>
 
 												<Popup>
 

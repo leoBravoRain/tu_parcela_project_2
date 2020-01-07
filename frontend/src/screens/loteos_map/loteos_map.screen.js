@@ -182,6 +182,11 @@ class Loteos_Map extends Component {
 						flexDirection: "row",
 						justifyContent: "center",
 						alignItems: "center",
+						// width: "50%",
+						// maxWidth: "50%",
+						// alignSelf: "center",
+						// backgroundColor: "red",
+						// flex: 1,
 					}}				
 				>
 
@@ -200,14 +205,7 @@ class Loteos_Map extends Component {
 
 					</Typography> */}
 					<Button align="center" variant="contained" color="primary"
-						style={{
-							margin: theme.margin.normal,
-							color: "white",
-							borderRadius: 50,
-							marginBottom: 100,
-							// textAlign: "center",
-							// alignSelf: "center",
-						}}
+						style={styles.bottom_button}
 					>
 
 							Ver nuestros proyectos terminados
@@ -215,20 +213,22 @@ class Loteos_Map extends Component {
 
 					</Button>
 
-					<Button align="center" variant="contained" color="primary"
-						style={{
-							margin: theme.margin.normal,
-							color: "white",
-							borderRadius: 50,
-							marginBottom: 100,
-							// textAlign: "center",
-							// alignSelf: "center",
-						}}
+					<Button align="center" variant="contained" color="secondary"
+							style={{
+								margin: theme.margin.normal,
+								color: "white",
+								borderRadius: 50,
+								marginBottom: 100,
+								flex: 1,
+								maxWidth: "30%",
+								// color: "red",
+								// backgroundColor: "red",
+							}}
 					>
 
 						{/* <Typography gutterBottom variant="a" component="h6"> */}
 
-							Otros terrenos
+							Otras Propiedades
 
 						{/* </Typography> */}
 
@@ -246,6 +246,17 @@ class Loteos_Map extends Component {
 
 	}
 
+}
+
+const styles = {
+	bottom_button: {
+		margin: theme.margin.normal,
+		color: "white",
+		borderRadius: 50,
+		marginBottom: 100,
+		flex: 1,
+		maxWidth: "30%",
+	}
 }
 
 export default Loteos_Map;

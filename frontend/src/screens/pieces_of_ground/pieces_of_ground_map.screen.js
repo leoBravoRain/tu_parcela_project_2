@@ -182,24 +182,35 @@ class Piece_of_Ground_Map extends Component {
 
 						{/* Call to action button (form of contact) */}
 						<Box
-							style = {{
+							style={{
 								display: "flex",
+								flexDirection: "row",
 								justifyContent: "center",
 								alignItems: "center",
+								// width: "50%",
+								// maxWidth: "50%",
+								// alignSelf: "center",
 								// backgroundColor: "red",
-								margin: theme.margin.big,
+								// flex: 1,
+								margin: theme.margin.normal,
 							}}
 						>
 
 							<Link to="/ask_from_users/">
 								<Button align = "center" variant="contained" color="primary"
+									// style={ styles.bottom_button }
 									style={{
 										margin: theme.margin.normal,
 										color: "white",
 										borderRadius: 50,
 										marginBottom: 100,
-										// textAlign: "center",
-										// alignSelf: "center",
+										flex: 1,
+										maxWidth: "90%",
+										padding: 30,
+										paddingLeft: 80,
+										paddingRight: 80,
+										fontSize: 20,
+										backgroundColor: "green",
 									}}
 								>
 									Enviar consulta
@@ -207,16 +218,8 @@ class Piece_of_Ground_Map extends Component {
 							</Link>
 
 							<Link to="/contact_us/">
-								<Button align="center" variant="contained" color="primary"
-									style={{
-										margin: theme.margin.normal,
-										color: "white",
-										borderRadius: 50,
-										marginBottom: 100,
-										// textAlign: "center",
-										// alignSelf: "center",
-									}}
-
+								<Button align="center" variant="contained" color="secondary"
+									style={styles.bottom_button}
 								>
 									Solicitar visita
 								</Button>
@@ -233,6 +236,21 @@ class Piece_of_Ground_Map extends Component {
 
 	}
 
+}
+
+const styles = {
+	bottom_button: {
+		margin: theme.margin.normal,
+		color: "white",
+		borderRadius: 50,
+		marginBottom: 100,
+		flex: 1,
+		maxWidth: "90%",
+		padding: 30,
+		paddingLeft: 80,
+		paddingRight: 80,
+		fontSize: 20,
+	}
 }
 
 export default Piece_of_Ground_Map;

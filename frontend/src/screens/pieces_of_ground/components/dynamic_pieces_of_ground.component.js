@@ -73,7 +73,12 @@ class Dynamic_Pieces_of_Ground_Component extends React.Component {
 
                                     </Typography>
 
-                                    <Typography variant="body2" gutterBottom>
+                                    <Typography variant="body2" gutterBottom
+                                        style = {{
+                                            fontWeight: "bold",
+                                            fontSize: 15,
+                                        }}
+                                    >
 
                                         $ {piece_of_ground.price}
 

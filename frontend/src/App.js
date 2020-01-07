@@ -38,7 +38,7 @@ class App extends Component {
 				<Router>
 
 					<AppBar 
-						color = "secondary"
+						color = "primary"
 						position="static"
 					>
 
@@ -123,7 +123,12 @@ class App extends Component {
 						{/* external link */}
 						{/* <a href="http://tuparcelaen5simplespasos.cl/clubdeinversionistas/" style={styles.nav_item_text}> */}
 
-							<Button align="center" variant="contained" color="primary" onClick={() => { window.location.replace("http://tuparcelaen5simplespasos.cl/clubdeinversionistas/")}}
+							<Button align="center" variant="contained" color="secondary" 
+
+								onClick={() => { 
+									window.location.replace("http://tuparcelaen5simplespasos.cl/clubdeinversionistas/")
+								}}
+								
 								style = {{
 									color: "white",
 									borderRadius: 50,
