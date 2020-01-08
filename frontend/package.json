@@ -11,12 +11,14 @@
     "leaflet": "^1.5.1",
     "material-ui": "^1.0.0-beta.47",
     "react": "^16.9.0",
+    "react-alice-carousel": "^1.17.2",
     "react-dom": "^16.9.0",
     "react-items-carousel": "^2.8.0",
     "react-leaflet": "^2.4.0",
-    "react-responsive-carousel": "^3.1.50",
+    "react-multi-carousel": "^2.5.0",
+    "react-responsive-carousel": "^3.1.51",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.0"
+    "react-scripts": "^3.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

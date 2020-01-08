@@ -175,20 +175,21 @@ class Piece_of_Ground_Details extends React.Component {
 
 					</Box>
 
-					<Typography align="center" variant="body2" component="p" gutterBottom
-						style = {{
-							margin: theme.margin.big,
-							color: "white",
-							fontSize: 20,
-							fontWeight: "bold",
-						}}
-					>
-
-						Esto será un texto sobre el loteo
-
-					</Typography>
 
 				</Box>
+				
+				<Typography align="center" variant="body2" component="p" gutterBottom
+					style = {{
+						margin: theme.margin.big,
+						color: "white",
+						fontSize: 20,
+						fontWeight: "bold",
+					}}
+				>
+
+					Esto será un texto sobre el loteo
+
+				</Typography>
 
 			</Box>
 

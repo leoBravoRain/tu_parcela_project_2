@@ -12,6 +12,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Typography from '@material-ui/core/Typography';
 import theme from "../../libraries/material-ui/theme";
 import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
 import { Button } from "@material-ui/core";
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
@@ -206,16 +207,67 @@ class Loteos_Map extends Component {
 						VER NUESTROS PROYECTOS TERMINADOS
 
 					</Typography> */}
-					<Button align="center" variant="contained" color="primary"
-						style={styles.bottom_button}
+					<Grid container spacing={0}
+						style={{
+							// margin: theme.margin.big,
+							// backgroundColor: "red",
+							// display: "flex",
+							// alignItems: "center",
+							// justifyContent: "center",
+							// flexWrap: "wrap",
+
+
+						}}
 					>
 
-							Ver nuestros proyectos terminados
-						{/* </Typography> */}
+						<Grid item xs={12} sm={6}
+							style={{
+								// backgroundColor: "red",
+								display: "flex",
+								justifyContent: "center",
+								// alignItems: "center",
+								// padding: 0,
+								// margin: 0,
+								// margin: 10,
+							}}
+						>
+							<Button align="center" variant="contained" color="primary"
+								// style={styles.bottom_button}
+								style={{
+									margin: theme.margin.normal,
+									color: "white",
+									borderRadius: 50,
+									marginBottom: 100,
+									flex: 1,
+									maxWidth: "30%",
+									padding: 20,
+									// paddingLeft: 20,
+									// paddingRight: 20,
+									// color: "red",
+									backgroundColor: "green",
+								}}
+							>
 
-					</Button>
+									Ver nuestros proyectos terminados
+								{/* </Typography> */}
 
-					<Button align="center" variant="contained" color="secondary"
+							</Button>
+
+					</Grid>
+
+					<Grid item xs={12} sm={6}
+						style={{
+							// backgroundColor: "red",
+							display: "flex",
+							justifyContent: "center",
+							// alignItems: "center",
+							// padding: 0,
+							// margin: 0,
+							// margin: 10,
+						}}
+					>
+
+						<Button align="center" variant="contained" color="secondary"
 							style={{
 								margin: theme.margin.normal,
 								color: "white",
@@ -223,18 +275,25 @@ class Loteos_Map extends Component {
 								marginBottom: 100,
 								flex: 1,
 								maxWidth: "30%",
+								padding: 20,
+								// paddingLeft: 20,
+								// paddingRight: 20,
 								// color: "red",
 								// backgroundColor: "red",
 							}}
-					>
+						>
 
-						{/* <Typography gutterBottom variant="a" component="h6"> */}
+							{/* <Typography gutterBottom variant="a" component="h6"> */}
 
-							Otras Propiedades
+								Otras Propiedades
 
-						{/* </Typography> */}
+							{/* </Typography> */}
 
-					</Button>
+						</Button>
+
+					</Grid>
+
+				</Grid>
 				</Box>
 				<Box
 					style={{
@@ -243,6 +302,8 @@ class Loteos_Map extends Component {
 						justifyContent: "center",
 						alignItems: "center",
 						margin: 0,
+						// paddingLeft: 100,
+						// paddingRight: 100,
 						// width: "50%",
 						// maxWidth: "50%",
 						// alignSelf: "center",

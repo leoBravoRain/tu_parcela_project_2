@@ -27,7 +27,7 @@ class Dynamic_Pieces_of_Ground_Component extends React.Component {
 
                         <Card key = {idx} 
                             style = {{
-                                margin: 5,
+                                margin: 20,
                                 display: "flex",
                                 // justifyContent: "center",
                                 // alignItems: "center"

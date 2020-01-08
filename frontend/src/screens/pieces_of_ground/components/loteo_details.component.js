@@ -26,7 +26,8 @@ class Loteo_Details extends React.Component {
 			<Box
 				style = {{
 					margin: 20,
-					padding: 20
+					padding: 20,
+					// backgroundColor: "red",
 				}}
 			>
 
@@ -36,7 +37,7 @@ class Loteo_Details extends React.Component {
 
 					<Box>
 
-						<Typography align="center" variant="h3" component="h2" gutterBottom style={{ fontWeight: "bold", margin: theme.margin.big }}>
+						<Typography align="center" variant="h3" component="h2" gutterBottom style={{ fontWeight: "bold", margin: theme.margin.normal }}>
 
 							Información del {this.props.loteo.name}
 
@@ -44,7 +45,7 @@ class Loteo_Details extends React.Component {
 
 						<Typography align="center" variant="body2" component="p" gutterBottom 
 							style={{
-								margin: theme.margin.big,
+								margin: theme.margin.normal,
 								color: "gray",
 							}}
 						>
@@ -53,13 +54,18 @@ class Loteo_Details extends React.Component {
 
 						</Typography>
 
-						<Container
+						<Container 
 							style = {{
-								maxWidth: "50%",
+								// backgroundColor: "green",
+								// width: 100,
+								
+								// maxWidth: "50%",
 								// margin: theme.margin.normal,
+								marginTop: 50,
 								display: "flex",
 								justifyContent: "center",
 								alignItems: "center",
+								flex: 1,
 
 							}}
 						>
@@ -88,19 +94,28 @@ class Loteo_Details extends React.Component {
 
 						</Container>
 
-						<Grid container spacing={2}>
+						<Grid container spacing={0} 
+							style = {{
+								display: "flex",
+								justifyContent: "center",
+								justifyContent: "center",
+								backgroundColor: "red",
+							}}
+						>
 							
-							<Grid item xs={4}>
+							<Grid item xs={12} sm = {3}>
 
 								<Card
-									style = {{
-										margin: 5,
-										// padding: 20,
-										textAlign: "center",
-										// color: "white",
-										// backgroundColor: "red"
-										// backgroundImage: "url('https://bit.ly/2nCGIqc')",
-									}}
+									// style = {{
+									// 	margin: 5,
+									// 	// padding: 20,
+									// 	textAlign: "center",
+									// 	width: 100,
+									// 	// color: "white",
+									// 	// backgroundColor: "red"
+									// 	// backgroundImage: "url('https://bit.ly/2nCGIqc')",
+									// }}
+									style = {styles.card_characteristic}
 								>
 
 									<CardHeader
@@ -130,17 +145,10 @@ class Loteo_Details extends React.Component {
 							</Grid>
 
 
-							<Grid item xs={4}>
+							<Grid item xs={12} sm={4}>
 								
 								<Card
-									style={{
-										margin: 5,
-										// padding: 20,
-										textAlign: "center",
-										// color: "white",
-										// backgroundColor: "red"
-										// backgroundImage: "url('https://bit.ly/2nCGIqc')",
-									}}
+									style={styles.card_characteristic}
 								>
 
 									<CardHeader
@@ -169,17 +177,10 @@ class Loteo_Details extends React.Component {
 
 							</Grid>
 
-							<Grid item xs={4}>
+							<Grid item xs={12} sm={4}>
 								
 								<Card
-									style={{
-										margin: 5,
-										// padding: 20,
-										textAlign: "center",
-										// color: "white",
-										// backgroundColor: "red"
-										// backgroundImage: "url('https://bit.ly/2nCGIqc')",
-									}}
+									style={styles.card_characteristic}
 								>
 
 									<CardHeader
@@ -208,17 +209,10 @@ class Loteo_Details extends React.Component {
 
 							</Grid>
 
-							<Grid item xs={4}>
+							<Grid item xs={12} sm={4}>
 									
 								<Card
-									style={{
-										margin: 5,
-										// padding: 20,
-										textAlign: "center",
-										// color: "white",
-										// backgroundColor: "red"
-										// backgroundImage: "url('https://bit.ly/2nCGIqc')",
-									}}
+									style={styles.card_characteristic}
 								>
 
 									<CardHeader
@@ -247,17 +241,10 @@ class Loteo_Details extends React.Component {
 
 							</Grid>
 
-							<Grid item xs={4}>
+							<Grid item xs={12} sm={4}>
 
 								<Card
-									style={{
-										margin: 5,
-										// padding: 20,
-										textAlign: "center",
-										// color: "white",
-										// backgroundColor: "red"
-										// backgroundImage: "url('https://bit.ly/2nCGIqc')",
-									}}
+									style={styles.card_characteristic}
 								>
 
 									<CardHeader
@@ -286,17 +273,10 @@ class Loteo_Details extends React.Component {
 
 							</Grid>
 							
-							<Grid item xs={4}>
+							<Grid item xs={12} sm={4}>
 
 								<Card
-									style={{
-										margin: 5,
-										// padding: 20,
-										textAlign: "center",
-										// color: "white",
-										// backgroundColor: "red"
-										// backgroundImage: "url('https://bit.ly/2nCGIqc')",
-									}}
+									style={styles.card_characteristic}
 								>
 
 									<CardHeader
@@ -348,4 +328,16 @@ class Loteo_Details extends React.Component {
 
 }
 
+const styles = {
+	card_characteristic: {
+		margin: 5,
+		width: 300,
+		height: "auto",
+		// padding: 20,
+		textAlign: "center",
+		// color: "white",
+		// backgroundColor: "red"
+		// backgroundImage: "url('https://bit.ly/2nCGIqc')",
+	}
+}
 export default Loteo_Details;

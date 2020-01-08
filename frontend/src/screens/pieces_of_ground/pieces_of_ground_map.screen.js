@@ -17,6 +17,7 @@ import Pieces_of_Ground_Map_Component from "./components/pieces_of_ground_map.co
 
 // material ui
 import Box from '@material-ui/core/Box';
+import Grid from "@material-ui/core/Grid";
 import { Button } from "@material-ui/core";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import theme from "../../libraries/material-ui/theme";
@@ -190,7 +191,7 @@ class Piece_of_Ground_Map extends Component {
 						/>
 
 						{/* Call to action button (form of contact) */}
-						<Box
+						{/* <Box
 							style={{
 								display: "flex",
 								flexDirection: "row",
@@ -203,29 +204,65 @@ class Piece_of_Ground_Map extends Component {
 								// flex: 1,
 								// margin: theme.margin.normal,
 							}}
+						> */}
+						<Grid container spacing={0}
+							style={{
+								// margin: theme.margin.big,
+								// backgroundColor: "red",
+								// display: "flex",
+								// alignItems: "center",
+								// justifyContent: "center",
+								// flexWrap: "wrap",
+								
+
+							}}
 						>
 
-							<Link to="/ask_from_users/">
-								<Button align = "center" variant="contained" color="primary"
-									// style={ styles.bottom_button }
-									style={{
-										margin: theme.margin.normal,
-										color: "white",
-										borderRadius: 50,
-										marginBottom: 100,
-										flex: 1,
-										maxWidth: "90%",
-										padding: 30,
-										paddingLeft: 80,
-										paddingRight: 80,
-										fontSize: 20,
-										backgroundColor: "green",
-									}}
-								>
-									Enviar consulta
-								</Button>
-							</Link>
+							<Grid item xs={12} sm={6}
+								style={{
+									// backgroundColor: "red",
+									display: "flex",
+									justifyContent: "center",
+									// alignItems: "center",
+									// padding: 0,
+									// margin: 0,
+									// margin: 10,
+								}}
+							>
 
+								<Link to="/ask_from_users/">
+									<Button align = "center" variant="contained" color="primary"
+										// style={ styles.bottom_button }
+										style={{
+											margin: theme.margin.normal,
+											color: "white",
+											borderRadius: 50,
+											marginBottom: 100,
+											flex: 1,
+											maxWidth: "90%",
+											padding: 30,
+											paddingLeft: 80,
+											paddingRight: 80,
+											fontSize: 20,
+											backgroundColor: "green",
+										}}
+									>
+										Enviar consulta
+									</Button>
+								</Link>
+							</Grid>
+
+							<Grid item xs={12} sm={6}
+								style={{
+									// backgroundColor: "red",
+									display: "flex",
+									justifyContent: "center",
+									// alignItems: "center",
+									// padding: 0,
+									// margin: 0,
+									// margin: 10,
+								}}
+							>
 							<Link to="/contact_us/">
 								<Button align="center" variant="contained" color="secondary"
 									style={styles.bottom_button}
@@ -235,7 +272,13 @@ class Piece_of_Ground_Map extends Component {
 
 							</Link>
 
-						</Box>
+							</Grid>
+
+						</Grid>
+
+
+
+						{/* </Box> */}
 					</Box>
 				:
 					<CircularProgress />

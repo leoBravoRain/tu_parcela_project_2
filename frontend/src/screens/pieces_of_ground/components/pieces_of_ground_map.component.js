@@ -129,18 +129,22 @@ class Pieces_of_Ground_Map_Component extends React.Component {
 
 						<Grid container spacing={0}
 							style = {{
-								margin: theme.margin.big,
+								// backgroundColor: "red",
+								display: "flex",
+								justifyContent: "center",
+								// margin: theme.margin.big,
 							}}
 						>
 
-							<Grid item xs={5} 
+							<Grid item xs={12} sm = {5} 
 								style = {{
 									// backgroundColor: "red",
-									display: "flex",
-									justifyContent: "center",
-									alignItems: "center",
+									// display: "flex",
+									// justifyContent: "center",
+									// alignItems: "center",
 									// padding: 0,
 									// margin: 0,
+									// margin: 10,
 								}}
 							>
 
@@ -159,7 +163,7 @@ class Pieces_of_Ground_Map_Component extends React.Component {
 
 							</Grid>
 
-							<Grid item xs={6} 
+							<Grid item xs={12} sm={5} 
 								style = {{
 									// backgroundColor: "yellow"
 								}}
@@ -170,6 +174,7 @@ class Pieces_of_Ground_Map_Component extends React.Component {
 										display: "flex",
 										alignContent: "center",
 										justifyContent: "center",
+										margin: theme.margin.normal,
 										// borderWidith: 10000,
 										// borderStyle: "solid",
 										// borderColor: "white",

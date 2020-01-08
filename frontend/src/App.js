@@ -27,12 +27,29 @@ import Typography from '@material-ui/core/Typography';
 // import {Link as Link_} from '@material-ui/core/Link';
 import { Button } from "@material-ui/core";
 
+
+import { withStyles } from '@material-ui/styles';
+
+
+
 // Component 
 class App extends Component {
-
+	
 	// render method
 	render() {
-
+		
+		// const styles = theme => ({
+		// 	root: {
+		// 		padding: theme.spacing.unit,
+		// 		[theme.breakpoints.up('md')]: {
+		// 			backgroundColor: "green",
+		// 		},
+		// 		[theme.breakpoints.down('sm')]: {
+		// 			backgroundColor: "red",
+		// 		},
+		// 	},
+		// });
+		
 		return (
 
 			<MuiThemeProvider theme={theme}>
@@ -46,111 +63,99 @@ class App extends Component {
 						position="static"
 					>
 
-					<Toolbar>
+						<Toolbar
+							// className={styles.root}
+							// style = {{
+							// 	[theme.breakpoints.up('sm')]: {
+							// 		backgroundColor: "green",
+							// 	},
+							// }}
+						>
 
-						<Typography gutterBottom>
+							<Typography gutterBottom>
+
+								<Link to="/" className="nav-link" style={styles.nav_item_text}>
+
+									<img 
+										src={require("./static/images/logo.jpg")} 
+										width = "120"
+										height = "auto"
+										alt="logo" 
+									/>
+
+								</Link>
+
+							</Typography>
 
 							<Link to="/" className="nav-link" style={styles.nav_item_text}>
 
-								<img 
-									src={require("./static/images/logo.jpg")} 
-									width = "120"
-									height = "auto"
-									alt="logo" 
-								/>
+								<Typography gutterBottom variant="h6" component="h6">	
+
+									Inicio
+
+								</Typography>
 
 							</Link>
 
-						</Typography>
+							<Link to="/who_we_are/" className="nav-link" style={styles.nav_item_text}>
 
-						<Link to="/" className="nav-link" style={styles.nav_item_text}>
+								<Typography gutterBottom variant="h6" component="h6">	
 
-							<Typography gutterBottom variant="h6" component="h6">	
+									¿Quienes somos?
 
-								Inicio
+								</Typography>
 
-							</Typography>
+							</Link>
 
-						</Link>
+							<Link to="/questions_answers/" className="nav-link" style={styles.nav_item_text}>
 
-						<Link to="/who_we_are/" className="nav-link" style={styles.nav_item_text}>
+								<Typography gutterBottom variant="h6" component="h6">
 
-							<Typography gutterBottom variant="h6" component="h6">	
+									Preguntas frecuentes
 
-								¿Quienes somos?
+								</Typography>
 
-							</Typography>
-
-						</Link>
-
-						<Link to="/questions_answers/" className="nav-link" style={styles.nav_item_text}>
-
-							<Typography gutterBottom variant="h6" component="h6">
-
-								Preguntas frecuentes
-
-							</Typography>
-
-						</Link>
+							</Link>
 
 
-						<Link to="/ask_from_users/" className="nav-link" style={styles.nav_item_text}>
+							<Link to="/ask_from_users/" className="nav-link" style={styles.nav_item_text}>
 
-							<Typography gutterBottom variant="h6" component="h6">	
+								<Typography gutterBottom variant="h6" component="h6">	
 
-								Consultas
+									Consultas
 
-							</Typography>
+								</Typography>
 
-						</Link>
+							</Link>
 
-							<Link to="/contact_us/" className="nav-link" style={styles.nav_item_text, { "flex": 1, "color": "white" }}>
+								<Link to="/contact_us/" className="nav-link" style={styles.nav_item_text, { "flex": 1, "color": "white" }}>
 
-							<Typography gutterBottom variant="h6" component="h6">
+								<Typography gutterBottom variant="h6" component="h6">
 
-								Solicitar visita
+									Solicitar visita
 
-							</Typography>
+								</Typography>
 
-						</Link>
+							</Link>
 
-						{/* <Link className="nav-link" style={styles.nav_item_text, { "flex": 1, "color": "white" }}>
+								<Button align="center" variant="contained" color="secondary" 
 
-							<Typography gutterBottom variant="h6" component="h6">
+									onClick={() => { 
+										window.location.replace("http://tuparcelaen5simplespasos.cl/clubdeinversionistas/")
+									}}
+									
+									style = {{
+										color: "white",
+										borderRadius: 50,
+										textAlign: "center",
+									}}
+								>
 
-								Otros terrenos
-	
-							</Typography>
+										Club de Inversionistas
 
-						</Link> */}
+								</Button>
 
-						{/* external link */}
-						{/* <a href="http://tuparcelaen5simplespasos.cl/clubdeinversionistas/" style={styles.nav_item_text}> */}
-
-							<Button align="center" variant="contained" color="secondary" 
-
-								onClick={() => { 
-									window.location.replace("http://tuparcelaen5simplespasos.cl/clubdeinversionistas/")
-								}}
-								
-								style = {{
-									color: "white",
-									borderRadius: 50,
-									textAlign: "center",
-								}}
-							>
-
-								{/* <Typography gutterBottom variant="a" component="h6">	 */}
-
-									Club de Inversionistas
-
-								{/* </Typography> */}
-
-							</Button>
-
-						{/* </a> */}
-
-					</Toolbar>
+						</Toolbar>
 
 					</AppBar>
 

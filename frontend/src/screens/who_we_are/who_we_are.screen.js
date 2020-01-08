@@ -3,7 +3,6 @@ import React, { Component } from "react";
 // material ui
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
-import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 
 class Who_We_Are extends  React.Component {
@@ -15,7 +14,7 @@ class Who_We_Are extends  React.Component {
 			<Box
 				style={{
 					display: "flex",
-					flexDirection: "column",
+					// flexDirection: "column",
 					justifyContent: "center",
 					alignItems: "center",
 					backgroundImage: 'url("https://firebasestorage.googleapis.com/v0/b/your-piece-of-ground-test.appspot.com/o/7921758ea7dfb78c2a4e4e754768c354.jpg?alt=media&token=65c95d59-ecec-48e0-ba20-72d2f9486f5a")',
@@ -53,16 +52,20 @@ class Who_We_Are extends  React.Component {
 						Buscamos e invertimos sólo en aquellos bienes que sabemos que son rentables en el tiempo, por lo que te aseguramos que tu inversión estará segura con nosotros!
 
 					</Typography>
+
 					<img
 						style={{
 							margin: 20,
 							borderWidth: 10,
 							borderStyle: "solid",
 							borderColor: "white",
+							width: "80%",
+							maxWidth: 400,
+							height: "auto",
 						}}
 						src={require("../../static/images/2_Yo.png")}
-						width="400"
-						height="auto"
+						// width="300"
+						// height="auto"
 						alt="logo"
 					/>
 

@@ -50,15 +50,18 @@ class Contact_Us extends React.Component {
                     </Typography>
                     
                     <img
-                        style = {{
+                        style={{
                             margin: 20,
                             borderWidth: 10,
-                            borderStyle:"solid",
+                            borderStyle: "solid",
                             borderColor: "white",
+                            width: "80%",
+                            maxWidth: 400,
+                            height: "auto",
                         }}
                         src={require("../../static/images/2_Yo.png")}
-                        width="400"
-                        height="auto"
+                        // width="300"
+                        // height="auto"
                         alt="logo"
                     />
 

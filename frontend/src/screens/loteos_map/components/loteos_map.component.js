@@ -8,6 +8,7 @@ import theme from "../../../libraries/material-ui/theme";
 import Box from '@material-ui/core/Box';
 import { CircularProgress } from "@material-ui/core";
 
+
 class Loteos_Map_Component extends React.Component {
 
     redirect_to_loteo_map(loteo) {
