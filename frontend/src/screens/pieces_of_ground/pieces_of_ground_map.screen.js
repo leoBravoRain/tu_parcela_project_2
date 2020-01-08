@@ -236,9 +236,6 @@ class Piece_of_Ground_Map extends Component {
 							</Link>
 
 						</Box>
-						<Box>
-							nuevo cambio
-						</Box>
 					</Box>
 				:
 					<CircularProgress />

@@ -63,101 +63,117 @@ class Piece_of_Ground_Details extends React.Component {
 					style = {{
 						margin: theme.margin.big,
 						// color: "white",
+						// maxHeight: "500px", 
+						// overflow: "auto"
 					}}
 				>
 
-					<Table
+					<Box
 						// stickyHeader = {true}
-						style = {{
+						style={{
+							maxHeight: "300px",
+							overflow: "auto"
 							// color: "white",
 							// backgroundColor: "red",
 						}}
 					>
 
-						<TableHead>
+						<Table
+							// stickyHeader = {true}
+							style = {{
+								maxHeight: "10px",
+								overflow: "auto"
+								// color: "white",
+								// backgroundColor: "red",
+							}}
+						>
 
-							<TableRow>
+							<TableHead>
 
-								<TableCell style={styles.table_text}> 
+								<TableRow>
 
-									Parcela
+									<TableCell style={styles.table_text}> 
 
-								</TableCell>
+										Parcela
 
-								<TableCell style={styles.table_text}> 
+									</TableCell>
 
-									Superficie [m<sup> 2</sup>]
+									<TableCell style={styles.table_text}> 
 
-								</TableCell>
+										Superficie [m<sup> 2</sup>]
 
-								<TableCell style = {styles.table_text}> 
+									</TableCell>
 
-									Frente [m]
+									<TableCell style = {styles.table_text}> 
 
-								</TableCell>
+										Frente [m]
 
-								<TableCell style={styles.table_text}> 
+									</TableCell>
 
-									Largo [m]
+									<TableCell style={styles.table_text}> 
 
-								</TableCell>
+										Largo [m]
 
-								<TableCell style={styles.table_text}> 
+									</TableCell>
 
-									Características
+									<TableCell style={styles.table_text}> 
 
-								</TableCell>
+										Características
 
-								<TableCell style={styles.table_text}>  
+									</TableCell>
 
-									Precio [Pesos chilenos]
+									<TableCell style={styles.table_text}>  
 
-								</TableCell>
+										Precio [Pesos chilenos]
 
-								<TableCell style={styles.table_text}> 
+									</TableCell>
 
-									Disponible
+									<TableCell style={styles.table_text}> 
 
-								</TableCell>
+										Disponible
 
-							</TableRow>
-
-						</TableHead>
-
-						<TableBody>
-
-						{this.props.get_pieces_of_ground 
-
-						?
-
-							this.props.pieces_of_ground.map( (piece_of_ground, idx) =>
-
-								<TableRow key = {idx}>
-
-									<TableCell style={styles.table_text}>  {piece_of_ground.name} </TableCell>
-
-									<TableCell style={styles.table_text}>  {piece_of_ground.area} </TableCell>
-
-									<TableCell style={styles.table_text}>  {piece_of_ground.front} </TableCell>
-
-									<TableCell style={styles.table_text}>  {piece_of_ground.large} </TableCell>
-
-									<TableCell style={styles.table_text}>  {piece_of_ground.characteristics} </TableCell>
-
-									<TableCell style={styles.table_text}>  {piece_of_ground.price} </TableCell>
-
-									<TableCell style={styles.table_text}>  {piece_of_ground.available} </TableCell>
+									</TableCell>
 
 								</TableRow>
-							)
 
-							:
-								<Box> Loading </Box>
-						}
+							</TableHead>
 
-						</TableBody>
+							<TableBody>
 
-					</Table>
+							{this.props.get_pieces_of_ground 
+
+							?
+
+								this.props.pieces_of_ground.map( (piece_of_ground, idx) =>
+
+									<TableRow key = {idx}>
+
+										<TableCell style={styles.table_text}>  {piece_of_ground.name} </TableCell>
+
+										<TableCell style={styles.table_text}>  {piece_of_ground.area} </TableCell>
+
+										<TableCell style={styles.table_text}>  {piece_of_ground.front} </TableCell>
+
+										<TableCell style={styles.table_text}>  {piece_of_ground.large} </TableCell>
+
+										<TableCell style={styles.table_text}>  {piece_of_ground.characteristics} </TableCell>
+
+										<TableCell style={styles.table_text}>  {piece_of_ground.price} </TableCell>
+
+										<TableCell style={styles.table_text}>  {piece_of_ground.available} </TableCell>
+
+									</TableRow>
+								)
+
+								:
+									<Box> Loading </Box>
+							}
+
+							</TableBody>
+
+						</Table>
+
+					</Box>
 
 					<Typography align="center" variant="body2" component="p" gutterBottom
 						style = {{

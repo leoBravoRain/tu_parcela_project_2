@@ -67,7 +67,7 @@ class Contact_Us extends React.Component {
                             color: "white"
                         }}
                     >
-                    Teléfono: <b style={{ fontSize: 20, margin: 20, color: "yellow" }}>+56 9 82 63 66 17 </b>
+                    Whatsapp: <b style={{ fontSize: 20, margin: 20, color: "yellow" }}>+56 9 82 63 66 17 </b>
                     </Typography>
 
                     <Typography variant="body2" gutterBottom 
