@@ -58,7 +58,7 @@ class App extends Component {
 
 				<Router>
 
-					<AppBar 
+					{/* <AppBar 
 						color = "primary"
 						position="static"
 					>
@@ -157,7 +157,7 @@ class App extends Component {
 
 						</Toolbar>
 
-					</AppBar>
+					</AppBar> */}
 
 					<Route path = "/" exact component = {Loteos_Map} />
 

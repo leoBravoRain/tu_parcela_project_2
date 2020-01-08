@@ -99,11 +99,13 @@ class Loteo_Details extends React.Component {
 								display: "flex",
 								justifyContent: "center",
 								justifyContent: "center",
-								backgroundColor: "red",
+								// backgroundColor: "red",
 							}}
 						>
 							
-							<Grid item xs={12} sm = {3}>
+							<Grid item xs={12} sm = {4}
+								style={styles.grid_item_characteristic}
+							>
 
 								<Card
 									// style = {{
@@ -145,7 +147,9 @@ class Loteo_Details extends React.Component {
 							</Grid>
 
 
-							<Grid item xs={12} sm={4}>
+							<Grid item xs={12} sm={4}
+								style={styles.grid_item_characteristic}
+							>
 								
 								<Card
 									style={styles.card_characteristic}
@@ -177,7 +181,9 @@ class Loteo_Details extends React.Component {
 
 							</Grid>
 
-							<Grid item xs={12} sm={4}>
+							<Grid item xs={12} sm={4}
+								style={styles.grid_item_characteristic}
+							>
 								
 								<Card
 									style={styles.card_characteristic}
@@ -209,7 +215,9 @@ class Loteo_Details extends React.Component {
 
 							</Grid>
 
-							<Grid item xs={12} sm={4}>
+							<Grid item xs={12} sm={4}
+								style={styles.grid_item_characteristic}
+							>
 									
 								<Card
 									style={styles.card_characteristic}
@@ -241,7 +249,9 @@ class Loteo_Details extends React.Component {
 
 							</Grid>
 
-							<Grid item xs={12} sm={4}>
+							<Grid item xs={12} sm={4}
+								style={styles.grid_item_characteristic}
+							>
 
 								<Card
 									style={styles.card_characteristic}
@@ -273,7 +283,9 @@ class Loteo_Details extends React.Component {
 
 							</Grid>
 							
-							<Grid item xs={12} sm={4}>
+							<Grid item xs={12} sm={4}
+								style={styles.grid_item_characteristic}
+							>
 
 								<Card
 									style={styles.card_characteristic}
@@ -329,8 +341,14 @@ class Loteo_Details extends React.Component {
 }
 
 const styles = {
+	grid_item_characteristic: {
+		display: "flex",
+		justifyContent: "center",
+		justifyContent: "center",
+		// backgroundColor: "green",
+	},
 	card_characteristic: {
-		margin: 5,
+		margin: 20,
 		width: 300,
 		height: "auto",
 		// padding: 20,

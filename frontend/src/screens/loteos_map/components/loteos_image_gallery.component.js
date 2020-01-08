@@ -51,10 +51,11 @@ class Image_Gallery extends React.Component {
 					<Box
 						// p = {3}
 						style = {{
-							backgroundColor: "red",
+							// backgroundColor: "red",
 							display: "flex",
 							justifyContent: "center",
-							flexDirection: "column"
+							flexDirection: "column",
+							margin: theme.margin.normal,
 						}}
 					> 
 
@@ -131,7 +132,13 @@ class Image_Gallery extends React.Component {
 								{this.props.get_loteos && this.props.loteos.map( (loteo, idx) => {
 									return (
 
-										<Grid item xs={12} sm={4}>
+										<Grid item xs={12} sm={4}
+											style = {{
+												// backgroundColor: "green",
+												display: "flex",
+												justifyContent: "center",
+											}}
+										>
 
 											<Card key={idx}
 												style={{
