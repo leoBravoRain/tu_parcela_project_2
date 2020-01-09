@@ -24,31 +24,68 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-// import {Link as Link_} from '@material-ui/core/Link';
 import { Button } from "@material-ui/core";
-
-
-import { withStyles } from '@material-ui/styles';
-
-
+import Menu from '@material-ui/icons/Menu';
+import Drawer from '@material-ui/core/Drawer';
 
 // Component 
 class App extends Component {
 	
+	// constructor
+	constructor(props) {
+
+		// constructur of parent
+		super(props);
+
+		// initial states
+		this.state = {
+			
+			open_drawer: false,
+			width: 0, 
+			height: 0,
+			
+		}
+		
+		this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+	}
+
+	componentDidMount() {
+		this.updateWindowDimensions();
+		window.addEventListener('resize', this.updateWindowDimensions);
+	}	
+
+	componentWillUnmount() {
+		window.removeEventListener('resize', this.updateWindowDimensions);
+	}
+
+	updateWindowDimensions() {
+		this.setState({ width: window.innerWidth, height: window.innerHeight }, 
+			() => {
+				console.log("width: ", this.state.width);
+				// if (this.state.width < "700") {
+				this.setState({
+					// open_drawer: fals,
+					display_navbar: this.state.width > 700 ? true : false, 
+				});
+				// }
+
+			}
+
+		);
+	}
+
 	// render method
 	render() {
 		
-		// const styles = theme => ({
-		// 	root: {
-		// 		padding: theme.spacing.unit,
-		// 		[theme.breakpoints.up('md')]: {
-		// 			backgroundColor: "green",
-		// 		},
-		// 		[theme.breakpoints.down('sm')]: {
-		// 			backgroundColor: "red",
-		// 		},
-		// 	},
-		// });
+		const toggleDrawer = (side, open) => event => {
+			if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+				// return;
+			}
+
+			this.setState({
+				open_drawer: open
+			});
+		};
 		
 		return (
 
@@ -58,38 +95,12 @@ class App extends Component {
 
 				<Router>
 
-					{/* <AppBar 
-						color = "primary"
-						position="static"
-					>
+					<Drawer open={this.state.open_drawer} onClose={toggleDrawer(false)} >
 
-						<Toolbar
-							// className={styles.root}
-							// style = {{
-							// 	[theme.breakpoints.up('sm')]: {
-							// 		backgroundColor: "green",
-							// 	},
-							// }}
-						>
+						<div>
+							<Link to="/" className="nav-link" >
 
-							<Typography gutterBottom>
-
-								<Link to="/" className="nav-link" style={styles.nav_item_text}>
-
-									<img 
-										src={require("./static/images/logo.jpg")} 
-										width = "120"
-										height = "auto"
-										alt="logo" 
-									/>
-
-								</Link>
-
-							</Typography>
-
-							<Link to="/" className="nav-link" style={styles.nav_item_text}>
-
-								<Typography gutterBottom variant="h6" component="h6">	
+								<Typography gutterBottom variant="h6" component="h6" style={styles.nav_item_text_drawer}>
 
 									Inicio
 
@@ -97,9 +108,9 @@ class App extends Component {
 
 							</Link>
 
-							<Link to="/who_we_are/" className="nav-link" style={styles.nav_item_text}>
+							<Link to="/who_we_are/" className="nav-link">
 
-								<Typography gutterBottom variant="h6" component="h6">	
+								<Typography gutterBottom variant="h6" component="h6" style={styles.nav_item_text_drawer}>
 
 									¿Quienes somos?
 
@@ -107,7 +118,7 @@ class App extends Component {
 
 							</Link>
 
-							<Link to="/questions_answers/" className="nav-link" style={styles.nav_item_text}>
+							<Link to="/questions_answers/" className="nav-link" style={styles.nav_item_text_drawer}>
 
 								<Typography gutterBottom variant="h6" component="h6">
 
@@ -117,10 +128,9 @@ class App extends Component {
 
 							</Link>
 
+							<Link to="/ask_from_users/" className="nav-link" style={styles.nav_item_text_drawer}>
 
-							<Link to="/ask_from_users/" className="nav-link" style={styles.nav_item_text}>
-
-								<Typography gutterBottom variant="h6" component="h6">	
+								<Typography gutterBottom variant="h6" component="h6">
 
 									Consultas
 
@@ -128,7 +138,7 @@ class App extends Component {
 
 							</Link>
 
-								<Link to="/contact_us/" className="nav-link" style={styles.nav_item_text, { "flex": 1, "color": "white" }}>
+							<Link to="/contact_us/" className="nav-link" style={styles.nav_item_text_drawer}>
 
 								<Typography gutterBottom variant="h6" component="h6">
 
@@ -138,26 +148,167 @@ class App extends Component {
 
 							</Link>
 
-								<Button align="center" variant="contained" color="secondary" 
+							<Button align="center" variant="contained" color="secondary"
 
-									onClick={() => { 
-										window.location.replace("http://tuparcelaen5simplespasos.cl/clubdeinversionistas/")
-									}}
-									
-									style = {{
-										color: "white",
-										borderRadius: 50,
-										textAlign: "center",
-									}}
+								onClick={() => {
+									window.location.replace("http://tuparcelaen5simplespasos.cl/clubdeinversionistas/")
+								}}
+
+								style={{
+									color: "white",
+									borderRadius: 50,
+									textAlign: "center",
+								}}
+							>
+
+								Club de Inversionistas
+
+							</Button>
+
+						</div>
+
+					</Drawer>
+					
+					{
+						this.state.display_navbar
+
+						?
+
+							<AppBar 
+								color = "primary"
+								position="static"
+								
+							>
+
+								<Toolbar
+									// className={styles.root}
+									// style = {{
+									// 	[theme.breakpoints.up('sm')]: {
+									// 		backgroundColor: "green",
+									// 	},
+									// }}
 								>
 
-										Club de Inversionistas
+									<Typography gutterBottom>
 
-								</Button>
+										<Link to="/" className="nav-link" style={styles.nav_item_text}>
 
-						</Toolbar>
+											<img 
+												src={require("./static/images/logo.jpg")} 
+												width = "120"
+												height = "auto"
+												alt="logo" 
+											/>
 
-					</AppBar> */}
+										</Link>
+
+									</Typography>
+
+									<Link to="/" className="nav-link" style={styles.nav_item_text}>
+
+										<Typography gutterBottom variant="h6" component="h6">	
+
+											Inicio
+
+										</Typography>
+
+									</Link>
+
+									<Link to="/who_we_are/" className="nav-link" style={styles.nav_item_text}>
+
+										<Typography gutterBottom variant="h6" component="h6">	
+
+											¿Quienes somos?
+
+										</Typography>
+
+									</Link>
+
+									<Link to="/questions_answers/" className="nav-link" style={styles.nav_item_text}>
+
+										<Typography gutterBottom variant="h6" component="h6">
+
+											Preguntas frecuentes
+
+										</Typography>
+
+									</Link>
+
+
+									<Link to="/ask_from_users/" className="nav-link" style={styles.nav_item_text}>
+
+										<Typography gutterBottom variant="h6" component="h6">	
+
+											Consultas
+
+										</Typography>
+
+									</Link>
+
+										<Link to="/contact_us/" className="nav-link" style={styles.nav_item_text, { "flex": 1, "color": "white" }}>
+
+										<Typography gutterBottom variant="h6" component="h6">
+
+											Solicitar visita
+
+										</Typography>
+
+									</Link>
+
+										<Button align="center" variant="contained" color="secondary" 
+
+											onClick={() => { 
+												window.location.replace("http://tuparcelaen5simplespasos.cl/clubdeinversionistas/")
+											}}
+											
+											style = {{
+												color: "white",
+												borderRadius: 50,
+												textAlign: "center",
+											}}
+										>
+
+												Club de Inversionistas
+
+										</Button>
+
+								</Toolbar>
+
+							</AppBar>
+						:
+							<AppBar
+								color="primary"
+								position="static"
+							>
+
+								<Toolbar
+								// className={styles.root}
+								// style = {{
+								// 	[theme.breakpoints.up('sm')]: {
+								// 		backgroundColor: "green",
+								// 	},
+								// }}
+								>
+
+									<Button 
+										onClick={() => this.setState({ open_drawer: !this.state.open_drawer})}
+										style = {{
+											color: "white",
+											margin: 5,
+										}}
+									>
+										<Menu />
+									</Button>
+
+									<Typography gutterBottom variant="h6" component="h6" style = {styles.nav_item_text, {fontSize: 15,}}>
+
+										Tu parcela en 5 simples pasos
+
+									</Typography>
+								</Toolbar>
+
+							</AppBar>
+					}
 
 					<Route path = "/" exact component = {Loteos_Map} />
 
@@ -193,7 +344,11 @@ class App extends Component {
 const styles = {
 	nav_item_text: {
 		color: "white",
+	},
+	nav_item_text_drawer: {
+		color: "black",
 	}
+
 }
 // exporting app
 export default App;
