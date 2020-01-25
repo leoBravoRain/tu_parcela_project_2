@@ -65,7 +65,7 @@ class Image_Gallery extends React.Component {
 
 						</Typography>
 
-						<Typography align="center" variant="h5" component="h4" gutterBottom style = {{margin: theme.margin.normal, color: "gray", fontWeight: "bold", marginBottom: 100,}}>
+						<Typography align="center" variant="h5" component="h4" gutterBottom style = {{margin: theme.margin.normal, color: "gray", fontWeight: "bold", marginBottom: 50,}}>
 
 							Región de los Ríos
 
@@ -147,9 +147,10 @@ class Image_Gallery extends React.Component {
 													// width: 300,
 													width: 350,
 													maxWidth: "300px",
+													marginBottom: 50,
 												}}
 											>
-												<CardActionArea onClick={() => window.location.replace("/piece_of_ground/" + loteo.id)}>
+												<CardActionArea onClick={() => window.location.href = "/piece_of_ground/" + loteo.id}>
 
 													<CardHeader
 														title={<b style = {{color: "blue", fontSize: 40,}}> { loteo.name} </b>}

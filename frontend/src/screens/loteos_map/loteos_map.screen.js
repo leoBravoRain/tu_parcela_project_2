@@ -311,10 +311,10 @@ class Loteos_Map extends Component {
 						// flex: 1,
 					}}	
 				>
-					<Button onClick={() => { window.location.replace("https://www.facebook.com/tuparcelaen5simplespasos/")}}>
+					<Button onClick={() => { window.location.href = "https://www.facebook.com/tuparcelaen5simplespasos/" }}>
 						<FacebookIcon/>
 					</Button>
-					<Button onClick={() => { window.location.replace("https://www.instagram.com/tu_parcela_en_5_simples_pasos/") }}>
+					<Button onClick={() => { window.location.href = "https://www.instagram.com/tu_parcela_en_5_simples_pasos/" }}>
 						<InstagramIcon />
 					</Button>
 					

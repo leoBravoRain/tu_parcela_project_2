@@ -14,7 +14,7 @@ class Loteos_Map_Component extends React.Component {
     redirect_to_loteo_map(loteo) {
 
         // redirect
-        window.location.replace("/piece_of_ground/" + loteo.id);
+        window.location.href = "/piece_of_ground/" + loteo.id;
 
     }
 

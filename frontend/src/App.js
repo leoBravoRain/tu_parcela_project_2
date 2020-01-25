@@ -7,6 +7,7 @@ import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+
 import Loteos_Map from "./screens/loteos_map/loteos_map.screen";
 import Piece_of_Ground_Map from "./screens/pieces_of_ground/pieces_of_ground_map.screen";
 import Who_We_Are from './screens/who_we_are/who_we_are.screen';
@@ -151,7 +152,7 @@ class App extends Component {
 							<Button align="center" variant="contained" color="secondary"
 
 								onClick={() => {
-									window.location.replace("http://tuparcelaen5simplespasos.cl/clubdeinversionistas/")
+									window.location.href = "https://clubdeinversionistas.tuparcelaen5simplespasos.cl/clubdeinversionistas/"
 								}}
 
 								style={{
@@ -258,7 +259,7 @@ class App extends Component {
 										<Button align="center" variant="contained" color="secondary" 
 
 											onClick={() => { 
-												window.location.replace("http://tuparcelaen5simplespasos.cl/clubdeinversionistas/")
+												window.location.href = "https://clubdeinversionistas.tuparcelaen5simplespasos.cl/clubdeinversionistas/"
 											}}
 											
 											style = {{
