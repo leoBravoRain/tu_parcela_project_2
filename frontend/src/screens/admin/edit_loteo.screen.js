@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 
 // make request to server
 import { fs } from "../../libraries/firebase/firebase";
+import firebase from "firebase";
 
 class Edit_Admin extends React.Component {
 
@@ -33,15 +34,60 @@ class Edit_Admin extends React.Component {
 
     update() {
 
+        // format the loteo
+        var loteo = this.state.loteo;
+
+        // add location in correct format
+        loteo["location"] = new firebase.firestore.GeoPoint(parseFloat(loteo.latitude), parseFloat(loteo.longitude));
+        // remove latitude and longitude from loteo object
+        delete loteo["latitude"];
+        delete loteo["longitude"];
+
         console.log("udpate: ", this.state.loteo);
-        fs.collection("loteos").doc(this.state.loteo.id).update(this.state.loteo);
+
+        fs.collection("loteos").doc(loteo.id).set(loteo).then(() => {
+            console.log("Document successfully edited!");
+            alert("El loteo se ha actualizado correctamente");
+
+            // reload page
+            // window.location.reload();
+            this.props.history.push("/admin");
+
+        }).catch(function(error) {
+            alert("Ha ocurrido un error, intentalo nuevamente");
+            console.error("Error removing document: ", error);
+        });
 
     }
 
     delete() {
 
-        console.log("udpate: ", this.state.loteo);
-        fs.collection("loteos").doc(this.state.loteo.id).delete();
+        // remove dialog box
+        var remove = window.confirm("¿Estas seguro que quieres eliminar este loteo?");
+
+        if (remove == true) {
+
+            fs.collection("loteos").doc(this.state.loteo.id).delete().then(() => {
+                console.log("Document successfully deleted!");
+                alert("El loteo se ha eliminado correctamente");
+
+                // reload page
+                // window.location.reload();
+                // redirect to admi page
+                this.props.history.push("/admin");
+
+            }).catch(function(error) {
+                alert("Ha ocurrido un error, intentalo nuevamente");
+                console.error("Error removing document: ", error);
+            });
+
+
+
+        } else {
+
+          alert("Do not remove loteo");
+
+        }
 
     }
 
@@ -56,12 +102,18 @@ class Edit_Admin extends React.Component {
 
                 // console.log(doc.data());
                 let loteo = doc.data();
-                // console.log(loteo);
+
+                console.log(loteo);
                 // store location
-                loteo["location"] = [loteo.location.latitude, loteo.location.longitude];
+                // loteo["location"] = [loteo.location.latitude, loteo.location.longitude];
+                loteo["latitude"] = loteo.location.latitude;
+                loteo["longitude"] = loteo.location.longitude;
+                delete loteo["location"];
+
                 loteo["id"] = doc.id;
                 // add loteo to list
 
+                console.log(loteo);
 
                 // update state
                 this.setState({
@@ -123,10 +175,8 @@ class Edit_Admin extends React.Component {
                         Object.keys(this.state.loteo).map((key, index) => {
 
                             // this is now showing images and location
-                            if ((key != "images" && key != "location" && key != "id")){
+                            if ((key != "images" && key != "id")){
                                 
-                                // console.log(key);
-
                                 return (
                                     <Box>
                                         <TextField
@@ -153,70 +203,16 @@ class Edit_Admin extends React.Component {
                                 )
                             }
 
-                            // // if it is images or location
-                            // else {
-                            //     this.state.loteo[key].map((item, idx) => {
-
-                            //         return (
-                            //             <Box>
-                            //                 <TextField
-                            //                     // id="standard-name"
-                            //                     label={key}
-                            //                     value={this.state.loteo[key][idx]}
-                            //                     onChange={(event) => {
-                            //                         // console.log(event.target.value);
-                            //                         var loteo = this.state.loteo;
-                            //                         loteo[key][idx] = event.target.value;
-                            //                         this.setState({
-                            //                             loteo: loteo
-                            //                         },
-                            //                             // console.log(this.state.loteo)
-                            //                         )
-                            //                     }}
-                            //                     margin="normal"
-                            //                 />
-
-                            //                 <div>
-                            //                     {this.state.loteo[key][idx]}
-                            //                 </div>
-                            //             </Box>
-                            //         )
-
-                            //     })
-                            // }
+                            
                         })
                     }
 
+                    <div>
+                        Implement edit array of images
+                    </div>
+
                 </form>
 
-                {/* {
-                    this.state.get_loteo
-
-                        ?
-                        <Box>
-
-                            {
-                                this.state.loteo.map((item) => {
-
-                                    return (
-                                        <Box>
-                                            {item.name}
-
-                                            <Button size="xsmall" align="center" variant="contained" color="primary"
-                                            // style={styles.bottom_button}
-                                            >
-                                                Editar
-                                            </Button>
-                                        </Box>
-                                    )
-                                })
-                            }
-                        </Box>
-
-
-                        :
-                        null
-                } */}
             </Box>
         );
 

@@ -29,6 +29,8 @@ class Admin_Pieces_of_Ground extends React.Component {
             pieces_of_ground: null,
         }
 
+        this.remove = this.remove.bind(this);
+
     }
 
     componentDidMount() {
@@ -44,7 +46,7 @@ class Admin_Pieces_of_Ground extends React.Component {
                 // iterate over each item
                 snapshotquery.forEach(doc => {
 
-                    // console.log(doc.data());
+                    console.log(doc.data());
                     let piece_of_ground = doc.data();
                     // store location
                     // piece_of_ground["location"] = [piece_of_ground.location.latitude, piece_of_ground.location.longitude];
@@ -71,6 +73,37 @@ class Admin_Pieces_of_Ground extends React.Component {
                 console.log(error);
 
             });
+    }
+
+    // delete a piece of ground
+    remove(piece_of_ground_id) {
+
+        // remove dialog box
+        var remove = window.confirm("¿Estas seguro que quieres eliminar este loteo?");
+
+        if (remove == true) {
+
+            fs.collection('loteos').doc(this.props.match.params.id_loteo).collection("pieces_of_ground").doc(piece_of_ground_id).delete().then(() => {
+                console.log("Document successfully deleted!");
+                alert("La parcela se ha eliminado correctamente");
+
+                // reload page
+                // window.location.reload();
+                // redirect to admi page
+                this.props.history.push("/list_pieces_of_ground/" + this.props.match.params.id_loteo);
+
+            }).catch(function(error) {
+                alert("Ha ocurrido un error, intentalo nuevamente");
+                console.error("Error removing document: ", error);
+            });
+
+
+
+        } else {
+
+            alert("Do not remove parcela");
+
+        }
     }
 
     render() {
@@ -107,19 +140,25 @@ class Admin_Pieces_of_Ground extends React.Component {
                                         <Box>
                                             {item.name}
 
-                                            <Link to={"/edit_piece_of_ground/" + item.id}>
+                                            <Link to={"/edit_piece_of_ground/" + this.props.match.params.id_loteo + "/" + item.id}>
                                                 <Button size="xsmall" align="center" variant="contained" color="primary"
                                                 // style={styles.bottom_button}
                                                 >
                                                     Editar
                                                 </Button>
                                             </Link>
+
+                                            <Button size = "xsmall" align="center" variant="contained" color="secondary"
+                                                onClick = {()=>this.remove(item.id)}
+                                                // style={styles.bottom_button}
+                                            >
+                                                Eliminar
+                                            </Button>
                                         </Box>
                                     )
                                 })
                             }
                         </Box>
-
 
                         :
                         null

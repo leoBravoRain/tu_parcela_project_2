@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 
 // make request to server
 import { fs } from "../../libraries/firebase/firebase";
+import firebase from "firebase";
 
 class Edit_Piece_of_Ground extends React.Component {
 
@@ -27,39 +28,91 @@ class Edit_Piece_of_Ground extends React.Component {
         }
 
         this.update = this.update.bind(this);
-        this.delete = this.delete.bind(this);
+        // this.delete = this.delete.bind(this);
 
     }
 
+    // update piece of ground
     update() {
 
+        // format the piece_of_ground
+        var piece_of_ground = this.state.piece_of_ground;
+
+        // add location in correct format
+        piece_of_ground["location"] = new firebase.firestore.GeoPoint(parseFloat(piece_of_ground.latitude), parseFloat(piece_of_ground.longitude));
+        // remove latitude and longitude from piece_of_ground object
+        delete piece_of_ground["latitude"];
+        delete piece_of_ground["longitude"];
+
         console.log("udpate: ", this.state.piece_of_ground);
-        fs.collection("loteos").doc(this.state.piece_of_ground.id).update(this.state.piece_of_ground);
+
+        fs.collection('loteos').doc(this.props.match.params.id_loteo).collection("pieces_of_ground").doc(this.props.match.params.id_piece_of_ground).set(piece_of_ground).then(() => {
+            console.log("Document successfully edited!");
+            alert("La parcela se ha actualizado correctamente");
+
+            // reload page
+            // window.location.reload();
+            this.props.history.push("/list_pieces_of_ground/" + this.props.match.params.id_loteo);
+
+        }).catch(function(error) {
+            alert("Ha ocurrido un error, intentalo nuevamente");
+            console.error("Error removing document: ", error);
+        });
 
     }
 
-    delete() {
+    // // delete a piece of ground
+    // delete() {
 
-        console.log("udpate: ", this.state.piece_of_ground);
-        fs.collection("loteos").doc(this.state.piece_of_ground.id).delete();
+    //     // remove dialog box
+    //     var remove = window.confirm("¿Estas seguro que quieres eliminar este loteo?");
 
-    }
+    //     if (remove == true) {
+
+    //         fs.collection('loteos').doc(this.props.match.params.id_loteo).collection("pieces_of_ground").doc(this.props.match.params.id_piece_of_ground).delete().then(() => {
+    //             console.log("Document successfully deleted!");
+    //             alert("La parcela se ha eliminado correctamente");
+
+    //             // reload page
+    //             // window.location.reload();
+    //             // redirect to admi page
+    //             this.props.history.push("/list_pieces_of_ground/" + this.props.match.params.id_loteo);
+
+    //         }).catch(function(error) {
+    //             alert("Ha ocurrido un error, intentalo nuevamente");
+    //             console.error("Error removing document: ", error);
+    //         });
+
+
+
+    //     } else {
+
+    //         alert("Do not remove parcela");
+
+    //     }
+    // }
 
     componentDidMount() {
 
         // console.log()
         // get request for get piece_of_ground
-        fs.collection('loteos').doc(this.props.match.params.id_piece_of_ground).collection("pieces_of_ground").doc().get()
+        fs.collection('loteos').doc(this.props.match.params.id_loteo).collection("pieces_of_ground").doc(this.props.match.params.id_piece_of_ground).get()
 
             .then(doc => {
 
                 // console.log(doc);
 
-                console.log(doc.data());
+                console.log("piece of ground got from server: ", doc.data());
+
                 let piece_of_ground = doc.data();
                 // console.log(piece_of_ground);
                 // store location
-                piece_of_ground["location"] = [piece_of_ground.location.latitude, piece_of_ground.location.longitude];
+                // piece_of_ground["location"] = [piece_of_ground.location.latitude, piece_of_ground.location.longitude];
+
+                piece_of_ground["latitude"] = piece_of_ground.location.latitude;
+                piece_of_ground["longitude"] = piece_of_ground.location.longitude;
+                delete piece_of_ground["location"];
+
                 piece_of_ground["id"] = doc.id;
                 // add piece_of_ground to list
 
@@ -72,7 +125,11 @@ class Edit_Piece_of_Ground extends React.Component {
                     // update piece_of_ground
                     piece_of_ground: piece_of_ground,
 
-                });
+                }, 
+                // () => {
+                //     console.log("new piece of ground: ", this.state.piece_of_ground)
+                // }
+                );
             })
             // if error
             .catch(function (error) {
@@ -106,15 +163,6 @@ class Edit_Piece_of_Ground extends React.Component {
                     Actualizar Parcela
                 </Button>
 
-                <Button align="center" variant="contained" color="secondary"
-                    // style={styles.bottom_button}
-                    onClick={() => this.delete()}
-                >
-
-                    Eliminar Parcela
-
-                </Button>
-
                 {/* {this.state.piece_of_ground.name} */}
 
                 <form noValidate autoComplete="off">
@@ -124,7 +172,7 @@ class Edit_Piece_of_Ground extends React.Component {
                         Object.keys(this.state.piece_of_ground).map((key, index) => {
 
                             // this is now showing images and location
-                            if ((key != "images" && key != "location" && key != "id")) {
+                            if ((key != "image" && key != "id")) {
 
                                 // console.log(key);
 
@@ -154,39 +202,14 @@ class Edit_Piece_of_Ground extends React.Component {
                                 )
                             }
 
-                            // // if it is images or location
-                            // else {
-                            //     this.state.piece_of_ground[key].map((item, idx) => {
-
-                            //         return (
-                            //             <Box>
-                            //                 <TextField
-                            //                     // id="standard-name"
-                            //                     label={key}
-                            //                     value={this.state.piece_of_ground[key][idx]}
-                            //                     onChange={(event) => {
-                            //                         // console.log(event.target.value);
-                            //                         var piece_of_ground = this.state.piece_of_ground;
-                            //                         piece_of_ground[key][idx] = event.target.value;
-                            //                         this.setState({
-                            //                             piece_of_ground: piece_of_ground
-                            //                         },
-                            //                             // console.log(this.state.piece_of_ground)
-                            //                         )
-                            //                     }}
-                            //                     margin="normal"
-                            //                 />
-
-                            //                 <div>
-                            //                     {this.state.piece_of_ground[key][idx]}
-                            //                 </div>
-                            //             </Box>
-                            //         )
-
-                            //     })
-                            // }
                         })
                     }
+
+                    <div>
+
+                        Implement the images array
+
+                    </div>
 
                 </form>
 
