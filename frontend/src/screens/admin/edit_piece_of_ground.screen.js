@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 
 // make request to server
 import { fs } from "../../libraries/firebase/firebase";
+import { auth } from "../../libraries/firebase/firebase";
 import firebase from "firebase";
 
 class Edit_Piece_of_Ground extends React.Component {
@@ -94,50 +95,73 @@ class Edit_Piece_of_Ground extends React.Component {
 
     componentDidMount() {
 
-        // console.log()
-        // get request for get piece_of_ground
-        fs.collection('loteos').doc(this.props.match.params.id_loteo).collection("pieces_of_ground").doc(this.props.match.params.id_piece_of_ground).get()
+         // check if user is logged
+        auth.onAuthStateChanged((user) => {
 
-            .then(doc => {
+            if (!user) {
 
-                // console.log(doc);
+                console.log("user not logged");
 
-                console.log("piece of ground got from server: ", doc.data());
+                this.props.history.push('/login/');
 
-                let piece_of_ground = doc.data();
-                // console.log(piece_of_ground);
-                // store location
-                // piece_of_ground["location"] = [piece_of_ground.location.latitude, piece_of_ground.location.longitude];
+                console.log("aosjid");
 
-                piece_of_ground["latitude"] = piece_of_ground.location.latitude;
-                piece_of_ground["longitude"] = piece_of_ground.location.longitude;
-                delete piece_of_ground["location"];
+            }
 
-                piece_of_ground["id"] = doc.id;
-                // add piece_of_ground to list
+            else {
+
+                console.log("user logged");
+
+                // this.props.history.push('/login/');
+
+                // console.log()
+                // get request for get piece_of_ground
+                fs.collection('loteos').doc(this.props.match.params.id_loteo).collection("pieces_of_ground").doc(this.props.match.params.id_piece_of_ground).get()
+
+                .then(doc => {
+
+                    // console.log(doc);
+
+                    console.log("piece of ground got from server: ", doc.data());
+
+                    let piece_of_ground = doc.data();
+                    // console.log(piece_of_ground);
+                    // store location
+                    // piece_of_ground["location"] = [piece_of_ground.location.latitude, piece_of_ground.location.longitude];
+
+                    piece_of_ground["latitude"] = piece_of_ground.location.latitude;
+                    piece_of_ground["longitude"] = piece_of_ground.location.longitude;
+                    delete piece_of_ground["location"];
+
+                    piece_of_ground["id"] = doc.id;
+                    // add piece_of_ground to list
 
 
-                // update state
-                this.setState({
+                    // update state
+                    this.setState({
 
-                    // flag of getting data from API
-                    get_piece_of_ground: true,
-                    // update piece_of_ground
-                    piece_of_ground: piece_of_ground,
+                        // flag of getting data from API
+                        get_piece_of_ground: true,
+                        // update piece_of_ground
+                        piece_of_ground: piece_of_ground,
 
-                }, 
-                // () => {
-                //     console.log("new piece of ground: ", this.state.piece_of_ground)
-                // }
-                );
-            })
-            // if error
-            .catch(function (error) {
+                    }, 
+                    // () => {
+                    //     console.log("new piece of ground: ", this.state.piece_of_ground)
+                    // }
+                    );
+                })
+                // if error
+                .catch(function (error) {
 
-                // dislpay error in console
-                console.log(error);
+                    // dislpay error in console
+                    console.log(error);
 
-            });
+                });
+
+            }
+
+        });
     }
 
     render() {

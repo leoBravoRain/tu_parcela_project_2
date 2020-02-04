@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 
 // make request to server
 import { fs } from "../../libraries/firebase/firebase";
+import { auth } from "../../libraries/firebase/firebase";
 import firebase from "firebase";
 
 // list of features of a loteo
@@ -109,6 +110,28 @@ class Create_New_Loteo extends React.Component {
     }
 
     componentDidMount() {
+
+         // check if user is logged
+        auth.onAuthStateChanged((user) => {
+
+            if (!user) {
+
+                console.log("user not logged");
+
+                this.props.history.push('/login/');
+
+                console.log("aosjid");
+
+            }
+
+            else {
+
+                console.log("user logged");
+
+                // this.props.history.push('/login/');
+            }
+
+        });
 
     }
 

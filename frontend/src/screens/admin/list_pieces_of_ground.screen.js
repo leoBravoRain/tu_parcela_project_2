@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 
 // make request to server
 import { fs } from "../../libraries/firebase/firebase";
+import { auth } from "../../libraries/firebase/firebase";
 
 class Admin_Pieces_of_Ground extends React.Component {
 
@@ -35,44 +36,84 @@ class Admin_Pieces_of_Ground extends React.Component {
 
     componentDidMount() {
 
-        // get request for get loteos
-        fs.collection('loteos').doc(this.props.match.params.id_loteo).collection("pieces_of_ground").get()
+         // check if user is logged
+        auth.onAuthStateChanged((user) => {
 
-            .then(snapshotquery => {
+            if (!user) {
 
-                // // get data from API
-                var pieces_of_ground = [];
+                console.log("user not logged");
 
-                // iterate over each item
-                snapshotquery.forEach(doc => {
+                this.props.history.push('/login/');
 
-                    console.log(doc.data());
-                    let piece_of_ground = doc.data();
-                    // store location
-                    // piece_of_ground["location"] = [piece_of_ground.location.latitude, piece_of_ground.location.longitude];
-                    piece_of_ground["id"] = doc.id;
-                    // add piece_of_ground to list
-                    pieces_of_ground.push(piece_of_ground);
+                console.log("aosjid");
 
+            }
+
+            else {
+
+                console.log("user logged");
+
+                // this.props.history.push('/login/');
+
+                // request for get loteo
+                fs.collection('loteos').doc(this.props.match.params.id_loteo).get().then((docRef) => {
+
+                    console.log("Trying to get loteo");
+
+                    if (docRef.exists) {
+                        console.log(docRef.data());
+
+                        this.setState({
+                            loteo: docRef.data(),
+                        },
+                            console.log("new state: ", this.state.loteo)
+                        )                    
+
+                    }
                 });
 
-                // update state
-                this.setState({
+                // get request for get loteos
+                fs.collection('loteos').doc(this.props.match.params.id_loteo).collection("pieces_of_ground").get()
 
-                    // flag of getting data from API
-                    get_pieces_of_ground: true,
-                    // update pieces_of_ground
-                    pieces_of_ground: pieces_of_ground,
+                    .then(snapshotquery => {
 
-                });
-            })
-            // if error
-            .catch(function (error) {
+                        // // get data from API
+                        var pieces_of_ground = [];
 
-                // dislpay error in console
-                console.log(error);
+                        // iterate over each item
+                        snapshotquery.forEach(doc => {
 
-            });
+                            console.log(doc.data());
+                            let piece_of_ground = doc.data();
+                            // store location
+                            // piece_of_ground["location"] = [piece_of_ground.location.latitude, piece_of_ground.location.longitude];
+                            piece_of_ground["id"] = doc.id;
+                            // add piece_of_ground to list
+                            pieces_of_ground.push(piece_of_ground);
+
+                        });
+
+                        // update state
+                        this.setState({
+
+                            // flag of getting data from API
+                            get_pieces_of_ground: true,
+                            // update pieces_of_ground
+                            pieces_of_ground: pieces_of_ground,
+
+                        });
+                    })
+                    // if error
+                    .catch(function (error) {
+
+                        // dislpay error in console
+                        console.log(error);
+
+                    });
+
+                }
+
+        });
     }
 
     // delete a piece of ground
@@ -121,6 +162,23 @@ class Admin_Pieces_of_Ground extends React.Component {
                     // width: "100%"
                 }}
             >
+
+                <Link to={"/admin"}>
+
+                    <Button size="xsmall" align="center" variant="contained" color="secondary"
+                    // style={styles.bottom_button}
+                    >
+                        Ver loteos
+
+                    </Button>
+
+                </Link>
+
+                <Typography align="center" variant="h4" component="h4" gutterBottom>
+
+                    {this.state.loteo != undefined ? this.state.loteo.name : "Loteo"}
+
+                </Typography>
 
                 <Link to={"/create_new_piece_of_ground/" + this.props.match.params.id_loteo}>
 

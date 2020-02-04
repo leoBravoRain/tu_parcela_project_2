@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 
 // make request to server
 import { fs } from "../../libraries/firebase/firebase";
+import {auth} from "../../libraries/firebase/firebase";
 
 // login password
 const login_password = "123";
@@ -35,50 +36,93 @@ class Admin extends React.Component {
         }
 
         this.remove_loteo = this.remove_loteo.bind(this);
+        this.on_logout = this.on_logout.bind(this);
 
     }
     
     componentDidMount() {
 
-        // get request for get loteos
-        fs.collection('loteos').get()
+        // check if user is logged
+        auth.onAuthStateChanged((user) => {
 
-            .then(snapshotquery => {
+            if (!user) {
 
-                // // get data from API
-                var loteos = [];
+                console.log("user not logged");
 
-                // iterate over each item
-                snapshotquery.forEach(doc => {
+                this.props.history.push('/admin_login/');
 
-                    // console.log(doc.data());
-                    let loteo = doc.data();
-                    // store location
-                    // loteo["location"] = [loteo.location.latitude, loteo.location.longitude];
-                    loteo["id"] = doc.id;
-                    // add loteo to list
-                    loteos.push(loteo);
+            }
 
-                });
+            else {
 
-                // update state
-                this.setState({
+                console.log("user logged");
 
-                    // flag of getting data from API
-                    get_loteos: true,
-                    // update loteos
-                    loteos: loteos,
+                // get request for get loteos
+                fs.collection('loteos').get()
 
-                });
-            })
-            // if error
-            .catch(function (error) {
+                    .then(snapshotquery => {
 
-                // dislpay error in console
+                        // // get data from API
+                        var loteos = [];
+
+                        // iterate over each item
+                        snapshotquery.forEach(doc => {
+
+                            // console.log(doc.data());
+                            let loteo = doc.data();
+                            // store location
+                            // loteo["location"] = [loteo.location.latitude, loteo.location.longitude];
+                            loteo["id"] = doc.id;
+                            // add loteo to list
+                            loteos.push(loteo);
+
+                        });
+
+                        // update state
+                        this.setState({
+
+                            // flag of getting data from API
+                            get_loteos: true,
+                            // update loteos
+                            loteos: loteos,
+
+                        });
+                    })
+                    // if error
+                    .catch(function (error) {
+
+                        // dislpay error in console
+                        console.log(error);
+
+                    });
+            }
+
+        });
+
+    }
+
+    // logout from admin page
+    on_logout() {
+    
+        // logout
+        auth.signOut().then(res => {
+          
+            // console.log("loogut");
+            // console.log(this);
+
+            alert("Sesion de administrador cerrada");
+
+            // window.redirect(window.location.host)
+            // window.location = "/";
+            // this.props.history.push('');
+
+            }).catch(error => {
+
                 console.log(error);
 
             });
-    }
+    
+    } 
 
     remove_loteo(loteo_id) {
 
@@ -113,6 +157,15 @@ class Admin extends React.Component {
         return (
 
             <Box>
+
+                <Button size = "xsmall" align="center" variant="contained" color="secondary"
+                    onClick = {()=>this.on_logout()}
+                    // style={styles.bottom_button}
+                >
+
+                    Cerrar sesión
+
+                </Button>
 
                 {
                     this.state.is_logged 

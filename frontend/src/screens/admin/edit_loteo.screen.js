@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 
 // make request to server
 import { fs } from "../../libraries/firebase/firebase";
+import { auth } from "../../libraries/firebase/firebase";
 import firebase from "firebase";
 
 class Edit_Admin extends React.Component {
@@ -93,45 +94,67 @@ class Edit_Admin extends React.Component {
 
     componentDidMount() {
 
-        // get request for get loteo
-        fs.collection('loteos').doc(this.props.match.params.id_loteo).get()
+        // check if user is logged
+        auth.onAuthStateChanged((user) => {
 
-            .then(doc => {
+            if (!user) {
 
-                // console.log(doc);
+                console.log("user not logged");
 
-                // console.log(doc.data());
-                let loteo = doc.data();
+                this.props.history.push('/login/');
 
-                console.log(loteo);
-                // store location
-                // loteo["location"] = [loteo.location.latitude, loteo.location.longitude];
-                loteo["latitude"] = loteo.location.latitude;
-                loteo["longitude"] = loteo.location.longitude;
-                delete loteo["location"];
+                console.log("aosjid");
 
-                loteo["id"] = doc.id;
-                // add loteo to list
+            }
 
-                console.log(loteo);
+            else {
 
-                // update state
-                this.setState({
+                console.log("user logged");
 
-                    // flag of getting data from API
-                    get_loteo: true,
-                    // update loteo
-                    loteo: loteo,
+                // get request for get loteo
+                fs.collection('loteos').doc(this.props.match.params.id_loteo).get()
 
-                });
-            })
-            // if error
-            .catch(function (error) {
+                    .then(doc => {
 
-                // dislpay error in console
-                console.log(error);
+                        // console.log(doc);
 
-            });
+                        // console.log(doc.data());
+                        let loteo = doc.data();
+
+                        console.log(loteo);
+                        // store location
+                        // loteo["location"] = [loteo.location.latitude, loteo.location.longitude];
+                        loteo["latitude"] = loteo.location.latitude;
+                        loteo["longitude"] = loteo.location.longitude;
+                        delete loteo["location"];
+
+                        loteo["id"] = doc.id;
+                        // add loteo to list
+
+                        console.log(loteo);
+
+                        // update state
+                        this.setState({
+
+                            // flag of getting data from API
+                            get_loteo: true,
+                            // update loteo
+                            loteo: loteo,
+
+                        });
+                    })
+                    // if error
+                    .catch(function (error) {
+
+                        // dislpay error in console
+                        console.log(error);
+
+                    });
+            }
+
+        });
+
+
     }
 
     render() {
