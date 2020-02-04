@@ -19,6 +19,7 @@ import Edit_Loteo from "./screens/admin/edit_loteo.screen";
 import Admin_Pieces_of_Ground from "./screens/admin/list_pieces_of_ground.screen";
 import Edit_Piece_of_Ground from "./screens/admin/edit_piece_of_ground.screen";
 import Create_New_Loteo from "./screens/admin/create_new_loteo.screen";
+import Create_New_Piece_of_Ground from "./screens/admin/create_new_piece_of_ground.screen";
 
 // material ui
 import theme from './libraries/material-ui/theme';
@@ -334,6 +335,8 @@ class App extends Component {
 					<Route path="/edit_piece_of_ground/:id_loteo/:id_piece_of_ground" exact component={Edit_Piece_of_Ground} />
 
 					<Route path="/create_new_loteo" exact component={Create_New_Loteo} />
+
+					<Route path="/create_new_piece_of_ground/:id_loteo" exact component={Create_New_Piece_of_Ground} />
 					
 				</Router>
 

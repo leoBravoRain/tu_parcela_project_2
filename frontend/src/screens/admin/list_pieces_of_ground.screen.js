@@ -88,9 +88,9 @@ class Admin_Pieces_of_Ground extends React.Component {
                 alert("La parcela se ha eliminado correctamente");
 
                 // reload page
-                // window.location.reload();
+                window.location.reload();
                 // redirect to admi page
-                this.props.history.push("/list_pieces_of_ground/" + this.props.match.params.id_loteo);
+                // this.props.history.push("/list_pieces_of_ground/" + this.props.match.params.id_loteo);
 
             }).catch(function(error) {
                 alert("Ha ocurrido un error, intentalo nuevamente");
@@ -122,11 +122,17 @@ class Admin_Pieces_of_Ground extends React.Component {
                 }}
             >
 
-                <Button align="center" variant="contained" color="primary"
-                // style={styles.bottom_button}
-                >
-                    Crear Parcela
-                </Button>
+                <Link to={"/create_new_piece_of_ground/" + this.props.match.params.id_loteo}>
+
+                    <Button size="xsmall" align="center" variant="contained" color="primary"
+                    // style={styles.bottom_button}
+                    >
+                        Crear nueva parcela
+
+                    </Button>
+
+                </Link>
+
                 {
                     this.state.get_pieces_of_ground
 
