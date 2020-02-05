@@ -26,6 +26,7 @@ class Edit_Admin extends React.Component {
             // flag of get data from server
             get_loteo: false,
             loteo: null,
+            number_images: 0,
         }
 
         this.update = this.update.bind(this);
@@ -140,6 +141,7 @@ class Edit_Admin extends React.Component {
                             get_loteo: true,
                             // update loteo
                             loteo: loteo,
+                            number_images: loteo.images.length,
 
                         });
                     })
@@ -230,9 +232,126 @@ class Edit_Admin extends React.Component {
                         })
                     }
 
-                    <div>
-                        Implement edit array of images
-                    </div>
+                    <TextField
+                        label = "Number of images"
+                        value = {this.state.number_images}
+                        onChange={(event) => {
+
+                            // console.log("new length: ", event.target.value);
+
+                            this.setState({
+                                number_images: event.target.value,
+                            },
+                                //console.log("new loteo after change : ", this.state.loteo)
+                            )
+
+                        }}
+                        margin="normal"
+                    />
+
+                    <Button align="center" variant="contained" color="primary"
+                    // style={styles.bottom_button}
+                        onClick = {() => {
+
+                            //console.log("after: " + loteo);
+                            var loteo = this.state.loteo;
+
+                            // console.log("target value: ", event.target.value);
+
+                            // console.log("value: ", parseInt(event.target.value));
+
+                            // console.log("valid number: ", (isNaN(parseInt(event.target.value))) ? "nan" : "not nan value");
+
+                            const new_length = this.state.number_images;
+
+                            console.log("New length of array: ", new_length);
+
+                            if (!isNaN(parseInt(new_length))) {
+
+                                console.log("new lenght set");
+
+                                // if array is shorter than new number of images
+                                if (new_length > loteo.images.length) {
+                                    console.log("array is shorter than new lenght");
+
+                                    for (var i = 0; i < loteo.images.length; i++) {
+                                        loteo.images[i] = loteo.images[i];
+                                    }
+
+                                    console.log("length intermediate: ", loteo.images.length);
+
+                                    for (var i = loteo.images.length; i < new_length; i++) {
+                                        console.log(i);
+                                        loteo.images[i] = "";
+                                    }
+                                }
+                                
+                                // if array is larger than new number of images
+                                else {
+                                    console.log("array is larger than new lenght oajsioajsio");
+
+                                    loteo.images.length = new_length;
+
+                                    // for (var i = 0; i < new_length; i++) {
+                                    //     console.log(i);
+                                    //     loteo.images[i] = loteo.images[i];
+                                    // }
+                                }
+
+                                // console.log("new length: ", event.target.value);
+
+                                this.setState({
+                                    // number_images: event.target.value,
+                                    loteo: loteo,
+                                },
+                                    console.log("new loteo after change : ", this.state.loteo)
+                                )
+
+                            }
+
+                            else {
+                                console.log("Is nan");
+                            }
+                        }}
+                    >
+                        Actualizar numero de imagenes
+                    </Button>
+
+                    {
+                        this.state.get_loteo && 
+                        // it needs to have the number of eemets equals to number_images state
+                        this.state.loteo.images.map((item, index) => {
+
+                            // console.log("image from images map");
+
+                            return (
+
+                                <Box>
+
+                                    <TextField
+                                        // id="standard-name"
+                                        label= {"Image " + (index + 1)}
+                                        value={this.state.loteo.images[index]}
+                                        onChange={(event) => {
+                                            //console.log(event.target.value);
+                                            var loteo = this.state.loteo;
+                                            //console.log(loteo);
+                                            loteo["images"][index] = event.target.value;
+                                            //console.log("after: " + loteo);
+                                            this.setState({
+                                                loteo: loteo
+                                            },
+                                                //console.log(this.state.loteo)
+                                            )
+                                        }}
+                                        margin="normal"
+                                    />
+
+                                </Box>
+                            )
+                        
+                        })
+                    }
 
                 </form>
 

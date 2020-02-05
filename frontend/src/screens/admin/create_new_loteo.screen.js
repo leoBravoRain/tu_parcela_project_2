@@ -97,7 +97,7 @@ class Create_New_Loteo extends React.Component {
                 console.log("Document written with ID: ", docRef.id);
 
                 alert("Se ha creado un nuevo loteo exitosamente");
-                
+
                 // redirect to admi page
                 this.props.history.push("/admin");
             })
@@ -190,6 +190,10 @@ class Create_New_Loteo extends React.Component {
                     }
 
                 </form>   
+
+                <Typography align="center" variant="body" component="p" gutterBottom color = "secondary">
+                    Definir primero el numero de imagenes, y luego agregarlas (si se cambia el numero de imagenes, se borraran las imagenes que hayas agregado anteriormente en cada casilla)
+                </Typography>
 
                 <TextField
                     // id="standard-name"
