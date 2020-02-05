@@ -71,8 +71,10 @@ class Loteos_Map extends Component {
 					// add loteo to list
 					loteos.push(loteo);
 
+					console.log(loteo.num_pieces_of_ground);
+					
 					// update num of pieces of ground
-					num_pieces_ground += loteo.num_pieces_of_ground;
+					num_pieces_ground += parseInt(loteo.num_pieces_of_ground);
 
 					// // get all pieces of ground of loteo
 					// fs.collection('loteos').doc(loteo.id).collection("pieces_of_ground").get()
