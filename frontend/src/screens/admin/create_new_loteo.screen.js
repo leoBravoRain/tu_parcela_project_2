@@ -60,8 +60,9 @@ class Create_New_Loteo extends React.Component {
         this.state = {
 
             loteo: {
-                images: [],
+                images: [""],
             },
+            number_images: 1,
         }
 
         this.create_new_loteo = this.create_new_loteo.bind(this);
@@ -80,11 +81,11 @@ class Create_New_Loteo extends React.Component {
         delete loteo["latitude"];
         delete loteo["longitude"];
 
-        // change this by loading images from user
-        loteo["images"] = [
-            "https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", 
-            "https://image.shutterstock.com/image-photo/colorful-flower-on-dark-tropical-260nw-721703848.jpg",
-        ];
+        // // change this by loading images from user
+        // loteo["images"] = [
+        //     "https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", 
+        //     "https://image.shutterstock.com/image-photo/colorful-flower-on-dark-tropical-260nw-721703848.jpg",
+        // ];
 
         // validate loteo has all the features with values (no empty vaues)
         if (!(loteo_features_in_DB.length == Object.entries(this.state.loteo).lenght)) {
@@ -95,6 +96,8 @@ class Create_New_Loteo extends React.Component {
             .then((docRef) => {
                 console.log("Document written with ID: ", docRef.id);
 
+                alert("Se ha creado un nuevo loteo exitosamente");
+                
                 // redirect to admi page
                 this.props.history.push("/admin");
             })
@@ -186,15 +189,65 @@ class Create_New_Loteo extends React.Component {
                         })
                     }
 
-
-                    <div>
-
-                        Implement array of images
-
-                    </div>
-
                 </form>   
 
+                <TextField
+                    // id="standard-name"
+                    label= "Number of images"
+                    value= {this.state.number_images}
+                    onChange={(event) => {
+                        //console.log("after: " + loteo);
+                        var loteo = this.state.loteo;
+                        // loteo.images.length = event.target.value;
+                        for (var i = 0; i < event.target.value; i++) {
+                            loteo.images[i] = "";
+                        }
+                        // console.log("new lenght: ", event.target.value);
+
+                        this.setState({
+                            number_images: event.target.value,
+                            loteo: loteo,
+                        },
+                            // console.log("new loteo: ", this.state.loteo)
+                        )
+                    }}
+                    margin="normal"
+                />
+
+                {
+                    // it needs to have the number of eemets equals to number_images state
+                    this.state.loteo.images.map((item, index) => {
+
+                        // console.log("image from images map");
+
+                        return (
+
+                            <Box>
+
+                                <TextField
+                                    // id="standard-name"
+                                    label= {"Image " + (index + 1)}
+                                    value={this.state.loteo.images[index]}
+                                    onChange={(event) => {
+                                        //console.log(event.target.value);
+                                        var loteo = this.state.loteo;
+                                        //console.log(loteo);
+                                        loteo["images"][index] = event.target.value;
+                                        //console.log("after: " + loteo);
+                                        this.setState({
+                                            loteo: loteo
+                                        },
+                                            console.log(this.state.loteo)
+                                        )
+                                    }}
+                                    margin="normal"
+                                />
+
+                            </Box>
+                        )
+                    
+                    })
+                }
                 <Button align="center" variant="contained" color="primary"
                 // style={styles.bottom_button}
                     onClick = {() => this.create_new_loteo()}
