@@ -196,7 +196,7 @@ class Edit_Piece_of_Ground extends React.Component {
                         Object.keys(this.state.piece_of_ground).map((key, index) => {
 
                             // this is now showing images and location
-                            if ((key != "image" && key != "id")) {
+                            if ((key != "id")) {
 
                                 // console.log(key);
 
