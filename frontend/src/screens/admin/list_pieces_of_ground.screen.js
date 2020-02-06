@@ -176,7 +176,19 @@ class Admin_Pieces_of_Ground extends React.Component {
 
                 <Typography align="center" variant="h4" component="h4" gutterBottom>
 
-                    {this.state.loteo != undefined ? this.state.loteo.name : "Loteo"}
+                    Tus parcelas
+
+                </Typography>
+
+                <Typography align="center" variant="body2" component="p" gutterBottom>
+
+                    Aca se muestran todas las parcelas que tienes en el sitio. Puedes crear una nueva, editar o eliminar alguna que ya existe.                                        
+
+                </Typography>
+
+                <Typography align="center" variant="h4" component="h4" gutterBottom>
+
+                    Loteo: {this.state.loteo != undefined ? this.state.loteo.name : "Loteo"}
 
                 </Typography>
 

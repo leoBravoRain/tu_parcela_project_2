@@ -229,12 +229,6 @@ class Edit_Piece_of_Ground extends React.Component {
                         })
                     }
 
-                    <div>
-
-                        Implement the images array
-
-                    </div>
-
                 </form>
 
                 {/* {

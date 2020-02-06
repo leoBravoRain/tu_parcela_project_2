@@ -167,6 +167,16 @@ class Admin extends React.Component {
 
                 </Button>
 
+                <Typography align="center" variant="h4" component="h4" gutterBottom>
+                    Tus loteos
+                </Typography>
+
+                <Typography align="center" variant="body2" component="p" gutterBottom>
+
+                    Aca se muestran todos los loteos que tienes en el sitio. Puedes crear uno nuevo, editar o eliminar alguno que ya existe.
+
+                </Typography>
+
                 {
                     this.state.is_logged 
 
