@@ -2,13 +2,12 @@ import firebase from "firebase";
 
 // API credentials
 var firebaseConfig = {
-    apiKey: "AIzaSyBWL1yinxdXsISTy5thRgiGu-gjJUgREFI",
-    authDomain: "your-piece-of-ground-test.firebaseapp.com",
-    databaseURL: "https://your-piece-of-ground-test.firebaseio.com",
-    projectId: "your-piece-of-ground-test",
-    storageBucket: "your-piece-of-ground-test.appspot.com",
-    messagingSenderId: "489124311670",
-    appId: "1:489124311670:web:509fb9ade7b56632a52557"
+    apiKey: "AIzaSyAlkq8ErPHAyv53W8s8llItiflXi1SHSgw",
+    authDomain: "tu-parcela.firebaseapp.com",
+    databaseURL: "https://tu-parcela.firebaseio.com",
+    projectId: "tu-parcela",
+    storageBucket: "tu-parcela.appspot.com",
+    messagingSenderId: "943265874838",
   };
 
 // Initialize Firebase

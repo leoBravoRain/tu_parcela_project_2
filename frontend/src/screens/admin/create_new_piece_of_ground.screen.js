@@ -26,6 +26,7 @@ const piece_of_ground_features = [
     "longitude",
     "name",
     "price",
+    "access",
 ];
 
 // list of features of a piece_of_ground
