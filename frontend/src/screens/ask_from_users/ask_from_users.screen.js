@@ -7,9 +7,57 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+// API for send emails
+import emailjs from 'emailjs-com';
+
 class Ask_from_Users extends React.Component {
     
-    
+    // constructor
+    constructor(props) {
+
+        // constructur of parent
+        super(props);
+
+        // initial states
+        this.state = {
+
+            name: "",
+            email: "",
+            message: "",
+
+        }
+
+    }
+
+    send_email() {
+        // e.preventDefault();
+        // console.log("email")
+        // emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_USER_ID')
+        //   .then((result) => {
+        //       console.log(result.text);
+        //   }, (error) => {
+        //       console.log(error.text);
+        //   });
+        var template_params = {
+           "reply_to": this.state.email,
+           "user_name": this.state.name,
+           "message": this.state.message,
+           "user_email": this.state.email,
+        };
+
+        const service_id = "gmail";
+        var user_id = "user_SVCPQFf6F5WDyJtGUwc42";
+        var template_id = "template_OpzxMFyn";
+        emailjs.send(service_id, template_id, template_params, user_id);
+
+        // user message
+        alert("Tu mensaje ha sido enviado correctamente. Nuestro equipo se pondra en contacto contigo lo antes posible");
+
+        // Redirect
+        this.props.history.push("");
+
+    }
+
     render() {
         
         return (
@@ -54,20 +102,22 @@ class Ask_from_Users extends React.Component {
 
                         <Box>
                             <TextField
-                                id="standard-name"
+                                //id="standard-name"
                                 label="Nombre"
-                                // value={values.name}
-                                // onChange={handleChange('name')}
+                                value={this.state.name}
+                                onChange={(event)=>this.setState({name: event.target.value})}
                                 margin="normal"
                             />
                         </Box>
 
                         <Box>
                             <TextField
-                                id="standard-name"
+                                // id="standard-name"
+                                name = "user_email"
+                                type = "email"
                                 label="Correo electrónico"
-                                // value={values.name}
-                                // onChange={handleChange('name')}
+                                value={this.state.email}
+                                onChange={(event)=>this.setState({email: event.target.value})}
                                 margin="normal"
                             />
                         </Box>
@@ -77,8 +127,9 @@ class Ask_from_Users extends React.Component {
                                 type = "area"
                                 // multiline = {true}
                                 label="Consulta"
-                                // value={values.name}
-                                // onChange={handleChange('name')}
+                                name = "message"
+                                value={this.state.message}
+                                onChange={(event)=>this.setState({message: event.target.value})}
                                 margin="normal"
                                 // label="Multiline"
                                 multiline
@@ -89,7 +140,20 @@ class Ask_from_Users extends React.Component {
 
                         <Box>
                             
-                            <Button variant="contained" color = "primary" onClick = {()=>alert("¡Consulta enviada!")}
+                            {/*<input 
+                                type="submit" 
+                                value="Enviar" 
+                                // style={{
+                                //     margin: 20,
+                                //     color: "white",
+                                //     borderRadius: 50,
+                                //     // marginBottom: 100,
+                                //     // textAlign: "center",
+                                //     // alignSelf: "center",
+                                // }}
+                            />*/}
+
+                            <Button variant="contained" color = "primary" onClick = {()=> this.send_email()}
                                 style={{
                                     margin: 20,
                                     color: "white",
