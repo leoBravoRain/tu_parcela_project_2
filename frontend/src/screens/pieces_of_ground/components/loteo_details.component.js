@@ -71,6 +71,7 @@ class Loteo_Details extends React.Component {
 						>
 
 							<Carousel
+								dynamicHeight
 								autoPlay = {true}
 								infiniteLoop = {true}
 								// centerMode = {true}
@@ -83,8 +84,7 @@ class Loteo_Details extends React.Component {
 
 									<img 
 										src = {img}
-										// width = "50px"
-										// height = "50px"
+										
 									/>
 
 								)}

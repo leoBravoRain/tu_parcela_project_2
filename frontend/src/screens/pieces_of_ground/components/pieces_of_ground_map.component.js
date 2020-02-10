@@ -106,7 +106,7 @@ class Pieces_of_Ground_Map_Component extends React.Component {
 
 						<Typography align="center" variant="h3" component="h2" gutterBottom style={{ fontWeight: "bold", margin: theme.margin.normal }}>
 						
-							Proyecto {this.props.loteo.name}
+							Loteo {this.props.loteo.name}
 
 						</Typography>
 						
@@ -123,7 +123,7 @@ class Pieces_of_Ground_Map_Component extends React.Component {
 							
 							</span>
 
-							parcelas disponibles
+							{this.props.num_piece_of_ground > 1 ? "parcelas disponibles" : "parcela disponible"}
 
 						</Typography>
 

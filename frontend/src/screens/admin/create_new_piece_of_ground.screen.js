@@ -143,7 +143,12 @@ class Create_New_Piece_of_Ground extends React.Component {
                     // width: "100%"
                 }}
             >
+                <div>
 
+                    Rellenar todas las casillas
+
+                </div>
+                
                 <form noValidate autoComplete="off">
 
                         
@@ -156,6 +161,13 @@ class Create_New_Piece_of_Ground extends React.Component {
 
                                     <TextField
                                         // id="standard-name"
+                                        //type = "area"
+                                        style = {{
+                                            width: "60%",
+                                        }}
+                                        multiline
+                                        rows="2"
+
                                         label= {key}
                                         value={this.state.piece_of_ground.key != null ? this.state.piece_of_ground.key: null}
                                         onChange={(event) => {

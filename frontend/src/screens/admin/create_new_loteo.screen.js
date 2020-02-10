@@ -154,6 +154,10 @@ class Create_New_Loteo extends React.Component {
                 }}
             >
 
+                <Typography align="center" variant="body" component="p" gutterBottom color = "secondary">
+                    Debes rellenar todas las casillas (Despues puedes editar toda la informacion)
+                </Typography>
+
                 <form noValidate autoComplete="off">
 
                         
@@ -162,10 +166,20 @@ class Create_New_Loteo extends React.Component {
 
                             return (
 
-                                <Box>
+                                <Box
+                                    style = {{
+                                        borderBottomColor: 'black',
+                                        borderBottomWidth: 1,
+                                    }}
+                                >
 
                                     <TextField
                                         // id="standard-name"
+                                        style = {{
+                                            width: "60%",
+                                        }}
+                                        multiline
+                                        rows="2"
                                         label= {key}
                                         value={this.state.loteo.key != null ? this.state.loteo.key: null}
                                         onChange={(event) => {
@@ -197,6 +211,12 @@ class Create_New_Loteo extends React.Component {
 
                 <TextField
                     // id="standard-name"
+                    style = {{
+                        width: "60%",
+                    }}
+                    multiline
+                    rows="2"
+
                     label= "Number of images"
                     value= {this.state.number_images}
                     onChange={(event) => {
@@ -229,6 +249,12 @@ class Create_New_Loteo extends React.Component {
                             <Box>
 
                                 <TextField
+                                    style = {{
+                                        width: "60%",
+                                    }}
+                                    multiline
+                                    rows="2"
+                                        
                                     // id="standard-name"
                                     label= {"Image " + (index + 1)}
                                     value={this.state.loteo.images[index]}

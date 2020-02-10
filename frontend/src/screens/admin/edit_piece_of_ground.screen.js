@@ -203,9 +203,15 @@ class Edit_Piece_of_Ground extends React.Component {
                                 return (
                                     <Box>
                                         <TextField
+                                            // type = "area"
+                                            style = {{
+                                                width: "60%",
+                                            }}
+                                            multiline
+                                            rows="2"
                                             // id="standard-name"
                                             label={key}
-                                            value={this.state.piece_of_ground.key}
+                                            value={this.state.piece_of_ground[key]}
                                             onChange={(event) => {
                                                 // console.log(event.target.value);
                                                 var piece_of_ground = this.state.piece_of_ground;
@@ -219,9 +225,6 @@ class Edit_Piece_of_Ground extends React.Component {
                                             margin="normal"
                                         />
 
-                                        <div>
-                                            {this.state.piece_of_ground[key]}
-                                        </div>
                                     </Box>
                                 )
                             }

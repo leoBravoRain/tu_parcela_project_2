@@ -87,7 +87,7 @@ class Loteos_Map_Component extends React.Component {
                                 {this.props.get_loteos ? "    " + this.props.num_loteos + "   " : "0 "} 
                         </span> 
                             
-                         loteos 
+                            {this.props.num_loteos > 1 ? "loteos" : "loteo"}
                          
                         <span
                             style={{
@@ -101,7 +101,7 @@ class Loteos_Map_Component extends React.Component {
                         
                         </span> 
 
-                        parcelas disponibles
+                        {this.props.num_pieces_ground > 1 ? "parcelas disponibles" : "parcela disponible"}
 
                         <span
                             style={{

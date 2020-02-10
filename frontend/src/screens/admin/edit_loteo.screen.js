@@ -203,11 +203,23 @@ class Edit_Admin extends React.Component {
                             if ((key != "images" && key != "id")){
                                 
                                 return (
-                                    <Box>
+                                    <Box
+                                        // style = {{
+                                        //     backgroundColor: "red",
+                                        //     margin: 20,
+                                        // }}
+                                    >
+
                                         <TextField
+                                            style = {{
+                                                width: "60%",
+                                            }}
+                                            multiline
+                                            rows="3"
+
                                             // id="standard-name"
                                             label= {key}
-                                            value={this.state.loteo.key}
+                                            value={this.state.loteo[key]}
                                             onChange={(event) => {
                                                 // console.log(event.target.value);
                                                 var loteo = this.state.loteo;
@@ -221,9 +233,6 @@ class Edit_Admin extends React.Component {
                                             margin="normal"
                                         />
     
-                                        <div>
-                                            {this.state.loteo[key]}
-                                        </div>
                                     </Box>
                                 )
                             }
@@ -233,6 +242,12 @@ class Edit_Admin extends React.Component {
                     }
 
                     <TextField
+                        style = {{
+                            width: "60%",
+                        }}
+                        multiline
+                        rows="2"
+
                         label = "Number of images"
                         value = {this.state.number_images}
                         onChange={(event) => {
@@ -329,8 +344,15 @@ class Edit_Admin extends React.Component {
                                 <Box>
 
                                     <TextField
+                                        style = {{
+                                            width: "60%",
+                                        }}
+                                        multiline
+                                        rows="2"
+                                        
                                         // id="standard-name"
                                         label= {"Image " + (index + 1)}
+                                        type = "area"
                                         value={this.state.loteo.images[index]}
                                         onChange={(event) => {
                                             //console.log(event.target.value);
