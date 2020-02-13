@@ -11,6 +11,9 @@ import Grid from '@material-ui/core/Grid';
 import { CircularProgress } from "@material-ui/core";
 import theme from "../../../libraries/material-ui/theme";
 
+// image mapper 
+import ImageMapper from 'react-image-mapper';
+
 class Pieces_of_Ground_Map_Component extends React.Component {
 	
 	// constructor
@@ -19,16 +22,40 @@ class Pieces_of_Ground_Map_Component extends React.Component {
 		// constructur of parent
 		super(props);
 
+		var image_width;
+
+		// analyze window size. If it's on mobile, so change the width of the image (image of map with markers)
+		if(window.innerWidth < 600) {
+
+			// console.log("Small screen, it changes the image width");
+			// alert("small screen: ", toString(window.innerWidth));
+			image_width = window.innerWidth/1.5;
+			// this.setState({
+			// 	image_width: 100,
+			// })
+		}
+		else {
+			// alert("big screen: ", toString(window.innerWidth));
+			image_width = 500;
+			// console.log("Big scree, it keeps the image width")
+		}
+
 		// initial states
 		this.state = {
 
 			// queue
 			pieces_of_ground_to_display: null,
 			get_pieces_of_ground_to_display: false,
+			image_width: image_width,
+
+			areas_array: [],
+			get_areas_array: false,
 
 		}
 
 		this.click_on_marker = this.click_on_marker.bind(this);
+		this.dict_image_markers = this.dict_image_markers.bind(this);
+
 
 	}
 
@@ -39,11 +66,29 @@ class Pieces_of_Ground_Map_Component extends React.Component {
 
 		console.log("pieces of ground to display: ", pieces_of_ground_to_display);
 
+		this.dict_image_markers();
+
+		// console.log("window size: ", window.innerHeight);
+
+		// // analyze window size. If it's on mobile, so change the width of the image (image of map with markers)
+		// if(window.innerHeight < 700) {
+
+		// 	console.log("Small screen, it changes the image width");
+
+		// 	this.setState({
+		// 		image_width: 100,
+		// 	})
+		// }
+		// else {
+		// 	console.log("Big scree, it keeps the image width")
+		// }
+
 		// update state
 		this.setState({
 			get_pieces_of_ground_to_display: true,
 			pieces_of_ground_to_display: pieces_of_ground_to_display,
 		})
+
 
 	}
 
@@ -84,8 +129,48 @@ class Pieces_of_Ground_Map_Component extends React.Component {
 
 	}
 
+	dict_image_markers() {
+		// build areas array
+		var areas = [];
+
+		// iterate over each piece of ground
+		for (var i = 0; i < this.props.pieces_of_ground.length; i++) {
+
+			var area = { 
+				name: "oiajsioajs", 
+				shape: "circle", 
+				index: i,
+				// coords: [this.state.piece_of_ground[i].x_image, this.state.piece_of_ground[i].y_image, 10 ], 
+				coords: [
+					this.props.pieces_of_ground[i].x_image, // x of image
+					this.props.pieces_of_ground[i].y_image, // y of image
+					30 , // radius
+					], 
+				// preFillColor: "rgba(200, 0, 0, 0.5)", 
+				lineWidth: "20",
+
+			}
+
+			areas.push(area);
+		}
+
+		console.log("areas: ", areas);
+
+		this.setState({
+			areas_array: areas,
+			get_areas_array: true,
+		})
+
+	} 
+
 	// render method
 	render() {
+
+		const URL = this.props.loteo.map_image;
+		const MAP = {
+		  name: "my-map",
+		  areas: this.state.areas_array,
+		};
 
 		return (
 
@@ -95,7 +180,7 @@ class Pieces_of_Ground_Map_Component extends React.Component {
 
 					<Box
 						style = {{
-							backgroundImage: 'url("https://firebasestorage.googleapis.com/v0/b/your-piece-of-ground-test.appspot.com/o/7921758ea7dfb78c2a4e4e754768c354.jpg?alt=media&token=65c95d59-ecec-48e0-ba20-72d2f9486f5a")',
+							backgroundImage: 'url("https://firebasestorage.googleapis.com/v0/b/tu-parcela.appspot.com/o/Screenshot_20200204_223305_cl.bancochile.mbanking.jpg?alt=media&token=36b85bbc-f56a-48b7-be69-86a24cd0a368")',
 							backgroundPosition: "center top",
 							backgroundRepeat: "no-repeat",
 							backgroundSize: "cover",
@@ -153,7 +238,7 @@ class Pieces_of_Ground_Map_Component extends React.Component {
 									?
 										<Dynamic_Pieces_of_Ground_Component
 											get_pieces_of_ground={this.state.get_pieces_of_ground_to_display}
-											pieces_of_ground={this.state.pieces_of_ground_to_display}
+											pieces_of_ground = {this.state.pieces_of_ground_to_display}
 										/>
 								
 									:
@@ -182,7 +267,39 @@ class Pieces_of_Ground_Map_Component extends React.Component {
 									}}
 								>
 
-									<LeafletMap
+								{
+									this.state.get_areas_array ?
+
+										<div className="container"
+
+										>
+
+										    <ImageMapper 
+										    	// strokeColor = "rgba(200, 0, 0, 0.5)"
+										    	// lineWidth = "100"
+										    	src={URL} 
+										    	map={MAP}
+										    	width={this.state.image_width} 
+										    	imgWidth={500}
+
+										    	// onLoad={() => this.load()}
+										    	onClick={area => this.click_on_marker(area.index)}
+										    	//onMouseEnter={area => this.enterArea(area)}
+										    	//onMouseLeave={area => this.leaveArea(area)}
+										    	// onMouseMove={(area, _, evt) => this.moveOnArea(area, evt)}
+										    	// onImageClick={evt => this.clickedOutside(evt)}
+										    	// onImageMouseMove={evt => this.moveOnImage(evt)}
+										    />
+
+										    
+										</div>
+
+										: 
+
+											null
+								}
+
+									{/*<LeafletMap
 										center={this.props.pieces_of_ground[0].location}
 										zoom={13}
 										maxZoom={100}
@@ -203,8 +320,14 @@ class Pieces_of_Ground_Map_Component extends React.Component {
 										}}
 									>
 										<TileLayer
-											url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-										/>
+											// url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+											// url='http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'
+											// url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      										// attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"										
+      										// url = "http://tile.thunderforest.com/cycle/${z}/${x}/${y}.png"
+      										url = "http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"
+
+  										/>
 
 										{this.props.pieces_of_ground.map((piece_of_ground, idx) =>
 
@@ -227,7 +350,7 @@ class Pieces_of_Ground_Map_Component extends React.Component {
 
 										)}
 
-									</LeafletMap>
+									</LeafletMap>*/}
 
 								</Box>
 

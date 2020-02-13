@@ -16,17 +16,19 @@ import firebase from "firebase";
 
 // list of features of a piece_of_ground
 const piece_of_ground_features = [
+    "name",
     "area",
     "available",
     "characteristics",
     "front",
     "image",
     "large",
-    "latitude",
-    "longitude",
-    "name",
+    // "latitude",
+    // "longitude",
     "price",
-    "access",
+    // "access",
+    "x_image",
+    "y_image",
 ];
 
 // list of features of a piece_of_ground
@@ -37,9 +39,11 @@ const piece_of_ground_features_in_DB = [
     "front",
     "image",
     "large",
-    "location",
+    // "location",
     "name",
     "price",
+    "x_image",
+    "y_image",
 ];
 
 class Create_New_Piece_of_Ground extends React.Component {
@@ -55,9 +59,13 @@ class Create_New_Piece_of_Ground extends React.Component {
 
             piece_of_ground: {
             },
+            x: 0,
+            y: 0,
+            loteo: {},
         }
 
         this.create = this.create.bind(this);
+        this.onMouseMove = this.onMouseMove.bind(this);
 
     }
         
@@ -67,11 +75,11 @@ class Create_New_Piece_of_Ground extends React.Component {
         // format the piece_of_ground
         var piece_of_ground = this.state.piece_of_ground;
 
-        // add location in correct format
-        piece_of_ground["location"] = new firebase.firestore.GeoPoint(parseFloat(piece_of_ground.latitude), parseFloat(piece_of_ground.longitude));
-        // remove latitude and longitude from piece_of_ground object
-        delete piece_of_ground["latitude"];
-        delete piece_of_ground["longitude"];
+        // // add location in correct format
+        // piece_of_ground["location"] = new firebase.firestore.GeoPoint(parseFloat(piece_of_ground.latitude), parseFloat(piece_of_ground.longitude));
+        // // remove latitude and longitude from piece_of_ground object
+        // delete piece_of_ground["latitude"];
+        // delete piece_of_ground["longitude"];
 
         // validate piece_of_ground has all the features with values (no empty vaues)
         if (!(piece_of_ground_features_in_DB.length == Object.entries(this.state.piece_of_ground).lenght)) {
@@ -120,11 +128,48 @@ class Create_New_Piece_of_Ground extends React.Component {
 
                 console.log("user logged");
 
+                fs.collection("loteos").doc(this.props.match.params.id_loteo).get()
+                .then((doc) => {
+                    
+                    if(doc.exists) {
+                        this.setState({
+                            loteo: doc.data(),
+                        })
+                    }
+
+                })
+                .catch(function(error) {
+
+                    console.error("Error: ", error);
+                    
+                });
+
                 // this.props.history.push('/login/');
             }
 
         });
 
+
+    }   
+
+    onMouseMove(e) {
+        
+        //console.log("click");
+        
+        // var piece_of_ground = this.state.piece_of_ground;
+        // piece_of_ground["x_image"] = String(e.nativeEvent.offsetX);
+        // piece_of_ground["y_image"] = String(e.nativeEvent.offsetY);
+
+        // onsole.log("on mouse click: ", piece_of_ground);
+
+        this.setState({ 
+            //piece_of_ground["x_image"]: e.nativeEvent.offsetX, piece_of_ground["y_image"]: e.nativeEvent.offsetY 
+            // piece_of_ground: piece_of_ground,
+            x: e.nativeEvent.offsetX,
+            y: e.nativeEvent.offsetY,
+        }, 
+            // console.log("new piece_of_ground: ", this.state.piece_of_ground)
+        )
 
     }
 
@@ -179,7 +224,7 @@ class Create_New_Piece_of_Ground extends React.Component {
                                             this.setState({
                                                 piece_of_ground: piece_of_ground
                                             },
-                                                // console.log(this.state.piece_of_ground)
+                                                console.log(this.state.piece_of_ground)
                                             )
                                         }}
                                         margin="normal"
@@ -192,8 +237,27 @@ class Create_New_Piece_of_Ground extends React.Component {
                     }
 
 
-                </form>   
+                </form>  
 
+                <div>
+
+                    <p>
+                        Posiciona el mouse sobre el punto que quieres que se agregue esta parcela. Luego copia los valores en las casillas de "x_image" e "y_image"
+                    </p>
+
+                    <img 
+                        onClick={this.onMouseMove} 
+                        // onMouseClick = {() => alert("hi")}
+                        width="500" 
+                        // height="200" 
+                        src= {this.state.loteo.map_image}
+                    /> 
+
+                    <h1>
+                        x_image:{ this.state.x } y_image: { this.state.y }
+                    </h1>
+
+                </div>
                 <Button align="center" variant="contained" color="primary"
                 // style={styles.bottom_button}
                     onClick = {() => this.create()}

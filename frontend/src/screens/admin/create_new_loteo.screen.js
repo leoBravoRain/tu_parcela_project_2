@@ -16,20 +16,22 @@ import firebase from "firebase";
 
 // list of features of a loteo
 const loteo_features = [
+    "name",
     "hectare", 
-    "highlight", 
+    "highlight",
+    "access", 
     //"id", 
-    // "images", 
+    // "images", // this m
     // "location",
     "latitude", 
     "longitude",
     "location_description", 
-    "location_name",
-    "name",
+    // "location_name",
     "num_pieces_of_ground",
     "rounded_price",
     "tourist_attraction",
     "weather",
+    "map_image",
 ];
 
 // list of features of a loteo
@@ -40,12 +42,14 @@ const loteo_features_in_DB = [
     "images", 
     "location",
     "location_description", 
-    "location_name",
+    // "location_name",
     "name",
     "num_pieces_of_ground",
     "rounded_price",
     "tourist_attraction",
     "weather",
+    "map_image",
+    "access",
 ];
 
 class Create_New_Loteo extends React.Component {

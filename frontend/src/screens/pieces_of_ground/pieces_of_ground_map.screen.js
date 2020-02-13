@@ -100,7 +100,7 @@ class Piece_of_Ground_Map extends Component {
 					// console.log(doc.data());
 					let piece_of_ground = doc.data();
 					// store location
-					piece_of_ground["location"] = [piece_of_ground.location.latitude, piece_of_ground.location.longitude];
+					// piece_of_ground["location"] = [piece_of_ground.location.latitude, piece_of_ground.location.longitude];
 					// add loteo to list
 					pieces_of_ground.push(piece_of_ground);
 
@@ -173,6 +173,7 @@ class Piece_of_Ground_Map extends Component {
 							// }}
 							get_pieces_of_ground = {this.state.get_pieces_of_ground}
 							pieces_of_ground = {this.state.pieces_of_ground}
+							loteo = {this.state.loteo}
 						/>
 
 						{/* <Loteo_Description

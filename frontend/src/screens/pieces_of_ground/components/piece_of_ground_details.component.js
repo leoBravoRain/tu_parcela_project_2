@@ -187,7 +187,7 @@ class Piece_of_Ground_Details extends React.Component {
 					}}
 				>
 
-					Esto será un texto sobre el loteo
+					{this.props.loteo.highlight}
 
 				</Typography>
 

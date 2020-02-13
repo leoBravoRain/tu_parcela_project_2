@@ -26,10 +26,14 @@ class Edit_Piece_of_Ground extends React.Component {
             // flag of get data from server
             get_piece_of_ground: false,
             piece_of_ground: null,
+            x: 0,
+            y: 0,
+            loteo: {},
         }
 
         this.update = this.update.bind(this);
         // this.delete = this.delete.bind(this);
+        this.onMouseMove = this.onMouseMove.bind(this);
 
     }
 
@@ -39,11 +43,11 @@ class Edit_Piece_of_Ground extends React.Component {
         // format the piece_of_ground
         var piece_of_ground = this.state.piece_of_ground;
 
-        // add location in correct format
-        piece_of_ground["location"] = new firebase.firestore.GeoPoint(parseFloat(piece_of_ground.latitude), parseFloat(piece_of_ground.longitude));
-        // remove latitude and longitude from piece_of_ground object
-        delete piece_of_ground["latitude"];
-        delete piece_of_ground["longitude"];
+        // // add location in correct format
+        // piece_of_ground["location"] = new firebase.firestore.GeoPoint(parseFloat(piece_of_ground.latitude), parseFloat(piece_of_ground.longitude));
+        // // remove latitude and longitude from piece_of_ground object
+        // delete piece_of_ground["latitude"];
+        // delete piece_of_ground["longitude"];
 
         console.log("udpate: ", this.state.piece_of_ground);
 
@@ -114,6 +118,23 @@ class Edit_Piece_of_Ground extends React.Component {
 
                 // this.props.history.push('/login/');
 
+                // get loteos
+                fs.collection("loteos").doc(this.props.match.params.id_loteo).get()
+                .then((doc) => {
+                    
+                    if(doc.exists) {
+                        this.setState({
+                            loteo: doc.data(),
+                        })
+                    }
+
+                })
+                .catch(function(error) {
+
+                    console.error("Error: ", error);
+                    
+                });
+
                 // console.log()
                 // get request for get piece_of_ground
                 fs.collection('loteos').doc(this.props.match.params.id_loteo).collection("pieces_of_ground").doc(this.props.match.params.id_piece_of_ground).get()
@@ -129,9 +150,9 @@ class Edit_Piece_of_Ground extends React.Component {
                     // store location
                     // piece_of_ground["location"] = [piece_of_ground.location.latitude, piece_of_ground.location.longitude];
 
-                    piece_of_ground["latitude"] = piece_of_ground.location.latitude;
-                    piece_of_ground["longitude"] = piece_of_ground.location.longitude;
-                    delete piece_of_ground["location"];
+                    // piece_of_ground["latitude"] = piece_of_ground.location.latitude;
+                    // piece_of_ground["longitude"] = piece_of_ground.location.longitude;
+                    // delete piece_of_ground["location"];
 
                     piece_of_ground["id"] = doc.id;
                     // add piece_of_ground to list
@@ -162,6 +183,22 @@ class Edit_Piece_of_Ground extends React.Component {
             }
 
         });
+    }
+
+    onMouseMove(e) {
+
+        console.log("click");
+        
+        var loteo = this.state.loteo;
+        loteo["x_image"] = e.nativeEvent.offsetX;
+        loteo["y_image"] = e.nativeEvent.offsetY;
+
+        console.log("on mouse click: ", loteo);
+
+        this.setState({ 
+            //loteo["x_image"]: e.nativeEvent.offsetX, loteo["y_image"]: e.nativeEvent.offsetY 
+            loteo: loteo,
+        })
     }
 
     render() {
@@ -233,6 +270,26 @@ class Edit_Piece_of_Ground extends React.Component {
                     }
 
                 </form>
+
+                <div>
+
+                    <p>
+                        Posiciona el mouse sobre el punto que quieres que se agregue esta parcela. Luego copia los valores en las casillas de "x_image" e "y_image"
+                    </p>
+
+                    <img 
+                        onClick={this.onMouseMove} 
+                        // onMouseClick = {() => alert("hi")}
+                        width="500" 
+                        // height="200" 
+                        src= {this.state.loteo.map_image}
+                    /> 
+
+                    <h1>
+                        Mouse coordinates: { this.state.x } { this.state.y }
+                    </h1>
+
+                </div>
 
                 {/* {
                     this.state.get_piece_of_ground

@@ -2,6 +2,9 @@ import React, { Component } from "react";
 // for map
 import { Map as LeafletMap, TileLayer, Marker, Tooltip } from 'react-leaflet';
 
+// image mapper 
+import ImageMapper from 'react-image-mapper';
+
 // material ui
 import Typography from '@material-ui/core/Typography';
 import theme from "../../../libraries/material-ui/theme";
@@ -36,7 +39,7 @@ class Loteos_Map_Component extends React.Component {
                 // disableGutters = {true}
                 // maxWidth = {false}
                 style={{
-                    backgroundImage: 'url("https://firebasestorage.googleapis.com/v0/b/your-piece-of-ground-test.appspot.com/o/7921758ea7dfb78c2a4e4e754768c354.jpg?alt=media&token=65c95d59-ecec-48e0-ba20-72d2f9486f5a")',
+                    backgroundImage: 'url("https://firebasestorage.googleapis.com/v0/b/tu-parcela.appspot.com/o/Screenshot_20200204_223305_cl.bancochile.mbanking.jpg?alt=media&token=36b85bbc-f56a-48b7-be69-86a24cd0a368")',
                     backgroundPosition: "bottom",
                     backgroundRepeat: "no-repeat",
                     // margin: 0,
@@ -68,6 +71,26 @@ class Loteos_Map_Component extends React.Component {
             >
 
                 <Box>
+
+                	{/*<div className="container">
+
+					    <ImageMapper src={URL} map={MAP}
+					    	// width={500} imgWidth={1000}
+					    	style = {{
+					    		width: 10,
+					    		height: "auto",
+					    	}}
+					    	// onLoad={() => this.load()}
+					    	onClick={area => alert("click")}
+					    	//onMouseEnter={area => this.enterArea(area)}
+					    	//onMouseLeave={area => this.leaveArea(area)}
+					    	// onMouseMove={(area, _, evt) => this.moveOnArea(area, evt)}
+					    	// onImageClick={evt => this.clickedOutside(evt)}
+					    	// onImageMouseMove={evt => this.moveOnImage(evt)}
+					    />
+
+					    
+					</div>*/}
 
                     <Typography align="center" variant="h3" component="h2" gutterBottom style = {{fontWeight: "bold"}}>
 
@@ -153,7 +176,8 @@ class Loteos_Map_Component extends React.Component {
                                 }}
                             >
                                 <TileLayer
-                                    url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+                                    url = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+                                    // url = "http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}"
                                 />
 
                                 {this.props.loteos.map((loteo, idx) =>
